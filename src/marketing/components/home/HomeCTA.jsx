@@ -7,7 +7,7 @@ export default function HomeCTA() {
     <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection>
-          <div className="relative overflow-hidden gradient-brand rounded-3xl px-8 py-16 text-center">
+          <div className="relative overflow-hidden gradient-brand rounded-3xl px-5 py-12 sm:px-8 sm:py-16 text-center">
             {/* Background decoration */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
               <div className="absolute -top-20 -right-20 w-64 h-64 bg-white/5 rounded-full" />

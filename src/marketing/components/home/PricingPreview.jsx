@@ -54,12 +54,12 @@ export default function PricingPreview() {
           subtext="Start free, scale as you grow. No hidden fees, cancel anytime."
         />
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto md:items-start">
           {plans.map((plan) => (
             <StaggerItem key={plan.name}>
               <div className={`relative h-full rounded-2xl p-6 flex flex-col transition-all duration-300 hover:-translate-y-1 ${
                 plan.highlighted
-                  ? "gradient-brand text-white shadow-2xl shadow-blue-500/25 scale-105"
+                  ? "gradient-brand text-white shadow-2xl shadow-blue-500/25 md:scale-105"
                   : "bg-white border border-slate-200 hover:shadow-lg"
               }`}>
                 {plan.badge && (

@@ -19,15 +19,15 @@ export default function HeroSection() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-100/20 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left: Text */}
           <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="flex items-center gap-2 mb-6"
+              className="flex flex-wrap items-center gap-2 mb-6"
             >
               <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-semibold">
                 <Sparkles className="w-3 h-3" />
@@ -42,7 +42,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6"
+              className="text-[2rem] sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6"
             >
               HR Operations,{" "}
               <span className="text-gradient-brand">Simplified</span>
@@ -92,15 +92,16 @@ export default function HeroSection() {
           </div>
 
           {/* Right: Dashboard Preview */}
-          <div className="relative">
-            <DashboardPreview variant="attendance" height={420} />
+          <div className="relative mt-4 lg:mt-0">
+            <div className="h-[220px] sm:h-[320px] lg:h-[420px]">
+              <DashboardPreview variant="attendance" />
+            </div>
 
-            {/* Floating badges */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8, duration: 0.5 }}
-              className="absolute -left-6 top-1/4 glass-card rounded-xl px-3 py-2 shadow-lg hidden lg:flex items-center gap-2"
+              className="absolute -left-4 top-1/4 glass-card rounded-xl px-3 py-2 shadow-lg hidden lg:flex items-center gap-2"
             >
               <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center">
                 <TrendingUp className="w-3 h-3 text-emerald-600" />
