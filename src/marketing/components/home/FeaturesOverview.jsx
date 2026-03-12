@@ -1,102 +1,92 @@
 import { Link } from "react-router-dom";
-import { Clock, DollarSign, Users, BarChart3, FileText, PieChart, ArrowRight } from "lucide-react";
-import SectionHeader from "../shared/SectionHeader";
+import { Clock, IndianRupee, Users, BarChart2, FileText, Download, ArrowRight } from "lucide-react";
 import { StaggerContainer, StaggerItem } from "../shared/AnimatedSection";
+import AnimatedSection from "../shared/AnimatedSection";
 
 const features = [
   {
     icon: Clock,
-    title: "Attendance Tracking",
-    desc: "Real-time attendance monitoring with biometric, mobile, and web check-in support.",
-    color: "bg-blue-500",
-    lightColor: "bg-blue-50",
+    title: "Attendance tracking",
+    desc: "Biometric, GPS, and web check-in. Shifts, overtime, geo-fencing. Real-time view, zero manual entry.",
     textColor: "text-blue-600",
+    iconBg: "bg-blue-50",
   },
   {
-    icon: DollarSign,
-    title: "Payroll Processing",
-    desc: "End-to-end payroll automation with statutory compliance and instant payslip generation.",
-    color: "bg-indigo-500",
-    lightColor: "bg-indigo-50",
+    icon: IndianRupee,
+    title: "Payroll processing",
+    desc: "One-click processing. PF, ESI, TDS auto-computed. Payslips sent. Bank transfers done.",
     textColor: "text-indigo-600",
+    iconBg: "bg-indigo-50",
   },
   {
     icon: Users,
-    title: "Employee Lifecycle",
-    desc: "From onboarding to offboarding — manage the entire employee journey in one place.",
-    color: "bg-violet-500",
-    lightColor: "bg-violet-50",
+    title: "Employee database",
+    desc: "Onboarding to offboarding. Documents, org charts, role history, and self-service portal.",
     textColor: "text-violet-600",
+    iconBg: "bg-violet-50",
   },
   {
-    icon: BarChart3,
-    title: "HR Analytics",
-    desc: "Real-time dashboards and AI-driven insights to make data-informed workforce decisions.",
-    color: "bg-sky-500",
-    lightColor: "bg-sky-50",
+    icon: BarChart2,
+    title: "HR analytics",
+    desc: "Attrition risk, headcount trends, payroll cost breakdown. Built-in and custom reports.",
     textColor: "text-sky-600",
+    iconBg: "bg-sky-50",
   },
   {
     icon: FileText,
-    title: "Invoicing & Billing",
-    desc: "Generate GST-compliant invoices, track outstanding payments, and automate follow-ups.",
-    color: "bg-blue-500",
-    lightColor: "bg-blue-50",
+    title: "GST invoicing",
+    desc: "Create, send, track invoices. Auto-reminders before due dates. GSTR reports in one click.",
     textColor: "text-blue-600",
+    iconBg: "bg-blue-50",
   },
   {
-    icon: PieChart,
-    title: "Reports & Exports",
-    desc: "Over 50 ready-to-use reports. Export to Excel, PDF, or CSV with a single click.",
-    color: "bg-indigo-500",
-    lightColor: "bg-indigo-50",
+    icon: Download,
+    title: "Exports & reports",
+    desc: "50+ pre-built reports. Export to PDF, Excel, CSV. Schedule delivery to your inbox.",
     textColor: "text-indigo-600",
+    iconBg: "bg-indigo-50",
   },
 ];
 
 export default function FeaturesOverview() {
   return (
-    <section className="py-24 gradient-hero">
+    <section className="py-24 bg-slate-50/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          eyebrow="Full-Featured HRMS"
-          heading={
-            <>
-              One Platform,{" "}
-              <span className="text-gradient-brand">Infinite Possibilities</span>
-            </>
-          }
-          subtext="EaseUp covers every aspect of HR management, from daily attendance to yearly audits."
-        />
+        {/* Heading */}
+        <AnimatedSection className="max-w-2xl mx-auto text-center mb-14">
+          <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-3">
+            Everything included
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-950 tracking-tight leading-tight">
+            The full HR stack,
+            <br />
+            not a patchwork of tools.
+          </h2>
+        </AnimatedSection>
 
-        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {features.map((f) => (
             <StaggerItem key={f.title}>
-              <div className="group h-full p-6 rounded-2xl bg-white border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer">
-                <div className={`w-10 h-10 rounded-xl ${f.lightColor} flex items-center justify-center mb-4`}>
-                  <f.icon className={`w-5 h-5 ${f.textColor}`} />
+              <div className="group bg-white border border-slate-200/70 rounded-xl p-6 hover:border-blue-200 hover:shadow-md transition-all duration-200 h-full flex flex-col">
+                <div className={`w-9 h-9 rounded-lg ${f.iconBg} flex items-center justify-center mb-4`}>
+                  <f.icon className={`w-4.5 h-4.5 ${f.textColor}`} strokeWidth={1.75} />
                 </div>
-                <h3 className="text-base font-bold text-slate-900 mb-2">{f.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed mb-4">{f.desc}</p>
-                <Link
-                  to="/features"
-                  className={`inline-flex items-center gap-1 text-xs font-semibold ${f.textColor} opacity-0 group-hover:opacity-100 transition-opacity`}
-                >
-                  Learn more <ArrowRight className="w-3 h-3" />
-                </Link>
+                <h3 className="text-sm font-bold text-slate-900 mb-1.5">{f.title}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed flex-1">{f.desc}</p>
               </div>
             </StaggerItem>
           ))}
         </StaggerContainer>
 
-        <div className="text-center mt-10">
+        <AnimatedSection delay={0.2} className="text-center mt-10">
           <Link
             to="/features"
             className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors"
           >
-            View all features <ArrowRight className="w-4 h-4" />
+            See all features in detail
+            <ArrowRight className="w-4 h-4" />
           </Link>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );

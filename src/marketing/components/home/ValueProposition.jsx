@@ -1,37 +1,40 @@
-import { Clock, DollarSign, FileText } from "lucide-react";
-import SectionHeader from "../shared/SectionHeader";
-import { StaggerContainer, StaggerItem } from "../shared/AnimatedSection";
+import { Clock, DollarSign, FileText, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import AnimatedSection, { StaggerContainer, StaggerItem } from "../shared/AnimatedSection";
 
 const pillars = [
   {
+    number: "01",
     icon: Clock,
-    title: "Smart Attendance",
+    title: "Attendance that runs itself",
     description:
-      "Automated time tracking with biometric and mobile check-ins. Geo-fencing, shift scheduling, and leave management — all in one place.",
-    color: "bg-blue-50",
-    iconColor: "text-blue-600",
-    border: "border-blue-100",
-    benefits: ["Biometric integration", "GPS check-in", "Auto overtime calculation"],
+      "Employees check in via mobile or biometric. Shifts, overtime, and leaves are tracked in real time. By month-end, the numbers are already waiting in payroll.",
+    link: "/features#attendance",
+    linkLabel: "Attendance features",
+    accent: "text-blue-600",
+    accentBg: "bg-blue-600",
   },
   {
+    number: "02",
     icon: DollarSign,
-    title: "Automated Payroll",
+    title: "Payroll closed in minutes, not days",
     description:
-      "Process salaries with one click. Auto-compute PF, ESI, TDS and generate payslips. 100% compliant with Indian labour laws.",
-    color: "bg-indigo-50",
-    iconColor: "text-indigo-600",
-    border: "border-indigo-100",
-    benefits: ["PF/ESI compliance", "One-click processing", "Instant payslips"],
+      "PF, ESI, and TDS auto-calculated. Payslips generated and sent. Direct bank transfers initiated. The whole cycle — done before lunch on the 1st.",
+    link: "/features#payroll",
+    linkLabel: "Payroll features",
+    accent: "text-indigo-600",
+    accentBg: "bg-indigo-600",
   },
   {
+    number: "03",
     icon: FileText,
-    title: "Professional Invoicing",
+    title: "Invoices that are compliant by default",
     description:
-      "Create branded invoices, track payments, and send automated reminders. Full GST compliance with real-time financial reports.",
-    color: "bg-violet-50",
-    iconColor: "text-violet-600",
-    border: "border-violet-100",
-    benefits: ["GST-compliant invoices", "Auto payment reminders", "Financial reports"],
+      "GST invoicing, credit notes, GSTR reports. Auto-reminders go out before clients go overdue. Your finance team stays clean without chasing anyone.",
+    link: "/features#invoicing",
+    linkLabel: "Invoicing features",
+    accent: "text-violet-600",
+    accentBg: "bg-violet-600",
   },
 ];
 
@@ -39,36 +42,39 @@ export default function ValueProposition() {
   return (
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          eyebrow="Why EaseUp HRMS"
-          heading={
-            <>
-              Everything Your HR Team{" "}
-              <span className="text-gradient-brand">Needs to Thrive</span>
-            </>
-          }
-          subtext="Manage your entire workforce from a single, intuitive platform built for Indian businesses."
-        />
+        {/* Section heading — left-aligned for variety */}
+        <AnimatedSection className="max-w-lg mb-14">
+          <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-3">
+            Core modules
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-950 tracking-tight leading-tight">
+            Three things HR teams spend most of their time on.
+            <span className="text-slate-400 font-normal"> We automated all of them.</span>
+          </h2>
+        </AnimatedSection>
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <StaggerContainer className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-slate-100 rounded-2xl overflow-hidden shadow-sm">
           {pillars.map((p) => (
             <StaggerItem key={p.title}>
-              <div className={`group h-full p-6 rounded-2xl bg-white border ${p.border} hover:shadow-xl hover:-translate-y-1 transition-all duration-300`}>
-                <div className={`w-12 h-12 rounded-xl ${p.color} flex items-center justify-center mb-5`}>
-                  <p.icon className={`w-6 h-6 ${p.iconColor}`} />
+              <div className="bg-white p-8 h-full flex flex-col group hover:bg-slate-50/60 transition-colors duration-200">
+                {/* Number + icon row */}
+                <div className="flex items-center justify-between mb-7">
+                  <span className="text-4xl font-black text-slate-100 select-none tracking-tighter">{p.number}</span>
+                  <div className={`w-10 h-10 rounded-xl ${p.accentBg} flex items-center justify-center`}>
+                    <p.icon className="w-5 h-5 text-white" />
+                  </div>
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-3">{p.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed mb-5">{p.description}</p>
-                <ul className="space-y-2">
-                  {p.benefits.map((b) => (
-                    <li key={b} className="flex items-center gap-2 text-sm text-slate-600">
-                      <div className={`w-4 h-4 rounded-full ${p.color} ${p.iconColor} flex items-center justify-center text-[10px] font-bold shrink-0`}>
-                        ✓
-                      </div>
-                      {b}
-                    </li>
-                  ))}
-                </ul>
+
+                <h3 className="text-lg font-bold text-slate-900 mb-3 leading-snug">{p.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed flex-1 mb-6">{p.description}</p>
+
+                <Link
+                  to={p.link}
+                  className={`inline-flex items-center gap-1.5 text-sm font-semibold ${p.accent} group-hover:gap-2.5 transition-all duration-200`}
+                >
+                  {p.linkLabel}
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
             </StaggerItem>
           ))}

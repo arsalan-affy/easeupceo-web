@@ -1,132 +1,125 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Play, CheckCircle, Sparkles, TrendingUp } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
+import { Link } from "react-router-dom";
 import CTAButton from "../shared/CTAButton";
 import DashboardPreview from "../mockups/DashboardPreview";
 
-const highlights = [
-  "No credit card required",
-  "Free 14-day trial",
-  "Setup in 5 minutes",
-];
-
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden gradient-hero min-h-screen flex items-center pt-16">
-      {/* Background orbs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-indigo-200/30 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-100/20 rounded-full blur-3xl" />
-      </div>
+    <section className="relative bg-white overflow-hidden">
+      {/* Subtle top tint */}
+      <div className="absolute inset-x-0 top-0 h-[480px] bg-gradient-to-b from-slate-50/80 to-white pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left: Text */}
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="flex items-center gap-2 mb-6"
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-0">
+        {/* Center text block */}
+        <div className="max-w-3xl mx-auto text-center mb-14">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="inline-flex items-center gap-2 mb-7"
+          >
+            <span className="h-px w-5 bg-blue-400 shrink-0" />
+            <span className="text-xs font-semibold text-blue-600 uppercase tracking-widest whitespace-nowrap">
+              Built for Indian businesses
+            </span>
+            <span className="h-px w-5 bg-blue-400 shrink-0" />
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.07 }}
+            className="text-5xl sm:text-6xl lg:text-[4.25rem] font-extrabold text-slate-950 tracking-tight leading-[1.06] mb-6"
+          >
+            Run payroll for{" "}
+            <br className="hidden sm:block" />
+            150 employees{" "}
+            <span className="text-gradient-brand">in&nbsp;12&nbsp;minutes.</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, delay: 0.16 }}
+            className="text-[1.1rem] text-slate-500 leading-relaxed max-w-[480px] mx-auto mb-9"
+          >
+            Attendance, salaries, PF, ESI, TDS, and GST invoicing — all handled
+            automatically. The one HR platform your team will actually enjoy using.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.24 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6"
+          >
+            <CTAButton href="/app/login" variant="primary" size="lg">
+              Get started free
+              <ArrowRight className="w-4 h-4" />
+            </CTAButton>
+            <Link
+              to="/how-it-works"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-500 hover:text-slate-800 transition-colors px-2 py-3"
             >
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-semibold">
-                <Sparkles className="w-3 h-3" />
-                AI-Powered HR Platform
+              See how it works
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.34 }}
+            className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2"
+          >
+            {[
+              "No credit card needed",
+              "Free 14-day trial",
+              "Indian compliance built-in",
+            ].map((t) => (
+              <span key={t} className="flex items-center gap-1.5 text-xs text-slate-400 font-medium">
+                <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                {t}
               </span>
-              <span className="px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-600 text-xs font-semibold">
-                New: Smart Payroll →
-              </span>
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6"
-            >
-              HR Operations,{" "}
-              <span className="text-gradient-brand">Simplified</span>
-              <br />
-              for Modern Teams
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg text-slate-600 leading-relaxed mb-8 max-w-lg"
-            >
-              EaseUp HRMS automates attendance tracking, payroll processing, and
-              invoicing — so your HR team can focus on people, not paperwork.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-3 mb-8"
-            >
-              <CTAButton href="/app/login" variant="primary" size="lg">
-                Start Free Demo
-                <ArrowRight className="w-4 h-4" />
-              </CTAButton>
-              <CTAButton href="/how-it-works" variant="secondary" size="lg">
-                <Play className="w-4 h-4 fill-current" />
-                Watch How It Works
-              </CTAButton>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap items-center gap-4"
-            >
-              {highlights.map((h) => (
-                <div key={h} className="flex items-center gap-1.5 text-sm text-slate-600">
-                  <CheckCircle className="w-4 h-4 text-emerald-500" />
-                  {h}
-                </div>
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Right: Dashboard Preview */}
-          <div className="relative">
-            <DashboardPreview variant="attendance" height={420} />
-
-            {/* Floating badges */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.8, duration: 0.5 }}
-              className="absolute -left-6 top-1/4 glass-card rounded-xl px-3 py-2 shadow-lg hidden lg:flex items-center gap-2"
-            >
-              <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center">
-                <TrendingUp className="w-3 h-3 text-emerald-600" />
-              </div>
-              <div>
-                <p className="text-[10px] text-slate-500">Efficiency</p>
-                <p className="text-xs font-bold text-slate-800">+24% YoY</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1, duration: 0.5 }}
-              className="absolute -right-4 bottom-1/4 glass-card rounded-xl px-3 py-2 shadow-lg hidden lg:flex items-center gap-2"
-            >
-              <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
-                <CheckCircle className="w-3 h-3 text-blue-600" />
-              </div>
-              <div>
-                <p className="text-[10px] text-slate-500">Payroll accuracy</p>
-                <p className="text-xs font-bold text-slate-800">99.8%</p>
-              </div>
-            </motion.div>
-          </div>
+            ))}
+          </motion.div>
         </div>
+
+        {/* Dashboard — large, centered, prominent */}
+        <motion.div
+          initial={{ opacity: 0, y: 48 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          className="relative mx-auto max-w-5xl"
+        >
+          {/* Soft glow */}
+          <div className="absolute -inset-x-4 top-6 bottom-0 bg-gradient-to-b from-blue-100/40 via-indigo-50/20 to-transparent rounded-3xl blur-2xl pointer-events-none" />
+
+          <div className="relative rounded-xl overflow-hidden shadow-[0_28px_70px_-8px_rgba(59,130,246,0.2),0_0_0_1px_rgba(0,0,0,0.07)]">
+            {/* Mac-style window chrome */}
+            <div className="h-9 bg-[#F0F0F0] flex items-center px-4 gap-2 border-b border-black/[0.08]">
+              <div className="flex items-center gap-1.5">
+                <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
+                <div className="w-3 h-3 rounded-full bg-[#FEBC2E]" />
+                <div className="w-3 h-3 rounded-full bg-[#28C840]" />
+              </div>
+              <div className="flex-1 flex justify-center">
+                <div className="flex items-center gap-1.5 bg-white rounded-md border border-black/10 px-3 h-[22px] w-52">
+                  <svg viewBox="0 0 12 12" className="w-2.5 h-2.5 shrink-0 text-slate-400" fill="none">
+                    <circle cx="5" cy="5" r="3.5" stroke="currentColor" strokeWidth="1.2"/>
+                    <path d="m8.5 8.5 2 2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+                  </svg>
+                  <span className="text-[10px] text-slate-400 truncate">app.easeupceo.com/dashboard</span>
+                </div>
+              </div>
+            </div>
+            {/* Live dashboard content */}
+            <div style={{ height: 460 }}>
+              <DashboardPreview variant="attendance" animate={false} height={460} />
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
