@@ -24,7 +24,7 @@ export default function DashboardPreview({
 
   const wrapper = (
     <div
-      className={cn("rounded-2xl overflow-hidden shadow-2xl border border-slate-200/60", className)}
+      className={cn("w-full rounded-2xl overflow-hidden shadow-2xl border border-slate-200/60", className)}
       style={{ height }}
     >
       {/* Browser chrome */}
@@ -57,7 +57,7 @@ export default function DashboardPreview({
       className={className}
     >
       <div
-        className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200/60"
+        className="w-full rounded-2xl overflow-hidden shadow-2xl border border-slate-200/60"
         style={{ height }}
       >
         <div className="h-8 bg-slate-100 border-b border-slate-200 flex items-center px-3 gap-1.5 shrink-0">

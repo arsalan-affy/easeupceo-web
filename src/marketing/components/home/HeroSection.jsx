@@ -92,7 +92,7 @@ export default function HeroSection() {
           </div>
 
           {/* Right: Dashboard Preview */}
-          <div className="relative">
+          <div className="relative w-full min-w-0 overflow-hidden">
             <DashboardPreview variant="attendance" height={420} />
 
             {/* Floating badges */}

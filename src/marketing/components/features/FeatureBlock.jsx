@@ -29,7 +29,7 @@ export default function FeatureBlock({ feature, reverse = false }) {
         </CTAButton>
       </AnimatedSection>
 
-      <AnimatedSection direction={reverse ? "left" : "right"} delay={0.1} className={reverse ? "lg:order-1" : ""}>
+      <AnimatedSection direction={reverse ? "left" : "right"} delay={0.1} className={`w-full min-w-0 overflow-hidden${reverse ? " lg:order-1" : ""}`}>
         <DashboardPreview variant={mockupVariant} height={380} />
       </AnimatedSection>
     </div>
