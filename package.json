@@ -3,11 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://arsalan-affy.github.io/easeupceo-web",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
@@ -47,6 +50,7 @@
     "embla-carousel-react": "^8.6.0",
     "file-saver": "^2.0.5",
     "framer-motion": "^12.35.2",
+    "gh-pages": "^6.3.0",
     "input-otp": "^1.4.2",
     "jwt-decode": "^4.0.0",
     "lucide-react": "^0.507.0",
