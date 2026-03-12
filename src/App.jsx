@@ -8,7 +8,6 @@ import {
 import { Toaster } from "react-hot-toast";
 import MarketingLayout from "./marketing/layouts/MarketingLayout";
 
-// Lazy load marketing pages
 const HomePage = lazy(() => import("./marketing/pages/HomePage"));
 const FeaturesPage = lazy(() => import("./marketing/pages/FeaturesPage"));
 const PricingPage = lazy(() => import("./marketing/pages/PricingPage"));
