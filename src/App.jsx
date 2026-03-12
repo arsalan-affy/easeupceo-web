@@ -5,16 +5,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import Login from "./pages/Login";
 import { Toaster } from "react-hot-toast";
-import Dashboard from "./pages/Dashboard";
-import JobsList from "./pages/JobsList";
-import PrivateLayout from "./pages/layout/PrivateLayout";
-import JobDetails from "./pages/JobDetails";
-import Careers from "./pages/Careers";
-import AIScreening from "./pages/AIScreening";
-import ScreeningDetails from "./pages/ScreeningDetails";
-import PastScreenings from "./pages/PastScreenings";
 import MarketingLayout from "./marketing/layouts/MarketingLayout";
 
 // Lazy load marketing pages
@@ -102,18 +93,6 @@ const App = () => {
           />
         </Route>
 
-        {/* ATS App Routes */}
-        <Route path="/app/login" element={<Login />} />
-        <Route path="/app/careers" element={<Careers />} />
-        <Route path="/app" element={<PrivateLayout />}>
-          <Route index element={<Navigate to="/app/dashboard" />} />
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="job" element={<JobsList />} />
-          <Route path="job/:jobId" element={<JobDetails />} />
-          <Route path="ai-screening" element={<AIScreening />} />
-          <Route path="ai-screening/past" element={<PastScreenings />} />
-          <Route path="ai-screening/:screeningId" element={<ScreeningDetails />} />
-        </Route>
       </Routes>
     </Router>
   );
