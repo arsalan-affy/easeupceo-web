@@ -1,12 +1,13 @@
-import { Check, Minus, Zap } from "lucide-react";
+import { Check, Minus, Zap, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import CTAButton from "../shared/CTAButton";
 import { cn } from "@/lib/utils";
 
 export default function PricingCard({ plan, isAnnual }) {
-  const { name, monthlyPrice, annualPrice, desc, features, cta, ctaHref, highlighted, badge } = plan;
+  const { name, monthlyPrice, annualPrice, annualTotal, employees, desc, features, cta, ctaHref, highlighted, badge } = plan;
   const price = isAnnual ? annualPrice : monthlyPrice;
   const isCustom = price === null;
+  const savings = isAnnual && !isCustom && annualTotal ? monthlyPrice * 12 - annualTotal : 0;
 
   return (
     <motion.div
@@ -32,7 +33,7 @@ export default function PricingCard({ plan, isAnnual }) {
         <h3 className={cn("text-xs font-bold uppercase tracking-widest mb-3", highlighted ? "text-blue-100" : "text-slate-500")}>
           {name}
         </h3>
-        <div className="flex items-end gap-1 mb-2">
+        <div className="flex items-end gap-1 mb-1">
           {isCustom ? (
             <span className={cn("text-3xl font-bold", highlighted ? "text-white" : "text-slate-900")}>Custom</span>
           ) : (
@@ -45,11 +46,27 @@ export default function PricingCard({ plan, isAnnual }) {
           )}
         </div>
         {isAnnual && !isCustom && (
-          <p className={cn("text-xs", highlighted ? "text-blue-100" : "text-slate-500")}>
-            Billed annually (₹{(price * 12).toLocaleString("en-IN")}/yr)
-          </p>
+          <div className="flex items-center gap-2 mt-1">
+            <p className={cn("text-xs", highlighted ? "text-blue-100" : "text-slate-500")}>
+              Billed ₹{(annualTotal ?? price * 12).toLocaleString("en-IN")}/yr
+            </p>
+            {savings > 0 && (
+              <span className={cn(
+                "px-1.5 py-0.5 text-xs font-semibold rounded-full",
+                highlighted ? "bg-white/20 text-white" : "bg-emerald-50 text-emerald-600 border border-emerald-100"
+              )}>
+                Save ₹{savings.toLocaleString("en-IN")}
+              </span>
+            )}
+          </div>
         )}
         <p className={cn("text-sm mt-2", highlighted ? "text-blue-100" : "text-slate-500")}>{desc}</p>
+        {employees && (
+          <div className={cn("flex items-center gap-1.5 mt-2 text-xs font-medium", highlighted ? "text-blue-100" : "text-slate-500")}>
+            <Users className="w-3.5 h-3.5" />
+            {employees}
+          </div>
+        )}
       </div>
 
       {/* Features list */}
@@ -65,14 +82,14 @@ export default function PricingCard({ plan, isAnnual }) {
                 <Minus className="w-2.5 h-2.5 text-slate-400" />
               </div>
             )}
-            <span className={cn(f.included ? "" : "opacity-50", highlighted ? "text-blue-50" : "text-slate-600")}>
+            <span className={cn(f.included ? "" : "opacity-40", highlighted ? "text-blue-50" : "text-slate-600")}>
               {f.label}
             </span>
           </li>
         ))}
       </ul>
 
-      <CTAButton href={ctaHref} variant={highlighted ? "outline" : "primary"} size="md" className="w-full justify-center">
+      <CTAButton href={ctaHref} external={ctaHref?.startsWith("http")} variant={highlighted ? "outline" : "primary"} size="md" className="w-full justify-center">
         {cta}
       </CTAButton>
     </motion.div>

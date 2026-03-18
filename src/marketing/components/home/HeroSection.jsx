@@ -56,7 +56,7 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg text-slate-600 leading-relaxed mb-8 max-w-lg"
             >
-              EaseUp HRMS automates attendance tracking, payroll processing, and
+              EaseUpCEOs automates attendance tracking, payroll processing, and
               invoicing — so your HR team can focus on people, not paperwork.
             </motion.p>
 
@@ -66,7 +66,7 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-col sm:flex-row gap-3 mb-8"
             >
-              <CTAButton href="/app/login" variant="primary" size="lg">
+              <CTAButton href="https://one.inkapps.io/signup" external variant="primary" size="lg">
                 Start Free Demo
                 <ArrowRight className="w-4 h-4" />
               </CTAButton>
@@ -92,15 +92,18 @@ export default function HeroSection() {
           </div>
 
           {/* Right: Dashboard Preview */}
-          <div className="relative w-full min-w-0 overflow-hidden">
-            <DashboardPreview variant="attendance" height={420} />
+          <div className="relative w-full min-w-0">
+            {/* Dashboard clipped separately so badges aren't clipped */}
+            <div className="overflow-hidden rounded-2xl">
+              <DashboardPreview variant="attendance" height={420} />
+            </div>
 
             {/* Floating badges */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8, duration: 0.5 }}
-              className="absolute -left-6 top-1/4 glass-card rounded-xl px-3 py-2 shadow-lg hidden lg:flex items-center gap-2"
+              className="absolute left-2 top-1/4 glass-card rounded-xl px-3 py-2 shadow-lg hidden lg:flex items-center gap-2"
             >
               <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center">
                 <TrendingUp className="w-3 h-3 text-emerald-600" />
@@ -115,7 +118,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1, duration: 0.5 }}
-              className="absolute -right-4 bottom-1/4 glass-card rounded-xl px-3 py-2 shadow-lg hidden lg:flex items-center gap-2"
+              className="absolute right-2 bottom-1/4 glass-card rounded-xl px-3 py-2 shadow-lg hidden lg:flex items-center gap-2"
             >
               <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
                 <CheckCircle className="w-3 h-3 text-blue-600" />

@@ -23,7 +23,7 @@ const values = [
 
 export default function AboutPage() {
   useEffect(() => {
-    document.title = "About Us — EaseUp HRMS";
+    document.title = "About Us — EaseUpCEOs";
   }, []);
 
   return (

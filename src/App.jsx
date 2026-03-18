@@ -11,10 +11,14 @@ import MarketingLayout from "./marketing/layouts/MarketingLayout";
 const HomePage = lazy(() => import("./marketing/pages/HomePage"));
 const FeaturesPage = lazy(() => import("./marketing/pages/FeaturesPage"));
 const PricingPage = lazy(() => import("./marketing/pages/PricingPage"));
-const HowItWorksPage = lazy(() => import("./marketing/pages/HowItWorksPage"));
 const AboutPage = lazy(() => import("./marketing/pages/AboutPage"));
 const ContactPage = lazy(() => import("./marketing/pages/ContactPage"));
-const BlogPage = lazy(() => import("./marketing/pages/BlogPage"));
+const PrivacyPolicyPage = lazy(() => import("./marketing/pages/PrivacyPolicyPage"));
+const TermsOfServicePage = lazy(() => import("./marketing/pages/TermsOfServicePage"));
+const CookiePolicyPage = lazy(() => import("./marketing/pages/CookiePolicyPage"));
+const GDPRPage = lazy(() => import("./marketing/pages/GDPRPage"));
+
+const Fallback = () => <div className="h-screen" />;
 
 const App = () => {
   return (
@@ -34,64 +38,16 @@ const App = () => {
       <Routes>
         {/* Marketing Routes */}
         <Route element={<MarketingLayout />}>
-          <Route
-            path="/"
-            element={
-              <Suspense fallback={<div className="h-screen" />}>
-                <HomePage />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/features"
-            element={
-              <Suspense fallback={<div className="h-screen" />}>
-                <FeaturesPage />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/pricing"
-            element={
-              <Suspense fallback={<div className="h-screen" />}>
-                <PricingPage />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/how-it-works"
-            element={
-              <Suspense fallback={<div className="h-screen" />}>
-                <HowItWorksPage />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <Suspense fallback={<div className="h-screen" />}>
-                <AboutPage />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/contact"
-            element={
-              <Suspense fallback={<div className="h-screen" />}>
-                <ContactPage />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/blog"
-            element={
-              <Suspense fallback={<div className="h-screen" />}>
-                <BlogPage />
-              </Suspense>
-            }
-          />
+          <Route path="/" element={<Suspense fallback={<Fallback />}><HomePage /></Suspense>} />
+          <Route path="/features" element={<Suspense fallback={<Fallback />}><FeaturesPage /></Suspense>} />
+          <Route path="/pricing" element={<Suspense fallback={<Fallback />}><PricingPage /></Suspense>} />
+          <Route path="/about" element={<Suspense fallback={<Fallback />}><AboutPage /></Suspense>} />
+          <Route path="/contact" element={<Suspense fallback={<Fallback />}><ContactPage /></Suspense>} />
+          <Route path="/privacy-policy" element={<Suspense fallback={<Fallback />}><PrivacyPolicyPage /></Suspense>} />
+          <Route path="/terms-of-service" element={<Suspense fallback={<Fallback />}><TermsOfServicePage /></Suspense>} />
+          <Route path="/cookie-policy" element={<Suspense fallback={<Fallback />}><CookiePolicyPage /></Suspense>} />
+          <Route path="/gdpr" element={<Suspense fallback={<Fallback />}><GDPRPage /></Suspense>} />
         </Route>
-
       </Routes>
     </Router>
   );

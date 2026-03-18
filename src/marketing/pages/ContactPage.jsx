@@ -22,7 +22,7 @@ const schema = z.object({
 });
 
 const faqs = [
-  { q: "How do I get started with EaseUp HRMS?", a: "Simply sign up for our Free tier — no credit card required. You'll be guided through a quick setup wizard that gets you running in under 5 minutes." },
+  { q: "How do I get started with EaseUpCEOs?", a: "Simply sign up for our Free tier — no credit card required. You'll be guided through a quick setup wizard that gets you running in under 5 minutes." },
   { q: "Does EaseUp support biometric device integration?", a: "Yes! EaseUp integrates with all major biometric brands including ZKTeco, eSSL, Suprema, and Hikvision. Our support team assists with device configuration at no extra cost." },
   { q: "Is EaseUp compliant with Indian labour laws?", a: "Absolutely. EaseUp is built to handle PF, ESI, TDS, professional tax, gratuity, and state-specific compliance requirements. We update the platform immediately whenever regulations change." },
   { q: "Can I migrate data from my existing HR software?", a: "Yes. We provide free data migration assistance for all paid plans. Our team can import employee data, historical payroll, and attendance records from most popular HR systems." },
@@ -33,9 +33,9 @@ const faqs = [
 ];
 
 const contactInfo = [
-  { icon: Mail, label: "Email us", value: "hello@easeupceo.com", href: "mailto:hello@easeupceo.com" },
-  { icon: Phone, label: "Call us", value: "+91 1800 123 456", href: "tel:+911800123456" },
-  { icon: MapPin, label: "Visit us", value: "Koramangala, Bengaluru, Karnataka 560034", href: null },
+  { icon: Mail, label: "Email us", value: "info@affyclouditsolutions.com", href: "mailto:info@affyclouditsolutions.com" },
+  { icon: Phone, label: "Call us", value: "+91-8962760262", href: "tel:+918962760262" },
+  { icon: MapPin, label: "Visit us", value: "Block A, E68, Housing Board Colony, Beside Kidz Castel School, Koh-e-fiza, Bhopal, Madhya Pradesh 462030", href: null },
   { icon: Clock, label: "Business hours", value: "Mon–Fri, 9 AM to 6 PM IST", href: null },
 ];
 
@@ -43,7 +43,7 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    document.title = "Contact — EaseUp HRMS";
+    document.title = "Contact — EaseUpCEOs";
   }, []);
 
   const {
@@ -192,10 +192,11 @@ export default function ContactPage() {
 
               {/* Map placeholder */}
               <div className="flex-1 min-h-[200px] rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 flex items-center justify-center">
-                <div className="text-center">
+                <div className="text-center px-4">
                   <MapPin className="w-8 h-8 text-blue-400 mx-auto mb-2" />
-                  <p className="text-sm font-medium text-slate-600">Koramangala, Bengaluru</p>
-                  <p className="text-xs text-slate-400 mt-1">Karnataka, India 560034</p>
+                  <p className="text-sm font-semibold text-slate-700">Koh-e-fiza, Bhopal</p>
+                  <p className="text-xs text-slate-500 mt-1">Madhya Pradesh, India 462030</p>
+                  <p className="text-xs text-slate-400 mt-1">Affy Cloud IT Solutions</p>
                 </div>
               </div>
             </AnimatedSection>
