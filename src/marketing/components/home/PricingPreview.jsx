@@ -6,33 +6,33 @@ import { StaggerContainer, StaggerItem } from "../shared/AnimatedSection";
 
 const plans = [
   {
-    name: "Free",
-    price: "₹0",
-    period: "forever",
-    desc: "Perfect for small teams getting started",
-    features: ["Up to 10 employees", "Basic attendance", "Payslip generation", "Email support"],
-    cta: "Get Started Free",
-    href: "/app/login",
+    name: "Starter",
+    price: "₹2,499",
+    period: "per month",
+    desc: "Core HR for teams up to 50",
+    features: ["Employee management", "Leave management", "Document management", "Self-service portal", "Email support"],
+    cta: "Start Free Trial",
+    href: "https://one.inkapps.io/signup",
     variant: "secondary",
   },
   {
-    name: "Starter",
-    price: "₹1,499",
+    name: "Growth",
+    price: "₹3,999",
     period: "per month",
-    desc: "Everything growing teams need",
-    features: ["Up to 50 employees", "Full payroll automation", "Invoicing & billing", "HR analytics", "Priority support"],
+    desc: "Full HR suite with payroll & attendance",
+    features: ["Everything in Starter", "Payroll & payslips", "Attendance tracking", "Compliance (PF/ESI/TDS)", "Advanced analytics"],
     cta: "Start Free Trial",
-    href: "/app/login",
+    href: "https://one.inkapps.io/signup",
     variant: "primary",
     highlighted: true,
     badge: "Most Popular",
   },
   {
     name: "Enterprise",
-    price: "Custom",
-    period: "tailored plan",
-    desc: "For large organizations at scale",
-    features: ["Unlimited employees", "Dedicated account manager", "Custom integrations", "API access", "SLA guarantee", "On-premise option"],
+    price: "₹6,499",
+    period: "per month",
+    desc: "Advanced HR for large organizations",
+    features: ["Everything in Growth", "Multi-location support", "API integrations", "Custom reports", "Priority support"],
     cta: "Contact Sales",
     href: "/contact",
     variant: "dark",
@@ -51,7 +51,7 @@ export default function PricingPreview() {
               <span className="text-gradient-brand">With Your Team</span>
             </>
           }
-          subtext="Start free, scale as you grow. No hidden fees, cancel anytime."
+          subtext="Start with what you need. Scale as your team grows. Save 20% with annual billing."
         />
 
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -95,7 +95,7 @@ export default function PricingPreview() {
                     </li>
                   ))}
                 </ul>
-                <CTAButton href={plan.href} variant={plan.highlighted ? "outline" : plan.variant} size="md" className="w-full justify-center">
+                <CTAButton href={plan.href} external={plan.href?.startsWith("http")} variant={plan.highlighted ? "outline" : plan.variant} size="md" className="w-full justify-center">
                   {plan.cta}
                 </CTAButton>
               </div>

@@ -128,7 +128,7 @@ function BlogCard({ post, large = false }) {
 
 export default function BlogPage() {
   useEffect(() => {
-    document.title = "Blog — EaseUp HRMS";
+    document.title = "Blog — EaseUpCEOs";
   }, []);
 
   const [featured, ...rest] = posts;

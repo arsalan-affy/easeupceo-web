@@ -54,7 +54,7 @@ const benefits = [
 
 export default function HowItWorksPage() {
   useEffect(() => {
-    document.title = "How It Works — EaseUp HRMS";
+    document.title = "How It Works — EaseUpCEOs";
   }, []);
 
   return (

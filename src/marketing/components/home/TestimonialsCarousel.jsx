@@ -5,7 +5,7 @@ import AnimatedSection from "../shared/AnimatedSection";
 
 const testimonials = [
   {
-    quote: "EaseUp HRMS transformed our HR operations overnight. Payroll that used to take 3 days now runs in 30 minutes. Absolutely game-changing.",
+    quote: "EaseUpCEOs transformed our HR operations overnight. Payroll that used to take 3 days now runs in 30 minutes. Absolutely game-changing.",
     name: "Rajesh Kumar",
     role: "HR Director",
     company: "TechNova Solutions",

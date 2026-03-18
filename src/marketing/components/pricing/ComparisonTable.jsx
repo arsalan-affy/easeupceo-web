@@ -10,29 +10,37 @@ import {
 import AnimatedSection from "../shared/AnimatedSection";
 
 const rows = [
-  { category: "Employees", feature: "Max employees", free: "10", starter: "50", enterprise: "Unlimited" },
-  { category: "Attendance", feature: "Basic attendance tracking", free: true, starter: true, enterprise: true },
-  { category: "Attendance", feature: "GPS & geo-fencing", free: false, starter: true, enterprise: true },
-  { category: "Attendance", feature: "Biometric integration", free: false, starter: true, enterprise: true },
-  { category: "Attendance", feature: "Shift scheduling", free: false, starter: true, enterprise: true },
-  { category: "Payroll", feature: "Payroll processing", free: "Basic", starter: true, enterprise: true },
-  { category: "Payroll", feature: "Statutory compliance (PF/ESI/TDS)", free: false, starter: true, enterprise: true },
-  { category: "Payroll", feature: "Direct bank transfer", free: false, starter: true, enterprise: true },
-  { category: "Invoicing", feature: "Invoice generation", free: false, starter: true, enterprise: true },
-  { category: "Invoicing", feature: "GST compliance & GSTR reports", free: false, starter: true, enterprise: true },
-  { category: "Analytics", feature: "Basic HR reports", free: true, starter: true, enterprise: true },
-  { category: "Analytics", feature: "Advanced analytics & AI insights", free: false, starter: false, enterprise: true },
-  { category: "Integration", feature: "API access", free: false, starter: false, enterprise: true },
-  { category: "Support", feature: "Support level", free: "Email", starter: "Priority", enterprise: "Dedicated" },
-  { category: "Compliance", feature: "Data backup & SLA", free: false, starter: "99.5%", enterprise: "99.9%" },
+  { category: "Core HR", feature: "Max employees", starter: "50", growth: "50", enterprise: "50+" },
+  { category: "Core HR", feature: "Employee management", starter: true, growth: true, enterprise: true },
+  { category: "Core HR", feature: "Employee onboarding", starter: true, growth: true, enterprise: true },
+  { category: "Core HR", feature: "Document management", starter: true, growth: true, enterprise: true },
+  { category: "Core HR", feature: "Leave management", starter: true, growth: true, enterprise: true },
+  { category: "Core HR", feature: "Self-service portal", starter: true, growth: true, enterprise: true },
+  { category: "Core HR", feature: "HR reports", starter: "Basic", growth: "Advanced", enterprise: "Custom" },
+  { category: "Payroll", feature: "Payroll processing", starter: false, growth: true, enterprise: true },
+  { category: "Payroll", feature: "Salary processing & payslips", starter: false, growth: true, enterprise: true },
+  { category: "Payroll", feature: "Statutory compliance (PF/ESI/TDS)", starter: false, growth: true, enterprise: true },
+  { category: "Attendance", feature: "Attendance tracking", starter: false, growth: true, enterprise: true },
+  { category: "Attendance", feature: "Shift management", starter: false, growth: true, enterprise: true },
+  { category: "Attendance", feature: "GPS & geo-fencing", starter: false, growth: true, enterprise: true },
+  { category: "Analytics", feature: "HR analytics dashboard", starter: false, growth: true, enterprise: true },
+  { category: "Analytics", feature: "Role-based access control", starter: false, growth: true, enterprise: true },
+  { category: "Analytics", feature: "HR lifecycle management", starter: false, growth: true, enterprise: true },
+  { category: "Advanced", feature: "Multi-location management", starter: false, growth: false, enterprise: true },
+  { category: "Advanced", feature: "Workflow automation", starter: false, growth: false, enterprise: true },
+  { category: "Advanced", feature: "Custom HR reports", starter: false, growth: false, enterprise: true },
+  { category: "Integration", feature: "API integrations", starter: false, growth: false, enterprise: true },
+  { category: "Security", feature: "Advanced security controls", starter: false, growth: false, enterprise: true },
+  { category: "Support", feature: "Support level", starter: "Email", growth: "Priority", enterprise: "Priority+" },
+  { category: "Support", feature: "Data SLA", starter: "99.5%", growth: "99.5%", enterprise: "99.9%" },
 ];
 
-function CellValue({ value }) {
+function CellValue({ value, isGrowth }) {
   if (value === true)
     return (
       <div className="flex justify-center">
-        <div className="w-5 h-5 rounded-full bg-emerald-50 flex items-center justify-center">
-          <Check className="w-3 h-3 text-emerald-600" />
+        <div className={`w-5 h-5 rounded-full flex items-center justify-center ${isGrowth ? "bg-blue-100" : "bg-emerald-50"}`}>
+          <Check className={`w-3 h-3 ${isGrowth ? "text-blue-600" : "text-emerald-600"}`} />
         </div>
       </div>
     );
@@ -57,9 +65,9 @@ export default function ComparisonTable() {
             <TableHeader>
               <TableRow className="bg-slate-50 border-b border-slate-200">
                 <TableHead className="w-[40%] text-slate-700 font-semibold py-4 pl-6">Feature</TableHead>
-                <TableHead className="text-center text-slate-700 font-semibold">Free</TableHead>
-                <TableHead className="text-center font-semibold">
-                  <span className="text-gradient-brand">Starter</span>
+                <TableHead className="text-center text-slate-700 font-semibold">Starter</TableHead>
+                <TableHead className="text-center font-semibold bg-blue-50/40">
+                  <span className="text-gradient-brand">Growth</span>
                 </TableHead>
                 <TableHead className="text-center text-slate-700 font-semibold">Enterprise</TableHead>
               </TableRow>
@@ -82,10 +90,10 @@ export default function ComparisonTable() {
                     <TableRow key={i} className="hover:bg-slate-50/50 transition-colors">
                       <TableCell className="pl-6 py-3.5 text-sm text-slate-700">{row.feature}</TableCell>
                       <TableCell className="text-center py-3.5">
-                        <CellValue value={row.free} />
+                        <CellValue value={row.starter} />
                       </TableCell>
                       <TableCell className="text-center py-3.5 bg-blue-50/30">
-                        <CellValue value={row.starter} />
+                        <CellValue value={row.growth} isGrowth />
                       </TableCell>
                       <TableCell className="text-center py-3.5">
                         <CellValue value={row.enterprise} />

@@ -10,7 +10,7 @@ import HomeCTA from "../components/home/HomeCTA";
 
 export default function HomePage() {
   useEffect(() => {
-    document.title = "EaseUp HRMS — Modern HR Platform for Attendance, Payroll & Invoicing";
+    document.title = "EaseUpCEOs — Modern HR Platform for Attendance, Payroll & Invoicing";
   }, []);
 
   return (

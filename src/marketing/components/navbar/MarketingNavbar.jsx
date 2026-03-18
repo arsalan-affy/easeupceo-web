@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, Zap } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import easeupLogo from "@/assets/easeup.png";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -15,8 +16,8 @@ import CTAButton from "../shared/CTAButton";
 const navLinks = [
   { label: "Features", href: "/features", hasMega: true },
   { label: "Pricing", href: "/pricing" },
-  { label: "How It Works", href: "/how-it-works" },
-  { label: "Blog", href: "/blog" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function MarketingNavbar() {
@@ -43,16 +44,8 @@ export default function MarketingNavbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 shrink-0">
-            <div className="w-8 h-8 rounded-lg gradient-brand flex items-center justify-center">
-              <Zap className="w-4 h-4 text-white" />
-            </div>
-            <span className="text-lg font-bold text-slate-900">
-              Ease<span className="text-gradient-brand">Up</span>
-            </span>
-            <span className="hidden sm:block text-xs font-medium text-slate-400 border-l border-slate-200 pl-2 ml-1">
-              HRMS
-            </span>
+          <Link to="/" className="flex items-center shrink-0">
+            <img src={easeupLogo} alt="EaseUpCEOs" className="h-8 w-auto" />
           </Link>
 
           {/* Desktop Nav */}
@@ -90,13 +83,15 @@ export default function MarketingNavbar() {
 
           {/* Desktop Actions */}
           <div className="hidden lg:flex items-center gap-3">
-            <Link
-              to="/app/login"
+            <a
+              href="https://one.inkapps.io/signin"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors px-3 py-2"
             >
               Sign In
-            </Link>
-            <CTAButton href="/app/login" variant="primary" size="sm">
+            </a>
+            <CTAButton href="https://one.inkapps.io/signup" external variant="primary" size="sm">
               Start Free Trial
             </CTAButton>
           </div>
@@ -133,13 +128,15 @@ export default function MarketingNavbar() {
                 </Link>
               ))}
               <div className="pt-3 border-t border-slate-100 mt-3 flex flex-col gap-2">
-                <Link
-                  to="/app/login"
+                <a
+                  href="https://one.inkapps.io/signin"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="block px-4 py-3 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors"
                 >
                   Sign In
-                </Link>
-                <CTAButton href="/app/login" variant="primary" size="md" className="w-full justify-center">
+                </a>
+                <CTAButton href="https://one.inkapps.io/signup" external variant="primary" size="md" className="w-full justify-center">
                   Start Free Trial
                 </CTAButton>
               </div>

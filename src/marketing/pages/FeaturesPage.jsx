@@ -123,7 +123,7 @@ const features = [
 
 export default function FeaturesPage() {
   useEffect(() => {
-    document.title = "Features — EaseUp HRMS";
+    document.title = "Features — EaseUpCEOs";
   }, []);
 
   return (
@@ -139,7 +139,7 @@ export default function FeaturesPage() {
                 <span className="text-gradient-brand">Built for India</span>
               </>
             }
-            subtext="EaseUp HRMS delivers enterprise-grade HR features tailored for Indian compliance requirements and business practices."
+            subtext="EaseUpCEOs delivers enterprise-grade HR features tailored for Indian compliance requirements and business practices."
             className="mb-0"
           />
         </div>
