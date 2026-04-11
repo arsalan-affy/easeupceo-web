@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Lock } from "lucide-react";
 
 const COMPANY = "Affy Cloud IT Solutions";
-const PRODUCT = "EaseUpCEOs";
+const PRODUCT = "Worklynx";
 const EMAIL = "info@affyclouditsolutions.com";
 const ADDRESS = "Block A, E68, Housing Board Colony, Beside Kidz Castel School, Koh-e-fiza, Bhopal, Madhya Pradesh 462030, India";
 const EFFECTIVE = "18 March 2026";
@@ -18,7 +18,7 @@ function Section({ title, children }) {
 
 export default function GDPRPage() {
   useEffect(() => {
-    document.title = "GDPR — EaseUpCEOs";
+    document.title = "GDPR — Worklynx";
     window.scrollTo(0, 0);
   }, []);
 

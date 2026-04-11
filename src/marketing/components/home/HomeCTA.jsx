@@ -23,7 +23,7 @@ export default function HomeCTA() {
           </h2>
 
           <p className="text-blue-100 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
-            Join hundreds of businesses using EaseUpCEOs to manage payroll, attendance, and people — all in one place.
+            Join hundreds of businesses using Worklynx to manage payroll, attendance, and people — all in one place.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

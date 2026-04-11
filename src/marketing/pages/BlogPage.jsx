@@ -48,7 +48,7 @@ const posts = [
     gradient: "from-sky-500 to-blue-600",
   },
   {
-    title: "EaseUp Q1 2026 Product Updates: What's New",
+    title: "Worklynx Q1 2026 Product Updates: What's New",
     excerpt: "We shipped 23 new features this quarter. Highlights include AI-powered attrition prediction, bulk bank transfer integration, and the new mobile app.",
     category: "Product Updates",
     author: "Rahul Desai",
@@ -128,7 +128,7 @@ function BlogCard({ post, large = false }) {
 
 export default function BlogPage() {
   useEffect(() => {
-    document.title = "Blog — EaseUpCEOs";
+    document.title = "Blog — Worklynx";
   }, []);
 
   const [featured, ...rest] = posts;

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Cookie } from "lucide-react";
 
 const COMPANY = "Affy Cloud IT Solutions";
-const PRODUCT = "EaseUpCEOs";
+const PRODUCT = "Worklynx";
 const EMAIL = "info@affyclouditsolutions.com";
 const EFFECTIVE = "18 March 2026";
 
@@ -27,7 +27,7 @@ const cookieTable = [
 
 export default function CookiePolicyPage() {
   useEffect(() => {
-    document.title = "Cookie Policy — EaseUpCEOs";
+    document.title = "Cookie Policy — Worklynx";
     window.scrollTo(0, 0);
   }, []);
 

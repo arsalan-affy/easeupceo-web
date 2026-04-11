@@ -260,7 +260,7 @@ export default function UserJourneySection() {
                 <div className="flex items-center gap-2 mb-4">
                   <AlertTriangle className="w-4 h-4 text-orange-500 shrink-0" />
                   <span className="text-xs font-semibold uppercase tracking-widest text-orange-600">
-                    Without EaseUp
+                    Without Worklynx
                   </span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 leading-snug">
@@ -286,7 +286,7 @@ export default function UserJourneySection() {
                 <div className="flex items-center gap-2 mb-4">
                   <CheckCircle className="w-4 h-4 text-blue-500 shrink-0" />
                   <span className="text-xs font-semibold uppercase tracking-widest text-blue-600">
-                    With EaseUp
+                    With Worklynx
                   </span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2 leading-snug">
@@ -321,7 +321,7 @@ export default function UserJourneySection() {
           <div className="text-slate-300 text-xl font-light">→</div>
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-0.5">
-              With EaseUp
+              With Worklynx
             </p>
             <p className="text-2xl font-extrabold text-blue-600 tracking-tight">47 minutes</p>
           </div>

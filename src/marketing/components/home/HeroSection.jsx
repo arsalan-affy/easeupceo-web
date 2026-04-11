@@ -56,7 +56,7 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg text-slate-600 leading-relaxed mb-8 max-w-lg"
             >
-              EaseUpCEOs automates attendance tracking, payroll processing, and
+              Worklynx automates attendance tracking, payroll processing, and
               invoicing — so your HR team can focus on people, not paperwork.
             </motion.p>
 

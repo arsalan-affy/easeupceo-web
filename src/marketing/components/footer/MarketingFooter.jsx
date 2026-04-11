@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Twitter, Linkedin, Github, Mail, Phone, MapPin } from "lucide-react";
-import easeupLogo from "@/assets/easeup.png";
+import worklynxLogo from "@/assets/worklynx-dark.png";
 
 const footerLinks = {
   Product: [
@@ -29,7 +29,7 @@ export default function MarketingFooter() {
           {/* Brand column */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center mb-4">
-              <img src={easeupLogo} alt="EaseUpCEOs" className="h-8 w-auto brightness-0 invert" />
+              <img src={worklynxLogo} alt="Worklynx" className="h-8 w-auto" />
             </Link>
             <p className="text-sm leading-relaxed mb-6 max-w-xs">
               Modern HR platform that simplifies attendance, payroll, and HR operations for growing teams across India.
@@ -83,7 +83,7 @@ export default function MarketingFooter() {
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs">
-            © {new Date().getFullYear()} EaseUpCEOs. All rights reserved. Powered by{" "}
+            © {new Date().getFullYear()} Worklynx. All rights reserved. Powered by{" "}
             <span className="text-blue-400">Affy Cloud IT Solutions</span>
           </p>
           <div className="flex items-center gap-1 text-xs">

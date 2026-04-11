@@ -33,7 +33,7 @@ export default function DashboardPreview({
         <div className="w-2.5 h-2.5 rounded-full bg-amber-400" />
         <div className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
         <div className="mx-auto w-40 h-4 bg-white rounded-md border border-slate-200 flex items-center px-2">
-          <span className="text-[9px] text-slate-400 truncate">app.easeupceo.com/dashboard</span>
+          <span className="text-[9px] text-slate-400 truncate">app.worklynx.com/dashboard</span>
         </div>
       </div>
       {/* Mockup content */}
@@ -65,7 +65,7 @@ export default function DashboardPreview({
           <div className="w-2.5 h-2.5 rounded-full bg-amber-400" />
           <div className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
           <div className="mx-auto w-40 h-4 bg-white rounded-md border border-slate-200 flex items-center px-2">
-            <span className="text-[9px] text-slate-400 truncate">app.easeupceo.com/dashboard</span>
+            <span className="text-[9px] text-slate-400 truncate">app.worklynx.com/dashboard</span>
           </div>
         </div>
         <div className="h-[calc(100%-2rem)]">

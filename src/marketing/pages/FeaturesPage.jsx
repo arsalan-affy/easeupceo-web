@@ -29,7 +29,7 @@ const features = [
     icon: DollarSign,
     title: "Payroll Automation",
     description:
-      "Process error-free payroll in minutes with full statutory compliance. EaseUp auto-calculates PF, ESI, TDS and professional tax — and deposits directly to employee bank accounts.",
+      "Process error-free payroll in minutes with full statutory compliance. Worklynx auto-calculates PF, ESI, TDS and professional tax — and deposits directly to employee bank accounts.",
     benefits: [
       "One-click payroll processing for all employees",
       "Auto-computation: PF, ESI, TDS, PT, gratuity",
@@ -67,7 +67,7 @@ const features = [
     icon: BarChart3,
     title: "HR Analytics & Insights",
     description:
-      "Make smarter workforce decisions with AI-powered analytics. From attrition prediction to productivity tracking, EaseUp gives you the insights to lead proactively.",
+      "Make smarter workforce decisions with AI-powered analytics. From attrition prediction to productivity tracking, Worklynx gives you the insights to lead proactively.",
     benefits: [
       "Real-time HR dashboard with 50+ metrics",
       "Attrition prediction with AI risk scoring",
@@ -123,7 +123,7 @@ const features = [
 
 export default function FeaturesPage() {
   useEffect(() => {
-    document.title = "Features — EaseUpCEOs";
+    document.title = "Features — Worklynx";
   }, []);
 
   return (
@@ -139,7 +139,7 @@ export default function FeaturesPage() {
                 <span className="text-gradient-brand">Built for India</span>
               </>
             }
-            subtext="EaseUpCEOs delivers enterprise-grade HR features tailored for Indian compliance requirements and business practices."
+            subtext="Worklynx delivers enterprise-grade HR features tailored for Indian compliance requirements and business practices."
             className="mb-0"
           />
         </div>

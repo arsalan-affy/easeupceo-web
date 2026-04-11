@@ -9,9 +9,9 @@ const team = [
   { name: "Arjun Kapoor", role: "CEO & Co-Founder", bio: "Former HR tech lead at Infosys with 12+ years building enterprise software.", initials: "AK", color: "bg-blue-100 text-blue-700" },
   { name: "Priya Menon", role: "CTO & Co-Founder", bio: "Ex-Google engineer passionate about making complex HR workflows simple.", initials: "PM", color: "bg-indigo-100 text-indigo-700" },
   { name: "Rahul Desai", role: "Head of Product", bio: "Product manager who has shipped HR software used by 100K+ employees.", initials: "RD", color: "bg-violet-100 text-violet-700" },
-  { name: "Sneha Iyer", role: "Head of Customer Success", bio: "Dedicated to ensuring every customer gets maximum value from EaseUp.", initials: "SI", color: "bg-sky-100 text-sky-700" },
+  { name: "Sneha Iyer", role: "Head of Customer Success", bio: "Dedicated to ensuring every customer gets maximum value from Worklynx.", initials: "SI", color: "bg-sky-100 text-sky-700" },
   { name: "Vikash Sharma", role: "Head of Engineering", bio: "Full-stack architect focused on building secure, scalable HR systems.", initials: "VS", color: "bg-blue-100 text-blue-700" },
-  { name: "Ananya Bose", role: "Head of Compliance", bio: "CA and legal expert ensuring EaseUp stays ahead of Indian labour laws.", initials: "AB", color: "bg-indigo-100 text-indigo-700" },
+  { name: "Ananya Bose", role: "Head of Compliance", bio: "CA and legal expert ensuring Worklynx stays ahead of Indian labour laws.", initials: "AB", color: "bg-indigo-100 text-indigo-700" },
 ];
 
 const values = [
@@ -23,7 +23,7 @@ const values = [
 
 export default function AboutPage() {
   useEffect(() => {
-    document.title = "About Us — EaseUpCEOs";
+    document.title = "About Us — Worklynx";
   }, []);
 
   return (
@@ -41,7 +41,7 @@ export default function AboutPage() {
                 <span className="text-gradient-brand">Human Again</span>
               </h1>
               <p className="text-lg text-slate-600 leading-relaxed">
-                EaseUp was born from a simple frustration: HR professionals spending more time on spreadsheets than on their people.
+                Worklynx was born from a simple frustration: HR professionals spending more time on spreadsheets than on their people.
                 Founded in 2021 in Bengaluru, we set out to build the HR platform we always wished existed.
               </p>
             </AnimatedSection>
@@ -59,10 +59,10 @@ export default function AboutPage() {
                 In 2021, our founders — veterans of Infosys, Google, and KPMG — witnessed firsthand how India's mid-market companies struggled with fragmented HR tools. Attendance was tracked in Excel, payroll was a monthly nightmare, and compliance errors were costly.
               </p>
               <p className="text-slate-600 leading-relaxed mb-5">
-                We spent 18 months talking to 200+ HR managers before writing a single line of code. What we learned shaped every feature of EaseUp: Indian businesses needed something that was powerful enough for enterprise needs but simple enough for a 10-person team.
+                We spent 18 months talking to 200+ HR managers before writing a single line of code. What we learned shaped every feature of Worklynx: Indian businesses needed something that was powerful enough for enterprise needs but simple enough for a 10-person team.
               </p>
               <p className="text-slate-600 leading-relaxed mb-8">
-                Today, EaseUp serves 500+ companies across India, managing 50,000+ employees and processing over ₹200 crores in payroll monthly. But our mission remains unchanged: make HR operations invisible so companies can focus on what matters — their people.
+                Today, Worklynx serves 500+ companies across India, managing 50,000+ employees and processing over ₹200 crores in payroll monthly. But our mission remains unchanged: make HR operations invisible so companies can focus on what matters — their people.
               </p>
               <CTAButton href="/contact" variant="primary" size="md">
                 Get in Touch
@@ -99,7 +99,7 @@ export default function AboutPage() {
           <SectionHeader
             eyebrow="What Drives Us"
             heading="Mission & Vision"
-            subtext="The principles that guide every decision we make at EaseUp."
+            subtext="The principles that guide every decision we make at Worklynx."
           />
 
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -158,7 +158,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="The Team"
-            heading={<>Meet the People Behind <span className="text-gradient-brand">EaseUp</span></>}
+            heading={<>Meet the People Behind <span className="text-gradient-brand">Worklynx</span></>}
             subtext="A passionate team of HR tech veterans, engineers, and compliance experts."
           />
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

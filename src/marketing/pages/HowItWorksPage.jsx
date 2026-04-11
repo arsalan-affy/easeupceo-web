@@ -27,7 +27,7 @@ const steps = [
     icon: DollarSign,
     title: "Run Payroll in One Click",
     description:
-      "At month-end, review attendance-linked payroll data and click 'Process Payroll'. EaseUp auto-calculates PF, ESI, TDS, and generates payslips. Disburse via direct bank transfer.",
+      "At month-end, review attendance-linked payroll data and click 'Process Payroll'. Worklynx auto-calculates PF, ESI, TDS, and generates payslips. Disburse via direct bank transfer.",
   },
   {
     step: 4,
@@ -54,7 +54,7 @@ const benefits = [
 
 export default function HowItWorksPage() {
   useEffect(() => {
-    document.title = "How It Works — EaseUpCEOs";
+    document.title = "How It Works — Worklynx";
   }, []);
 
   return (
@@ -66,7 +66,7 @@ export default function HowItWorksPage() {
             eyebrow="Get Started in Minutes"
             heading={
               <>
-                How EaseUp{" "}
+                How Worklynx{" "}
                 <span className="text-gradient-brand">Works for You</span>
               </>
             }
@@ -129,7 +129,7 @@ export default function HowItWorksPage() {
           <SectionHeader
             eyebrow="Integrations"
             heading="Connects with Your Existing Tools"
-            subtext="EaseUp integrates seamlessly with accounting software, biometric devices, and popular Indian banking systems."
+            subtext="Worklynx integrates seamlessly with accounting software, biometric devices, and popular Indian banking systems."
           />
 
           <StaggerContainer className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">

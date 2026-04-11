@@ -5,7 +5,7 @@ import AnimatedSection from "../shared/AnimatedSection";
 
 const testimonials = [
   {
-    quote: "EaseUpCEOs transformed our HR operations overnight. Payroll that used to take 3 days now runs in 30 minutes. Absolutely game-changing.",
+    quote: "Worklynx transformed our HR operations overnight. Payroll that used to take 3 days now runs in 30 minutes. Absolutely game-changing.",
     name: "Rajesh Kumar",
     role: "HR Director",
     company: "TechNova Solutions",
@@ -21,7 +21,7 @@ const testimonials = [
     color: "bg-indigo-100 text-indigo-700",
   },
   {
-    quote: "We reduced payroll errors by 99% and our employees actually love the self-service portal. EaseUp pays for itself every month.",
+    quote: "We reduced payroll errors by 99% and our employees actually love the self-service portal. Worklynx pays for itself every month.",
     name: "Arun Mehta",
     role: "Managing Director",
     company: "Meridian Manufacturing",
@@ -58,7 +58,7 @@ export default function TestimonialsCarousel() {
               <span className="text-gradient-brand">Across India</span>
             </>
           }
-          subtext="Join 500+ companies that have transformed their HR operations with EaseUp."
+          subtext="Join 500+ companies that have transformed their HR operations with Worklynx."
         />
 
         <AnimatedSection delay={0.1}>

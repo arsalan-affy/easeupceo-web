@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import easeupLogo from "@/assets/easeup.png";
+import worklynxLogo from "@/assets/worklynx-light.png";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -45,7 +45,7 @@ export default function MarketingNavbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center shrink-0">
-            <img src={easeupLogo} alt="EaseUpCEOs" className="h-8 w-auto" />
+            <img src={worklynxLogo} alt="Worklynx" className="h-12 w-auto" />
           </Link>
 
           {/* Desktop Nav */}
@@ -84,7 +84,7 @@ export default function MarketingNavbar() {
           {/* Desktop Actions */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="https://one.inkapps.io/signin"
+              href="https://one.inkapps.io"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors px-3 py-2"
@@ -129,7 +129,7 @@ export default function MarketingNavbar() {
               ))}
               <div className="pt-3 border-t border-slate-100 mt-3 flex flex-col gap-2">
                 <a
-                  href="https://one.inkapps.io/signin"
+                  href="https://one.inkapps.io"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block px-4 py-3 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors"

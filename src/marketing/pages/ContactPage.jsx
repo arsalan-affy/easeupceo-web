@@ -22,12 +22,12 @@ const schema = z.object({
 });
 
 const faqs = [
-  { q: "How do I get started with EaseUpCEOs?", a: "Simply sign up for our Free tier — no credit card required. You'll be guided through a quick setup wizard that gets you running in under 5 minutes." },
-  { q: "Does EaseUp support biometric device integration?", a: "Yes! EaseUp integrates with all major biometric brands including ZKTeco, eSSL, Suprema, and Hikvision. Our support team assists with device configuration at no extra cost." },
-  { q: "Is EaseUp compliant with Indian labour laws?", a: "Absolutely. EaseUp is built to handle PF, ESI, TDS, professional tax, gratuity, and state-specific compliance requirements. We update the platform immediately whenever regulations change." },
+  { q: "How do I get started with Worklynx?", a: "Simply sign up for our Free tier — no credit card required. You'll be guided through a quick setup wizard that gets you running in under 5 minutes." },
+  { q: "Does Worklynx support biometric device integration?", a: "Yes! Worklynx integrates with all major biometric brands including ZKTeco, eSSL, Suprema, and Hikvision. Our support team assists with device configuration at no extra cost." },
+  { q: "Is Worklynx compliant with Indian labour laws?", a: "Absolutely. Worklynx is built to handle PF, ESI, TDS, professional tax, gratuity, and state-specific compliance requirements. We update the platform immediately whenever regulations change." },
   { q: "Can I migrate data from my existing HR software?", a: "Yes. We provide free data migration assistance for all paid plans. Our team can import employee data, historical payroll, and attendance records from most popular HR systems." },
   { q: "What kind of support do you offer?", a: "Free plan includes email support. Starter plan includes priority email and live chat (9 AM–6 PM IST). Enterprise plans get a dedicated account manager and 24/7 phone support." },
-  { q: "How secure is our data on EaseUp?", a: "EaseUp is hosted on AWS Mumbai region with 256-bit encryption, daily backups, and SOC 2 compliance. We never share your data with third parties." },
+  { q: "How secure is our data on Worklynx?", a: "Worklynx is hosted on AWS Mumbai region with 256-bit encryption, daily backups, and SOC 2 compliance. We never share your data with third parties." },
   { q: "Can we try the platform before purchasing?", a: "Every new account starts with a free 14-day trial of the Starter plan — no credit card needed. You can upgrade or downgrade at any time." },
   { q: "Do you offer training for our HR team?", a: "Yes! We offer free onboarding sessions for all plans, and recorded video tutorials are available 24/7 in our help center. Enterprise plans include custom training sessions." },
 ];
@@ -43,7 +43,7 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    document.title = "Contact — EaseUpCEOs";
+    document.title = "Contact — Worklynx";
   }, []);
 
   const {

@@ -135,7 +135,7 @@ export default function PricingPage() {
   const [isAnnual, setIsAnnual] = useState(false);
 
   useEffect(() => {
-    document.title = "Pricing — EaseUpCEOs";
+    document.title = "Pricing — Worklynx";
   }, []);
 
   return (

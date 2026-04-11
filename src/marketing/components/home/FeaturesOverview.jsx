@@ -66,7 +66,7 @@ export default function FeaturesOverview() {
               <span className="text-gradient-brand">Infinite Possibilities</span>
             </>
           }
-          subtext="EaseUp covers every aspect of HR management, from daily attendance to yearly audits."
+          subtext="Worklynx covers every aspect of HR management, from daily attendance to yearly audits."
         />
 
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
