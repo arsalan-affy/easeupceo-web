@@ -84,14 +84,14 @@ export default function MarketingNavbar() {
           {/* Desktop Actions */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="https://one.inkapps.io"
+              href="https://app.worklynx.io"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors px-3 py-2"
             >
               Sign In
             </a>
-            <CTAButton href="https://one.inkapps.io/signup" external variant="primary" size="sm">
+            <CTAButton href="https://app.worklynx.io/signup" external variant="primary" size="sm">
               Start Free Trial
             </CTAButton>
           </div>
@@ -129,14 +129,14 @@ export default function MarketingNavbar() {
               ))}
               <div className="pt-3 border-t border-slate-100 mt-3 flex flex-col gap-2">
                 <a
-                  href="https://one.inkapps.io"
+                  href="https://app.worklynx.io"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block px-4 py-3 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors"
                 >
                   Sign In
                 </a>
-                <CTAButton href="https://one.inkapps.io/signup" external variant="primary" size="md" className="w-full justify-center">
+                <CTAButton href="https://app.worklynx.io/signup" external variant="primary" size="md" className="w-full justify-center">
                   Start Free Trial
                 </CTAButton>
               </div>

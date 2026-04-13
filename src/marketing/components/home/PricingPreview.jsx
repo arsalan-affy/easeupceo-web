@@ -12,7 +12,7 @@ const plans = [
     desc: "Core HR for teams up to 50",
     features: ["Employee management", "Leave management", "Document management", "Self-service portal", "Email support"],
     cta: "Start Free Trial",
-    href: "https://one.inkapps.io/signup",
+    href: "https://app.worklynx.io/signup",
     variant: "secondary",
   },
   {
@@ -22,7 +22,7 @@ const plans = [
     desc: "Full HR suite with payroll & attendance",
     features: ["Everything in Starter", "Payroll & payslips", "Attendance tracking", "Compliance (PF/ESI/TDS)", "Advanced analytics"],
     cta: "Start Free Trial",
-    href: "https://one.inkapps.io/signup",
+    href: "https://app.worklynx.io/signup",
     variant: "primary",
     highlighted: true,
     badge: "Most Popular",

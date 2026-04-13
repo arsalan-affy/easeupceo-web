@@ -28,7 +28,7 @@ const plans = [
       { label: "Email support", included: true },
     ],
     cta: "Start Free Trial",
-    ctaHref: "https://one.inkapps.io/signup",
+    ctaHref: "https://app.worklynx.io/signup",
   },
   {
     name: "Growth",
@@ -49,7 +49,7 @@ const plans = [
       { label: "HR lifecycle management", included: true },
     ],
     cta: "Start Free Trial",
-    ctaHref: "https://one.inkapps.io/signup",
+    ctaHref: "https://app.worklynx.io/signup",
     highlighted: true,
     badge: "Most Popular",
   },

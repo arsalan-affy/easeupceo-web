@@ -27,7 +27,7 @@ export default function HomeCTA() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <CTAButton href="https://one.inkapps.io/signup" external variant="outline" size="lg" className="w-full sm:w-auto">
+            <CTAButton href="https://app.worklynx.io/signup" external variant="outline" size="lg" className="w-full sm:w-auto">
               Start Free Trial
               <ArrowRight className="w-4 h-4" />
             </CTAButton>

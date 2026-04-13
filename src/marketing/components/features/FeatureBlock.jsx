@@ -24,7 +24,7 @@ export default function FeatureBlock({ feature, reverse = false }) {
             </li>
           ))}
         </ul>
-        <CTAButton href="https://one.inkapps.io/signup" external variant="primary" size="md">
+        <CTAButton href="https://app.worklynx.io/signup" external variant="primary" size="md">
           Try This Feature Free
         </CTAButton>
       </AnimatedSection>
