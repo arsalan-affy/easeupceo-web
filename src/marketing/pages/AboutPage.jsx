@@ -5,13 +5,20 @@ import AnimatedSection, { StaggerContainer, StaggerItem } from "../components/sh
 import HomeCTA from "../components/home/HomeCTA";
 import CTAButton from "../components/shared/CTAButton";
 
+import khizarImg from "@/assets/team/khizar.jpg";
+import faizanImg from "@/assets/team/faizan.jpg";
+import murtazaImg from "@/assets/team/murtaza.jpg";
+import arsalanImg from "@/assets/team/arsalan.jpg";
+import iftekharImg from "@/assets/team/iftekhar.jpg";
+import talibImg from "@/assets/team/talib.jpg";
+
 const team = [
-  { name: "Arjun Kapoor", role: "CEO & Co-Founder", bio: "Former enterprise tech lead with 12+ years building business management software.", initials: "AK", color: "bg-blue-100 text-blue-700" },
-  { name: "Priya Menon", role: "CTO & Co-Founder", bio: "Ex-Google engineer passionate about making complex business workflows simple.", initials: "PM", color: "bg-indigo-100 text-indigo-700" },
-  { name: "Rahul Desai", role: "Head of Product", bio: "Product manager who has shipped business software used by 100K+ users.", initials: "RD", color: "bg-violet-100 text-violet-700" },
-  { name: "Sneha Iyer", role: "Head of Customer Success", bio: "Dedicated to ensuring every customer gets maximum value from Worklynx.", initials: "SI", color: "bg-sky-100 text-sky-700" },
-  { name: "Vikash Sharma", role: "Head of Engineering", bio: "Full-stack architect focused on building secure, scalable business systems.", initials: "VS", color: "bg-blue-100 text-blue-700" },
-  { name: "Ananya Bose", role: "Head of Compliance", bio: "CA and legal expert ensuring Worklynx stays ahead of regulatory requirements across regions.", initials: "AB", color: "bg-indigo-100 text-indigo-700" },
+  { name: "Khizar Saeed Khan", role: "Co-Founder", bio: "Enabling business growth with SAP SuccessFactors, GenAI, and advanced technologies.", photo: khizarImg },
+  { name: "Faizan Khan", role: "Co-Founder", bio: "Senior full-stack developer and tech lead with 8+ years building scalable web and mobile solutions.", photo: faizanImg },
+  { name: "Murtaza Malik", role: "Co-Founder", bio: "Graphic and UI/UX designer turned project manager, creating meaningful and impactful products.", photo: murtazaImg },
+  { name: "Arsalan Khan", role: "Senior Manager", bio: "Strategic leader with deep technical expertise across front-end and back-end, delivering high-performing SaaS applications.", photo: arsalanImg },
+  { name: "Iftekhar Ali Ansari", role: "AI Engineer", bio: "AI engineer specializing in Generative AI, NLP, and machine learning solutions.", photo: iftekharImg },
+  { name: "Mohammad Talib Uddin", role: "Backend Engineer", bio: "Backend software engineer specializing in Java, Spring Boot, Python, and microservices architecture.", photo: talibImg },
 ];
 
 const values = [
@@ -159,15 +166,17 @@ export default function AboutPage() {
           <SectionHeader
             eyebrow="The Team"
             heading={<>Meet the People Behind <span className="text-gradient-brand">Worklynx</span></>}
-            subtext="A passionate team of business tech veterans, engineers, and compliance experts."
+            subtext="A passionate team of engineers, designers, and business technology experts."
           />
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {team.map((member) => (
               <StaggerItem key={member.name}>
                 <div className="p-6 rounded-2xl bg-white border border-slate-100 hover:shadow-lg transition-shadow flex gap-4">
-                  <div className={`w-12 h-12 rounded-xl ${member.color} flex items-center justify-center text-lg font-bold shrink-0`}>
-                    {member.initials}
-                  </div>
+                  <img
+                    src={member.photo}
+                    alt={member.name}
+                    className="w-14 h-14 rounded-xl object-cover shrink-0"
+                  />
                   <div>
                     <h4 className="text-base font-bold text-slate-900">{member.name}</h4>
                     <p className="text-xs font-semibold text-blue-600 mb-2">{member.role}</p>
