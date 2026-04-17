@@ -38,7 +38,7 @@ export default function PrivacyPolicyPage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <Section title="1. Introduction">
             <p>
-              {COMPANY} ("we", "us", or "our") operates {PRODUCT}, a cloud-based HR management platform. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform and website.
+              {COMPANY} ("we", "us", or "our") operates {PRODUCT}, a cloud-based business management platform. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform and website.
             </p>
             <p>
               By accessing or using {PRODUCT}, you agree to the collection and use of information in accordance with this policy.
@@ -57,10 +57,10 @@ export default function PrivacyPolicyPage() {
             <p>We use the collected information to:</p>
             <ul className="list-disc pl-5 space-y-1.5">
               <li>Provide, operate, and maintain the {PRODUCT} platform</li>
-              <li>Process payroll, attendance, and HR workflows on your behalf</li>
+              <li>Process business operations, payroll, and attendance workflows on your behalf</li>
               <li>Send account-related notifications and product updates</li>
               <li>Respond to support requests and enquiries</li>
-              <li>Comply with statutory obligations under Indian labour laws (PF, ESI, TDS, etc.)</li>
+              <li>Comply with applicable statutory and regulatory obligations</li>
               <li>Analyse usage to improve product features and performance</li>
               <li>Detect and prevent fraud or unauthorised access</li>
             </ul>
@@ -69,7 +69,7 @@ export default function PrivacyPolicyPage() {
           <Section title="4. Data Sharing & Disclosure">
             <p>We do not sell, trade, or rent your personal data to third parties. We may share data with:</p>
             <ul className="list-disc pl-5 space-y-1.5">
-              <li><strong className="text-slate-800">Service Providers:</strong> Cloud hosting (AWS Mumbai), payment processors, email delivery, and analytics partners who process data on our behalf under strict data processing agreements.</li>
+              <li><strong className="text-slate-800">Service Providers:</strong> Cloud hosting (AWS), payment processors, email delivery, and analytics partners who process data on our behalf under strict data processing agreements.</li>
               <li><strong className="text-slate-800">Legal Authorities:</strong> When required by law, court order, or government regulation.</li>
               <li><strong className="text-slate-800">Business Transfers:</strong> In the event of a merger, acquisition, or sale of assets, data may be transferred as part of that transaction.</li>
             </ul>
@@ -77,7 +77,7 @@ export default function PrivacyPolicyPage() {
 
           <Section title="5. Data Storage & Security">
             <p>
-              Your data is stored on AWS servers located in the Mumbai region (ap-south-1). We implement industry-standard security measures including 256-bit TLS encryption in transit, AES-256 encryption at rest, daily automated backups, role-based access controls, and regular security audits.
+              Your data is stored on AWS servers with region-appropriate data residency. We implement industry-standard security measures including 256-bit TLS encryption in transit, AES-256 encryption at rest, daily automated backups, role-based access controls, and regular security audits.
             </p>
             <p>
               No method of transmission over the Internet or electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your data, we cannot guarantee its absolute security.
@@ -86,7 +86,7 @@ export default function PrivacyPolicyPage() {
 
           <Section title="6. Data Retention">
             <p>
-              We retain your account data for as long as your subscription is active and for up to 3 years thereafter, unless a longer period is required by applicable law. Employee payroll and statutory records may be retained for up to 8 years to comply with Indian labour and tax regulations. You may request deletion of your data at any time, subject to legal retention obligations.
+              We retain your account data for as long as your subscription is active and for up to 3 years thereafter, unless a longer period is required by applicable law. Employee payroll and statutory records may be retained for up to 8 years to comply with applicable labour and tax regulations. You may request deletion of your data at any time, subject to legal retention obligations.
             </p>
           </Section>
 

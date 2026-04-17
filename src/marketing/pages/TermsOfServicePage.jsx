@@ -47,7 +47,7 @@ export default function TermsOfServicePage() {
 
           <Section title="2. Description of Service">
             <p>
-              {PRODUCT} is a cloud-based HR management platform offering modules including but not limited to employee management, attendance tracking, payroll processing, leave management, document management, and HR analytics. The Service is provided on a subscription basis.
+              {PRODUCT} is a cloud-based business management platform offering modules including but not limited to accounting, inventory management, sales & invoicing, purchases, employee management, and reporting — with optional add-on modules for payroll, attendance, and leave management. The Service is provided on a subscription basis.
             </p>
           </Section>
 
@@ -62,10 +62,10 @@ export default function TermsOfServicePage() {
 
           <Section title="4. Subscription & Payment">
             <p>
-              Access to paid features requires a valid subscription. Subscription fees are billed in advance on a monthly or annual basis as selected. All fees are in Indian Rupees (INR) and are exclusive of applicable taxes (including GST).
+              Access to paid features requires a valid subscription. Subscription fees are billed in advance on a monthly basis. All fees are exclusive of applicable taxes.
             </p>
             <p>
-              Payments are due on the billing date. Failure to pay within 7 days of the due date may result in suspension of your account. Annual subscriptions are non-refundable except as required by applicable law.
+              Payments are due on the billing date. Failure to pay within 7 days of the due date may result in suspension of your account.
             </p>
             <p>
               We reserve the right to modify pricing with 30 days' advance notice. Continued use after the notice period constitutes acceptance of the revised pricing.
@@ -74,7 +74,7 @@ export default function TermsOfServicePage() {
 
           <Section title="5. Free Trial">
             <p>
-              New customers may receive a 14-day free trial of the Service. No credit card is required to begin a trial. At the end of the trial, you must subscribe to a paid plan to continue using the Service. We reserve the right to modify or terminate the free trial at any time without notice.
+              New customers may receive a 30-day free trial of the Service. No credit card is required to begin a trial. At the end of the trial, you must subscribe to a paid plan to continue using the Service. We reserve the right to modify or terminate the free trial at any time without notice.
             </p>
           </Section>
 

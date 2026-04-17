@@ -1,42 +1,16 @@
-import { Check, ArrowRight } from "lucide-react";
+import { Check, ArrowRight, CreditCard, Clock, CalendarDays, ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
 import SectionHeader from "../shared/SectionHeader";
 import CTAButton from "../shared/CTAButton";
 import { StaggerContainer, StaggerItem } from "../shared/AnimatedSection";
 
-const plans = [
-  {
-    name: "Starter",
-    price: "₹2,499",
-    period: "per month",
-    desc: "Core HR for teams up to 50",
-    features: ["Employee management", "Leave management", "Document management", "Self-service portal", "Email support"],
-    cta: "Start Free Trial",
-    href: "https://app.worklynx.io/signup",
-    variant: "secondary",
-  },
-  {
-    name: "Growth",
-    price: "₹3,999",
-    period: "per month",
-    desc: "Full HR suite with payroll & attendance",
-    features: ["Everything in Starter", "Payroll & payslips", "Attendance tracking", "Compliance (PF/ESI/TDS)", "Advanced analytics"],
-    cta: "Start Free Trial",
-    href: "https://app.worklynx.io/signup",
-    variant: "primary",
-    highlighted: true,
-    badge: "Most Popular",
-  },
-  {
-    name: "Enterprise",
-    price: "₹6,499",
-    period: "per month",
-    desc: "Advanced HR for large organizations",
-    features: ["Everything in Growth", "Multi-location support", "API integrations", "Custom reports", "Priority support"],
-    cta: "Contact Sales",
-    href: "/contact",
-    variant: "dark",
-  },
+const BASE_FEATURES = ["Employees & Contacts", "Items & Inventory", "Sales & Purchases", "Accounting & Finance", "Reports & Settings"];
+
+const addons = [
+  { icon: CreditCard, label: "Payroll", price: "₹35", unit: "/emp/mo", color: "text-indigo-600", bg: "bg-indigo-50" },
+  { icon: Clock, label: "Attendance", price: "₹18", unit: "/emp/mo", color: "text-blue-600", bg: "bg-blue-50" },
+  { icon: CalendarDays, label: "Leave", price: "₹12", unit: "/emp/mo", color: "text-emerald-600", bg: "bg-emerald-50" },
+  { icon: ShoppingCart, label: "Restaurant", price: "₹399", unit: "/mo", color: "text-orange-600", bg: "bg-orange-50" },
 ];
 
 export default function PricingPreview() {
@@ -47,65 +21,84 @@ export default function PricingPreview() {
           eyebrow="Simple Pricing"
           heading={
             <>
-              Plans That Grow{" "}
-              <span className="text-gradient-brand">With Your Team</span>
+              One Plan,{" "}
+              <span className="text-gradient-brand">Add What You Need</span>
             </>
           }
-          subtext="Start with what you need. Scale as your team grows. Save 20% with annual billing."
+          subtext="Start at ₹999/month with core business tools. Add modules as your team grows. 30-day free trial."
         />
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {plans.map((plan) => (
-            <StaggerItem key={plan.name}>
-              <div className={`relative h-full rounded-2xl p-6 flex flex-col transition-all duration-300 hover:-translate-y-1 ${
-                plan.highlighted
-                  ? "gradient-brand text-white shadow-2xl shadow-blue-500/25 scale-105"
-                  : "bg-white border border-slate-200 hover:shadow-lg"
-              }`}>
-                {plan.badge && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="px-3 py-1 bg-amber-400 text-amber-900 text-xs font-bold rounded-full shadow-sm">
-                      {plan.badge}
-                    </span>
-                  </div>
-                )}
-                <div className="mb-5">
-                  <h3 className={`text-sm font-semibold uppercase tracking-wide mb-2 ${plan.highlighted ? "text-blue-100" : "text-slate-500"}`}>
-                    {plan.name}
-                  </h3>
-                  <div className="flex items-end gap-1 mb-2">
-                    <span className={`text-3xl font-bold ${plan.highlighted ? "text-white" : "text-slate-900"}`}>
-                      {plan.price}
-                    </span>
-                    <span className={`text-sm mb-1 ${plan.highlighted ? "text-blue-100" : "text-slate-500"}`}>
-                      /{plan.period}
-                    </span>
-                  </div>
-                  <p className={`text-sm ${plan.highlighted ? "text-blue-100" : "text-slate-500"}`}>{plan.desc}</p>
-                </div>
-                <ul className="space-y-2.5 flex-1 mb-6">
-                  {plan.features.map((f) => (
-                    <li key={f} className="flex items-center gap-2.5 text-sm">
-                      <div className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${
-                        plan.highlighted ? "bg-white/20" : "bg-blue-50"
-                      }`}>
-                        <Check className={`w-2.5 h-2.5 ${plan.highlighted ? "text-white" : "text-blue-600"}`} />
-                      </div>
-                      <span className={plan.highlighted ? "text-blue-50" : "text-slate-600"}>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-                <CTAButton href={plan.href} external={plan.href?.startsWith("http")} variant={plan.highlighted ? "outline" : plan.variant} size="md" className="w-full justify-center">
-                  {plan.cta}
-                </CTAButton>
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {/* Base Plan */}
+          <StaggerItem>
+            <div className="relative h-full rounded-2xl p-6 flex flex-col gradient-brand text-white shadow-2xl shadow-blue-500/25">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                <span className="px-3 py-1 bg-amber-400 text-amber-900 text-xs font-bold rounded-full shadow-sm">
+                  Always Included
+                </span>
               </div>
-            </StaggerItem>
-          ))}
+              <div className="mb-5">
+                <h3 className="text-sm font-semibold uppercase tracking-wide mb-2 text-blue-100">
+                  Base Plan
+                </h3>
+                <div className="flex items-end gap-1 mb-2">
+                  <span className="text-3xl font-bold text-white">₹999</span>
+                  <span className="text-sm mb-1 text-blue-100">/month</span>
+                </div>
+                <p className="text-sm text-blue-100">Core business management tools</p>
+              </div>
+              <ul className="space-y-2.5 flex-1 mb-6">
+                {BASE_FEATURES.map((f) => (
+                  <li key={f} className="flex items-center gap-2.5 text-sm">
+                    <div className="w-4 h-4 rounded-full flex items-center justify-center shrink-0 bg-white/20">
+                      <Check className="w-2.5 h-2.5 text-white" />
+                    </div>
+                    <span className="text-blue-50">{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <CTAButton href="https://app.worklynx.io/signup" external variant="outline" size="md" className="w-full justify-center">
+                Start 30-Day Free Trial
+              </CTAButton>
+            </div>
+          </StaggerItem>
+
+          {/* Add-ons */}
+          <StaggerItem>
+            <div className="h-full rounded-2xl p-6 flex flex-col bg-white border border-slate-200 hover:shadow-lg transition-shadow">
+              <div className="mb-5">
+                <h3 className="text-sm font-semibold uppercase tracking-wide mb-2 text-slate-500">
+                  Optional Add-Ons
+                </h3>
+                <p className="text-lg font-bold text-slate-900 mb-1">Pay only for what you use</p>
+                <p className="text-sm text-slate-500">Enable or disable modules anytime</p>
+              </div>
+              <div className="space-y-3 flex-1 mb-6">
+                {addons.map((addon) => (
+                  <div key={addon.label} className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-100">
+                    <div className="flex items-center gap-3">
+                      <div className={`w-8 h-8 rounded-lg ${addon.bg} flex items-center justify-center`}>
+                        <addon.icon className={`w-4 h-4 ${addon.color}`} />
+                      </div>
+                      <span className="text-sm font-medium text-slate-700">{addon.label}</span>
+                    </div>
+                    <div className="text-right">
+                      <span className={`text-sm font-bold ${addon.color}`}>{addon.price}</span>
+                      <span className="text-xs text-slate-400">{addon.unit}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <CTAButton href="/pricing" variant="secondary" size="md" className="w-full justify-center">
+                See Pricing Calculator
+              </CTAButton>
+            </div>
+          </StaggerItem>
         </StaggerContainer>
 
         <div className="text-center mt-10">
           <Link to="/pricing" className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 hover:text-blue-700">
-            Compare all plans <ArrowRight className="w-4 h-4" />
+            View full pricing details <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </div>

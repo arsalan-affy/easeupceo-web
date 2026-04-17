@@ -32,7 +32,7 @@ export default function MarketingFooter() {
               <img src={worklynxLogo} alt="Worklynx" className="h-8 w-auto" />
             </Link>
             <p className="text-sm leading-relaxed mb-6 max-w-xs">
-              Modern HR platform that simplifies attendance, payroll, and HR operations for growing teams across India.
+              Business management platform for accounting, inventory, sales, and more — with optional payroll and attendance modules for growing teams.
             </p>
             <div className="flex items-center gap-3 mb-6">
               <a href="#" className="w-8 h-8 rounded-lg bg-slate-800 hover:bg-blue-600 flex items-center justify-center transition-colors" aria-label="Twitter">

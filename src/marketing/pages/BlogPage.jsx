@@ -30,8 +30,8 @@ const posts = [
     gradient: "from-indigo-500 to-violet-600",
   },
   {
-    title: "The Complete Guide to GST-Compliant Invoicing for Service Businesses",
-    excerpt: "Everything you need to know about creating invoices that satisfy GST requirements, from CGST/SGST breakdowns to digital signature compliance.",
+    title: "The Complete Guide to Tax-Compliant Invoicing for Service Businesses",
+    excerpt: "Everything you need to know about creating invoices that satisfy tax requirements, from tax breakdowns to digital signature compliance.",
     category: "Compliance",
     author: "Ananya Bose",
     date: "Feb 28, 2026",
@@ -39,9 +39,9 @@ const posts = [
     gradient: "from-violet-500 to-blue-600",
   },
   {
-    title: "Why Indian Companies Are Moving to Cloud HR in 2026",
-    excerpt: "The shift from desktop payroll software to cloud HRMS is accelerating. Here's what's driving the change and what to look for in a modern HR platform.",
-    category: "HR Tips",
+    title: "Why Businesses Are Moving to Cloud Management Platforms in 2026",
+    excerpt: "The shift from desktop tools to cloud business platforms is accelerating. Here's what's driving the change and what to look for in a modern solution.",
+    category: "Business Tips",
     author: "Arjun Kapoor",
     date: "Feb 20, 2026",
     readTime: "7 min read",
@@ -139,8 +139,8 @@ export default function BlogPage() {
       <section className="pt-32 pb-16 gradient-hero">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <SectionHeader
-            eyebrow="HR Knowledge Hub"
-            heading={<>Insights for Modern <span className="text-gradient-brand">HR Professionals</span></>}
+            eyebrow="Knowledge Hub"
+            heading={<>Insights for Modern <span className="text-gradient-brand">Business Leaders</span></>}
             subtext="Expert guides, compliance updates, and product news to help you stay ahead."
             className="mb-0"
           />
@@ -207,8 +207,8 @@ export default function BlogPage() {
         <div className="max-w-xl mx-auto px-4 sm:px-6 text-center">
           <SectionHeader
             eyebrow="Stay Updated"
-            heading="Get HR Insights in Your Inbox"
-            subtext="Weekly digest of HR tips, compliance updates, and product news. No spam, unsubscribe anytime."
+            heading="Get Business Insights in Your Inbox"
+            subtext="Weekly digest of business tips, product updates, and industry news. No spam, unsubscribe anytime."
           />
           <div className="flex gap-3 max-w-md mx-auto">
             <input

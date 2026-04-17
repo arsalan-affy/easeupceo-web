@@ -40,7 +40,7 @@ export default function GDPRPage() {
           {/* Intro callout */}
           <div className="mb-10 p-5 rounded-2xl bg-blue-50 border border-blue-100">
             <p className="text-sm text-slate-700 leading-relaxed">
-              {COMPANY} is committed to protecting the privacy and rights of all individuals whose data is processed through {PRODUCT}. While {PRODUCT} is primarily designed for the Indian market and operates under India's Personal Data Protection framework, we also respect and align with the principles of the EU General Data Protection Regulation (GDPR) for customers and data subjects in the European Economic Area (EEA).
+              {COMPANY} is committed to protecting the privacy and rights of all individuals whose data is processed through {PRODUCT}. We respect and align with the principles of the EU General Data Protection Regulation (GDPR) for customers and data subjects in the European Economic Area (EEA), as well as applicable data protection frameworks in other regions we serve.
             </p>
           </div>
 
@@ -89,14 +89,14 @@ export default function GDPRPage() {
 
           <Section title="4. International Data Transfers">
             <p>
-              Your data is primarily stored on AWS servers in the Mumbai, India region. We do not routinely transfer personal data outside India. Where any data transfer to third parties (e.g., analytics providers) may involve cross-border transfers, we ensure appropriate safeguards are in place, including Standard Contractual Clauses (SCCs) where applicable.
+              Your data is stored on AWS servers with region-appropriate data residency. Where any data transfer to third parties (e.g., analytics providers) may involve cross-border transfers, we ensure appropriate safeguards are in place, including Standard Contractual Clauses (SCCs) where applicable.
             </p>
           </Section>
 
           <Section title="5. Sub-processors">
             <p>We use the following categories of sub-processors to deliver the Service:</p>
             <ul className="list-disc pl-5 space-y-1.5">
-              <li><strong className="text-slate-800">Cloud Infrastructure:</strong> Amazon Web Services (AWS Mumbai)</li>
+              <li><strong className="text-slate-800">Cloud Infrastructure:</strong> Amazon Web Services (AWS)</li>
               <li><strong className="text-slate-800">Payment Processing:</strong> Razorpay / Stripe</li>
               <li><strong className="text-slate-800">Email Delivery:</strong> SendGrid / AWS SES</li>
               <li><strong className="text-slate-800">Analytics:</strong> Google Analytics (anonymised)</li>

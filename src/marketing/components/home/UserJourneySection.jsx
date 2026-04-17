@@ -4,11 +4,11 @@ import {
   AlertTriangle,
   CheckCircle,
   Clock,
-  Users,
+  Package,
   FileText,
-  CheckSquare,
-  CreditCard,
-  Mail,
+  BookOpen,
+  BarChart3,
+  ShoppingCart,
 } from "lucide-react";
 
 const STEP_DURATION = 5500;
@@ -16,131 +16,131 @@ const STEP_DURATION = 5500;
 const steps = [
   {
     id: 1,
-    time: "Day 28 · 9:00 AM",
-    label: "Attendance",
-    icon: Users,
+    time: "Monday · 9:00 AM",
+    label: "Inventory",
+    icon: Package,
     before: {
-      heading: "Chasing 47 employees for attendance",
-      body: "Messages sent to 3 team leads. 12 employees haven't submitted their register. You're on your 4th WhatsApp follow-up.",
-      tag: "3 hours lost",
+      heading: "Stock counts don't match. Again.",
+      body: "3 spreadsheets tracking the same items. One says 47 units, another says 52. A customer just ordered 50 and you're not sure you have enough.",
+      tag: "2 hours reconciling",
       items: [
-        "WhatsApp groups, not systems",
-        "Manual cross-checking with shift rosters",
-        "5 disputes with no audit trail",
+        "Multiple spreadsheets, no single source of truth",
+        "Manual stock counts prone to human error",
+        "No real-time visibility into stock levels",
       ],
     },
     after: {
-      heading: "All 47 marked. Auto-synced overnight.",
-      body: "Biometric data pulled at midnight. Geo-fenced mobile check-ins captured. Attendance locked by 9:01 AM. Zero chasing.",
-      tag: "Done in 1 minute",
+      heading: "Real-time stock across all warehouses.",
+      body: "Every sale, purchase, and adjustment updates stock instantly. Batch and serial number tracking with FIFO costing. You always know exactly what you have.",
+      tag: "Always accurate",
       items: [
-        "Biometric + mobile geo-fencing sync",
-        "Anomalies auto-flagged for review",
-        "Disputes logged with evidence in-app",
+        "Automatic stock updates on every transaction",
+        "Batch & serial number traceability",
+        "Multi-warehouse with transfer tracking",
       ],
     },
   },
   {
     id: 2,
-    time: "Day 29 · 2:00 PM",
-    label: "Computation",
+    time: "Monday · 11:00 AM",
+    label: "Sales",
     icon: FileText,
     before: {
-      heading: "3 spreadsheets. 2 formula errors found.",
-      body: "PF calculation wrong for 4 employees. ESI slab changed last quarter — formula wasn't updated. Restarting the whole sheet.",
-      tag: "4 hours of re-work",
+      heading: "Quotation sent last week. No follow-up.",
+      body: "Customer asked for a quote 5 days ago. You typed it in Word, emailed it, and forgot. Now they're asking and you can't find the file.",
+      tag: "Lost deal potential",
       items: [
-        "Manual PF / ESI / TDS formulas",
-        "Human error on every payroll run",
-        "No version history or audit log",
+        "Quotes in Word docs with no tracking",
+        "No conversion pipeline from quote to invoice",
+        "Payment status tracked in yet another spreadsheet",
       ],
     },
     after: {
-      heading: "₹24.85L computed in 18 seconds.",
-      body: "PF, ESI, TDS applied automatically using current slabs. Statutory updates are built-in. Full audit log generated instantly.",
-      tag: "Zero errors",
+      heading: "Quote → Order → Invoice in 3 clicks.",
+      body: "Create a quotation, convert to sales order, then to invoice — all linked. Track payment status, send reminders, and record deliveries in one flow.",
+      tag: "Complete audit trail",
       items: [
-        "Real-time statutory slab updates",
-        "Full computation audit trail",
-        "Exceptions surfaced for HR review",
+        "Quotation → Sales Order → Invoice pipeline",
+        "Automatic payment tracking and reminders",
+        "Delivery orders linked to every sale",
       ],
     },
   },
   {
     id: 3,
-    time: "Day 30 · 9:00 AM",
-    label: "Approval",
-    icon: CheckSquare,
+    time: "Tuesday · 2:00 PM",
+    label: "Purchases",
+    icon: ShoppingCart,
     before: {
-      heading: "Email thread. 6 replies. Still waiting.",
-      body: "Payroll sheet sent to 3 managers. One is traveling. Another replied with a correction on v3 — you're on v5.",
-      tag: "Half a day wasted",
+      heading: "Vendor bill doesn't match the PO.",
+      body: "You ordered 100 units at ₹50 each. The bill says ₹55. No easy way to compare — the PO is in one folder, the bill in another.",
+      tag: "Disputes & delays",
       items: [
-        "No structured approval workflow",
-        "Version confusion on attachments",
-        "No deadline or escalation tracking",
+        "PO and bill tracked separately",
+        "Manual price matching prone to errors",
+        "No purchase return workflow",
       ],
     },
     after: {
-      heading: "3 approvals in 4 minutes.",
-      body: "Approval request pushed in-app with one click. Managers tap approve from mobile. Locked after final sign-off. Fully timestamped.",
-      tag: "Closed by 9:04 AM",
+      heading: "PO linked to bill. Mismatch flagged instantly.",
+      body: "Purchase orders auto-link to bills. Price discrepancies are highlighted. Returns are tracked with debit notes. Full vendor payment history in one view.",
+      tag: "Zero surprises",
       items: [
-        "Mobile-friendly in-app approval",
-        "Payroll locked after final sign-off",
-        "Timestamped trail per approver",
+        "PO → Bill linking with variance detection",
+        "Purchase returns with debit notes",
+        "Vendor ledger with complete payment history",
       ],
     },
   },
   {
     id: 4,
-    time: "Day 30 · 11:00 AM",
-    label: "Disbursement",
-    icon: CreditCard,
+    time: "Wednesday · 10:00 AM",
+    label: "Accounting",
+    icon: BookOpen,
     before: {
-      heading: "NEFT file upload timed out. 2 rejections.",
-      body: "Bank portal timed out on the first attempt. Two transactions rejected — wrong IFSC codes. Now regenerating and re-uploading.",
-      tag: "2 failed + 2 hours re-work",
+      heading: "Month-end close takes a full week.",
+      body: "Manually entering journal entries, reconciling bank statements, and chasing missing receipts. The accountant is overwhelmed and tax filing is approaching.",
+      tag: "5 days of manual work",
       items: [
-        "Manual NEFT file generation",
-        "Bank portal errors with no clear reason",
-        "No real-time transfer status",
+        "Manual journal entries for every transaction",
+        "Bank reconciliation in spreadsheets",
+        "Tax reports compiled by hand",
       ],
     },
     after: {
-      heading: "₹24.85L transferred. 0 failures.",
-      body: "Direct bank API integration. IFSC validated at input, before payroll runs. All 47 employees credited the same day.",
-      tag: "Done by 11:04 AM",
+      heading: "Journals auto-posted. Reports ready instantly.",
+      body: "Every sale, purchase, and payment automatically creates journal entries. Bank reconciliation in minutes. Tax reports generated with one click.",
+      tag: "Done in hours, not days",
       items: [
-        "Direct bank integration — no portal",
-        "IFSC validated before disbursement",
-        "Real-time per-employee transfer status",
+        "Auto-generated journal entries",
+        "Bank reconciliation with matching",
+        "Tax-ready reports at the click of a button",
       ],
     },
   },
   {
     id: 5,
-    time: "Day 30 · 11:30 AM",
-    label: "Payslips",
-    icon: Mail,
+    time: "Friday · 4:00 PM",
+    label: "Reports",
+    icon: BarChart3,
     before: {
-      heading: "47 PDFs. 47 emails. Manually.",
-      body: "Generating payslip PDFs one by one. Attaching to individual emails. This took 90 minutes last month. You're already tired.",
-      tag: "90 minutes of repetition",
+      heading: "Boss wants a P&L report. By EOD.",
+      body: "You need data from 4 different tools. Sales from one, expenses from another, payroll from a third. It'll take hours to compile and format.",
+      tag: "Hours of compilation",
       items: [
-        "Manual PDF generation per employee",
-        "Individual email attachments",
-        "No delivery confirmation",
+        "Data scattered across multiple tools",
+        "Manual report creation in Excel",
+        "Numbers don't always match",
       ],
     },
     after: {
-      heading: "47 payslips sent in 8 seconds.",
-      body: "One click. Every employee gets a branded PDF payslip by email, instantly. Read receipts tracked per employee.",
-      tag: "Done instantly",
+      heading: "P&L, Balance Sheet, Cash Flow — one click.",
+      body: "All your data lives in one system. Financial reports are always up-to-date. Export to PDF, Excel, or CSV. Schedule automated delivery.",
+      tag: "Ready in seconds",
       items: [
-        "Auto-generated branded PDF payslips",
-        "Bulk email with a single click",
-        "Delivery confirmation per employee",
+        "Real-time financial statements",
+        "Sales, purchase, and inventory reports",
+        "Export to PDF, Excel, or CSV instantly",
       ],
     },
   },
@@ -187,10 +187,10 @@ export default function UserJourneySection() {
             User Journey
           </p>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-950 tracking-tight mb-3">
-            It's salary day. Walk through it.
+            A week in your business. Walk through it.
           </h2>
           <p className="text-slate-500 max-w-lg text-base">
-            5 steps. Every one of them painful without the right system. See exactly what changes.
+            5 common scenarios. Every one of them painful without the right system. See exactly what changes.
           </p>
         </div>
 
@@ -314,20 +314,20 @@ export default function UserJourneySection() {
         <div className="mt-6 bg-white border border-slate-200 rounded-2xl px-6 py-5 flex flex-wrap gap-6 items-center">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-0.5">
-              Total manual effort
+              Manual effort per week
             </p>
-            <p className="text-2xl font-extrabold text-orange-500 tracking-tight">~7 hours</p>
+            <p className="text-2xl font-extrabold text-orange-500 tracking-tight">~12 hours</p>
           </div>
           <div className="text-slate-300 text-xl font-light">→</div>
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-0.5">
               With Worklynx
             </p>
-            <p className="text-2xl font-extrabold text-blue-600 tracking-tight">47 minutes</p>
+            <p className="text-2xl font-extrabold text-blue-600 tracking-tight">Under 1 hour</p>
           </div>
           <div className="hidden sm:block w-px h-8 bg-slate-200" />
           <p className="flex-1 min-w-[180px] text-sm text-slate-500 leading-relaxed">
-            That's 6+ hours back every payroll cycle. For a team of 150, that compounds across every month.
+            That's 10+ hours back every week. Time you can spend growing your business instead of managing spreadsheets.
           </p>
           <a
             href="/contact"

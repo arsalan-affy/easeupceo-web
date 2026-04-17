@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { UserPlus, Clock, DollarSign, BarChart3, FileText } from "lucide-react";
+import { UserPlus, Package, FileText, BarChart3, Settings } from "lucide-react";
 import SectionHeader from "../components/shared/SectionHeader";
 import WorkflowStep from "../components/how-it-works/WorkflowStep";
 import DashboardPreview from "../components/mockups/DashboardPreview";
@@ -10,46 +10,46 @@ import { StaggerContainer, StaggerItem } from "../components/shared/AnimatedSect
 const steps = [
   {
     step: 1,
-    icon: UserPlus,
-    title: "Add Your Employees",
+    icon: Settings,
+    title: "Set Up Your Business",
     description:
-      "Import employee data via CSV or add manually. Set up departments, designations, and salary structures. Employees receive a welcome email with self-service portal access.",
+      "Sign up in minutes. Your organization is created with a pre-configured chart of accounts, tax setup, and sample data so you can explore right away.",
   },
   {
     step: 2,
-    icon: Clock,
-    title: "Track Attendance Automatically",
+    icon: Package,
+    title: "Add Your Items & Contacts",
     description:
-      "Connect biometric devices or enable mobile GPS check-in. Attendance syncs in real-time. Set up shifts, holidays, and leave policies once — the system handles the rest.",
+      "Set up your product catalog with categories, pricing, and stock tracking. Add your customers and suppliers with payment terms and contact details.",
   },
   {
     step: 3,
-    icon: DollarSign,
-    title: "Run Payroll in One Click",
+    icon: FileText,
+    title: "Start Selling & Purchasing",
     description:
-      "At month-end, review attendance-linked payroll data and click 'Process Payroll'. Worklynx auto-calculates PF, ESI, TDS, and generates payslips. Disburse via direct bank transfer.",
+      "Create quotations, convert to sales orders, generate invoices, and track payments. Manage purchase orders and bills in the same place. Inventory updates automatically.",
   },
   {
     step: 4,
     icon: BarChart3,
-    title: "Generate Reports & Insights",
+    title: "Track Your Finances",
     description:
-      "Access 50+ pre-built reports or create custom ones. Track headcount trends, payroll costs, attrition risk, and compliance status. Export or schedule automated report delivery.",
+      "Your accounting updates automatically with every transaction. Review financial reports, reconcile bank statements, and stay on top of your tax obligations.",
   },
   {
     step: 5,
-    icon: FileText,
-    title: "Manage Invoices & Billing",
+    icon: UserPlus,
+    title: "Add Modules as You Grow",
     description:
-      "Create GST-compliant invoices for clients, track payment status, and send automated reminders. Reconcile accounts and generate GSTR reports for seamless tax compliance.",
+      "Need payroll? Attendance tracking? Restaurant POS? Add optional modules anytime from your settings — pay only for what you use.",
   },
 ];
 
 const benefits = [
   { number: "5 min", label: "Average setup time" },
-  { number: "99.8%", label: "Payroll accuracy" },
-  { number: "10×", label: "Faster than manual HR" },
-  { number: "Zero", label: "Compliance penalties" },
+  { number: "30 days", label: "Free trial included" },
+  { number: "₹999", label: "Starting monthly price" },
+  { number: "99.9%", label: "Uptime SLA" },
 ];
 
 export default function HowItWorksPage() {
@@ -70,7 +70,7 @@ export default function HowItWorksPage() {
                 <span className="text-gradient-brand">Works for You</span>
               </>
             }
-            subtext="From setup to first payroll — follow these 5 simple steps to transform your HR operations."
+            subtext="From signup to first invoice — follow these 5 simple steps to streamline your business operations."
             className="mb-0"
           />
         </div>
@@ -112,9 +112,9 @@ export default function HowItWorksPage() {
               <DashboardPreview variant="analytics" height={420} />
               <AnimatedSection delay={0.3} className="mt-5">
                 <div className="p-5 rounded-2xl bg-blue-50 border border-blue-100">
-                  <p className="text-sm font-semibold text-blue-900 mb-1">💡 Pro Tip</p>
+                  <p className="text-sm font-semibold text-blue-900 mb-1">Pro Tip</p>
                   <p className="text-sm text-blue-700">
-                    Most customers complete their first payroll run within 48 hours of signing up. Our onboarding team is available to assist at every step.
+                    Your account comes pre-loaded with sample data — items, contacts, and transactions — so you can explore every feature before adding your own data.
                   </p>
                 </div>
               </AnimatedSection>
@@ -129,15 +129,15 @@ export default function HowItWorksPage() {
           <SectionHeader
             eyebrow="Integrations"
             heading="Connects with Your Existing Tools"
-            subtext="Worklynx integrates seamlessly with accounting software, biometric devices, and popular Indian banking systems."
+            subtext="Worklynx integrates seamlessly with accounting software, biometric devices, and banking systems."
           />
 
           <StaggerContainer className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
             {[
-              { name: "Tally ERP", cat: "Accounting", color: "bg-blue-50 text-blue-700" },
-              { name: "Zoho Books", cat: "Accounting", color: "bg-indigo-50 text-indigo-700" },
-              { name: "HDFC NEFT", cat: "Banking", color: "bg-sky-50 text-sky-700" },
-              { name: "ICICI Bulk Pay", cat: "Banking", color: "bg-violet-50 text-violet-700" },
+              { name: "Razorpay", cat: "Payments", color: "bg-blue-50 text-blue-700" },
+              { name: "AWS S3", cat: "Storage", color: "bg-indigo-50 text-indigo-700" },
+              { name: "WhatsApp", cat: "Notifications", color: "bg-sky-50 text-sky-700" },
+              { name: "Elasticsearch", cat: "Search", color: "bg-violet-50 text-violet-700" },
               { name: "ZKTeco", cat: "Biometric", color: "bg-blue-50 text-blue-700" },
               { name: "eSSL Devices", cat: "Biometric", color: "bg-indigo-50 text-indigo-700" },
               { name: "Slack", cat: "Communication", color: "bg-sky-50 text-sky-700" },

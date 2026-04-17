@@ -22,14 +22,14 @@ const schema = z.object({
 });
 
 const faqs = [
-  { q: "How do I get started with Worklynx?", a: "Simply sign up for our Free tier — no credit card required. You'll be guided through a quick setup wizard that gets you running in under 5 minutes." },
+  { q: "How do I get started with Worklynx?", a: "Simply sign up for our 30-day free trial — no credit card required. You'll be guided through a quick setup wizard that gets you running in under 5 minutes." },
   { q: "Does Worklynx support biometric device integration?", a: "Yes! Worklynx integrates with all major biometric brands including ZKTeco, eSSL, Suprema, and Hikvision. Our support team assists with device configuration at no extra cost." },
-  { q: "Is Worklynx compliant with Indian labour laws?", a: "Absolutely. Worklynx is built to handle PF, ESI, TDS, professional tax, gratuity, and state-specific compliance requirements. We update the platform immediately whenever regulations change." },
-  { q: "Can I migrate data from my existing HR software?", a: "Yes. We provide free data migration assistance for all paid plans. Our team can import employee data, historical payroll, and attendance records from most popular HR systems." },
-  { q: "What kind of support do you offer?", a: "Free plan includes email support. Starter plan includes priority email and live chat (9 AM–6 PM IST). Enterprise plans get a dedicated account manager and 24/7 phone support." },
-  { q: "How secure is our data on Worklynx?", a: "Worklynx is hosted on AWS Mumbai region with 256-bit encryption, daily backups, and SOC 2 compliance. We never share your data with third parties." },
-  { q: "Can we try the platform before purchasing?", a: "Every new account starts with a free 14-day trial of the Starter plan — no credit card needed. You can upgrade or downgrade at any time." },
-  { q: "Do you offer training for our HR team?", a: "Yes! We offer free onboarding sessions for all plans, and recorded video tutorials are available 24/7 in our help center. Enterprise plans include custom training sessions." },
+  { q: "Does Worklynx support local compliance requirements?", a: "Yes. Worklynx supports region-specific tax configurations, statutory compliance, and regulatory requirements. We continuously update the platform as regulations change across supported regions." },
+  { q: "Can I migrate data from my existing software?", a: "Yes. We provide free data migration assistance. Our team can import your existing business data from most popular accounting and management systems." },
+  { q: "What kind of support do you offer?", a: "All plans include email support. We also provide priority support and dedicated assistance based on your needs." },
+  { q: "How secure is our data on Worklynx?", a: "Worklynx is hosted on AWS with 256-bit encryption, daily backups, and SOC 2 compliance. We never share your data with third parties." },
+  { q: "Can we try the platform before purchasing?", a: "Every new account starts with a free 30-day trial — no credit card needed. You can add or remove modules at any time." },
+  { q: "Do you offer training for our team?", a: "Yes! We offer free onboarding sessions for all plans, and recorded video tutorials are available 24/7 in our help center." },
 ];
 
 const contactInfo = [
@@ -135,12 +135,12 @@ export default function ContactPage() {
                           <SelectValue placeholder="Select a module..." />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="attendance">Attendance Management</SelectItem>
-                          <SelectItem value="payroll">Payroll Automation</SelectItem>
-                          <SelectItem value="invoicing">Invoicing & Billing</SelectItem>
-                          <SelectItem value="analytics">HR Analytics</SelectItem>
-                          <SelectItem value="all">Full HRMS Platform</SelectItem>
-                          <SelectItem value="enterprise">Enterprise Plan</SelectItem>
+                          <SelectItem value="base">Base Plan (Accounting, Inventory, Sales)</SelectItem>
+                          <SelectItem value="payroll">Payroll Add-On</SelectItem>
+                          <SelectItem value="attendance">Attendance Add-On</SelectItem>
+                          <SelectItem value="leave">Leave Management Add-On</SelectItem>
+                          <SelectItem value="restaurant">Restaurant Management Add-On</SelectItem>
+                          <SelectItem value="all">Full Platform</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -151,7 +151,7 @@ export default function ContactPage() {
                       <Textarea
                         id="message"
                         rows={4}
-                        placeholder="Tell us about your HR needs and team size..."
+                        placeholder="Tell us about your business needs and team size..."
                         {...register("message")}
                         className={errors.message ? "border-red-300 resize-none" : "resize-none"}
                       />

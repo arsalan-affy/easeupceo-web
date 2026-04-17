@@ -5,7 +5,7 @@ import DashboardPreview from "../mockups/DashboardPreview";
 
 const highlights = [
   "No credit card required",
-  "Free 14-day trial",
+  "Free 30-day trial",
   "Setup in 5 minutes",
 ];
 
@@ -31,10 +31,10 @@ export default function HeroSection() {
             >
               <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-semibold">
                 <Sparkles className="w-3 h-3" />
-                AI-Powered HR Platform
+                All-in-One Business Platform
               </span>
               <span className="px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-600 text-xs font-semibold">
-                New: Smart Payroll →
+                Starts at ₹999/mo →
               </span>
             </motion.div>
 
@@ -44,7 +44,7 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6"
             >
-              HR Operations,{" "}
+              Business Operations,{" "}
               <span className="text-gradient-brand">Simplified</span>
               <br />
               for Modern Teams
@@ -56,8 +56,8 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg text-slate-600 leading-relaxed mb-8 max-w-lg"
             >
-              Worklynx automates attendance tracking, payroll processing, and
-              invoicing — so your HR team can focus on people, not paperwork.
+              Worklynx manages your accounting, inventory, sales, and purchases
+              — with optional payroll, attendance, and leave modules when you need them.
             </motion.p>
 
             <motion.div
@@ -67,12 +67,11 @@ export default function HeroSection() {
               className="flex flex-col sm:flex-row gap-3 mb-8"
             >
               <CTAButton href="https://app.worklynx.io/signup" external variant="primary" size="lg">
-                Start Free Demo
+                Start 30-Day Free Trial
                 <ArrowRight className="w-4 h-4" />
               </CTAButton>
-              <CTAButton href="/how-it-works" variant="secondary" size="lg">
-                <Play className="w-4 h-4 fill-current" />
-                Watch How It Works
+              <CTAButton href="/pricing" variant="secondary" size="lg">
+                View Pricing
               </CTAButton>
             </motion.div>
 

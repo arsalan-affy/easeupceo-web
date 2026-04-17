@@ -1,61 +1,42 @@
 import { useEffect } from "react";
-import { Clock, DollarSign, Users, BarChart3, FileText, PieChart } from "lucide-react";
+import { BookOpen, Package, FileText, ShoppingCart, Users, BarChart3 } from "lucide-react";
 import SectionHeader from "../components/shared/SectionHeader";
 import FeatureBlock from "../components/features/FeatureBlock";
 import HomeCTA from "../components/home/HomeCTA";
 
 const features = [
   {
-    id: "attendance",
-    icon: Clock,
-    title: "Attendance Management",
+    id: "accounting",
+    icon: BookOpen,
+    title: "Accounting & Finance",
     description:
-      "Track employee attendance in real-time with multiple check-in methods. Our smart system handles shifts, overtime, holidays, and leave — giving you complete workforce visibility.",
+      "Complete double-entry accounting system with journals, ledgers, and bank reconciliation. Manage taxes, generate financial statements, and keep your books accurate — all from one place.",
     benefits: [
-      "Biometric device integration (fingerprint, face ID)",
-      "Mobile GPS-based check-in & geo-fencing",
-      "Automated shift scheduling and rotations",
-      "Leave management with approval workflows",
-      "Real-time attendance dashboard with alerts",
-      "Late arrival and early departure notifications",
+      "Double-entry journals and ledger management",
+      "Bank transactions and reconciliation",
+      "Tax management and compliance",
+      "Money transfers and expense tracking",
+      "Multi-currency support",
+      "Financial reports and audit trails",
     ],
-    mockupVariant: "attendance",
-    color: "bg-blue-500",
-    lightColor: "bg-blue-50",
-    textColor: "text-blue-600",
-  },
-  {
-    id: "payroll",
-    icon: DollarSign,
-    title: "Payroll Automation",
-    description:
-      "Process error-free payroll in minutes with full statutory compliance. Worklynx auto-calculates PF, ESI, TDS and professional tax — and deposits directly to employee bank accounts.",
-    benefits: [
-      "One-click payroll processing for all employees",
-      "Auto-computation: PF, ESI, TDS, PT, gratuity",
-      "Salary structure customization with components",
-      "Instant payslip generation and email delivery",
-      "Form 16, Form 24Q, and statutory returns",
-      "Direct bank transfer with bulk payout support",
-    ],
-    mockupVariant: "payroll",
+    mockupVariant: "analytics",
     color: "bg-indigo-500",
     lightColor: "bg-indigo-50",
     textColor: "text-indigo-600",
   },
   {
-    id: "employees",
-    icon: Users,
-    title: "Employee Management",
+    id: "inventory",
+    icon: Package,
+    title: "Inventory Management",
     description:
-      "Manage the complete employee lifecycle from onboarding to offboarding. Centralized profiles, document management, and self-service portal for every team member.",
+      "Track your stock across multiple warehouses with batch numbers, serial numbers, and FIFO costing. Real-time stock levels, automated adjustments, and complete traceability.",
     benefits: [
-      "Digital onboarding with document collection",
-      "Centralized employee database & org chart",
-      "Document management: offer letters, contracts",
-      "Employee self-service portal & mobile app",
-      "Performance review and goal tracking",
-      "Separation management and full & final settlement",
+      "Batch number and serial number tracking",
+      "FIFO product costing (in & out)",
+      "Multi-warehouse stock management",
+      "Item categories, groups, and attributes",
+      "Stock adjustments and wastage tracking",
+      "Barcode printing and item tracing",
     ],
     mockupVariant: "analytics",
     color: "bg-violet-500",
@@ -63,37 +44,18 @@ const features = [
     textColor: "text-violet-600",
   },
   {
-    id: "analytics",
-    icon: BarChart3,
-    title: "HR Analytics & Insights",
-    description:
-      "Make smarter workforce decisions with AI-powered analytics. From attrition prediction to productivity tracking, Worklynx gives you the insights to lead proactively.",
-    benefits: [
-      "Real-time HR dashboard with 50+ metrics",
-      "Attrition prediction with AI risk scoring",
-      "Workforce productivity and engagement analytics",
-      "Department-wise headcount and cost analysis",
-      "Custom report builder with drill-down capability",
-      "Automated alerts for anomalies and thresholds",
-    ],
-    mockupVariant: "analytics",
-    color: "bg-sky-500",
-    lightColor: "bg-sky-50",
-    textColor: "text-sky-600",
-  },
-  {
-    id: "invoicing",
+    id: "sales",
     icon: FileText,
-    title: "Invoicing & Billing",
+    title: "Sales & Invoicing",
     description:
-      "Create professional GST-compliant invoices in seconds. Track outstanding payments, automate follow-ups, and maintain complete financial records for audits.",
+      "Manage the complete sales cycle from quotation to invoice. Create professional invoices, track deliveries, handle returns, and manage customer payments seamlessly.",
     benefits: [
-      "GST-compliant invoice generation with templates",
-      "Client & vendor management with payment terms",
-      "Automated payment reminders and follow-ups",
-      "Multi-currency support for international clients",
-      "GSTR-1 and reconciliation reports",
-      "Credit notes, debit notes, and proforma invoices",
+      "Quotations and sales orders",
+      "Delivery orders and invoicing",
+      "Sales returns and credit notes",
+      "Customer payment tracking",
+      "Price lists and coupon codes",
+      "Sales reports and analytics",
     ],
     mockupVariant: "invoice",
     color: "bg-blue-500",
@@ -101,23 +63,61 @@ const features = [
     textColor: "text-blue-600",
   },
   {
-    id: "reports",
-    icon: PieChart,
-    title: "Reports & Insights",
+    id: "purchases",
+    icon: ShoppingCart,
+    title: "Purchases & Bills",
     description:
-      "Access 50+ ready-to-use reports or build custom ones with our drag-and-drop report builder. Export to PDF, Excel, or CSV and schedule automatic delivery.",
+      "Streamline your procurement with purchase orders, bill management, and vendor payments. Track purchase returns and maintain complete purchase history.",
     benefits: [
-      "50+ pre-built HR and payroll reports",
-      "Drag-and-drop custom report builder",
-      "Scheduled report delivery via email",
-      "Export to PDF, Excel, CSV formats",
-      "Audit trails and compliance reports",
-      "Role-based report access control",
+      "Purchase order management",
+      "Bill processing and tracking",
+      "Purchase returns handling",
+      "Vendor management and payments",
+      "Purchase reports and analytics",
+      "Multi-vendor price comparison",
     ],
     mockupVariant: "analytics",
-    color: "bg-indigo-500",
-    lightColor: "bg-indigo-50",
-    textColor: "text-indigo-600",
+    color: "bg-sky-500",
+    lightColor: "bg-sky-50",
+    textColor: "text-sky-600",
+  },
+  {
+    id: "employees",
+    icon: Users,
+    title: "Employees & Contacts",
+    description:
+      "Centralized management for employees and business contacts. Organize by departments, designations, roles, and teams. Optional payroll, attendance, and leave modules available as add-ons.",
+    benefits: [
+      "Employee profiles and directory",
+      "Department and designation management",
+      "Role-based access control",
+      "Contact and vendor management",
+      "Optional: Payroll processing (add-on)",
+      "Optional: Attendance & leave tracking (add-on)",
+    ],
+    mockupVariant: "analytics",
+    color: "bg-emerald-500",
+    lightColor: "bg-emerald-50",
+    textColor: "text-emerald-600",
+  },
+  {
+    id: "reports",
+    icon: BarChart3,
+    title: "Reports & Analytics",
+    description:
+      "Comprehensive reporting across sales, purchases, inventory, taxes, and accounting. Export to Excel, PDF, or CSV. Get the insights you need to make informed business decisions.",
+    benefits: [
+      "Sales and purchase reports",
+      "Inventory and stock reports",
+      "Tax and compliance reports",
+      "Accounting and financial reports",
+      "Export to Excel, PDF, and CSV",
+      "Custom report generation",
+    ],
+    mockupVariant: "analytics",
+    color: "bg-orange-500",
+    lightColor: "bg-orange-50",
+    textColor: "text-orange-600",
   },
 ];
 
@@ -135,11 +135,11 @@ export default function FeaturesPage() {
             eyebrow="Platform Features"
             heading={
               <>
-                Every HR Tool You Need,{" "}
-                <span className="text-gradient-brand">Built for India</span>
+                Every Business Tool You Need,{" "}
+                <span className="text-gradient-brand">In One Place</span>
               </>
             }
-            subtext="Worklynx delivers enterprise-grade HR features tailored for Indian compliance requirements and business practices."
+            subtext="Worklynx delivers complete accounting, inventory, and sales management with optional HR modules — built for growing businesses."
             className="mb-0"
           />
         </div>

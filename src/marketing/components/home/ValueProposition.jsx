@@ -1,37 +1,37 @@
-import { Clock, DollarSign, FileText } from "lucide-react";
+import { BookOpen, Package, FileText } from "lucide-react";
 import SectionHeader from "../shared/SectionHeader";
 import { StaggerContainer, StaggerItem } from "../shared/AnimatedSection";
 
 const pillars = [
   {
-    icon: Clock,
-    title: "Smart Attendance",
+    icon: BookOpen,
+    title: "Complete Accounting",
     description:
-      "Automated time tracking with biometric and mobile check-ins. Geo-fencing, shift scheduling, and leave management — all in one place.",
-    color: "bg-blue-50",
-    iconColor: "text-blue-600",
-    border: "border-blue-100",
-    benefits: ["Biometric integration", "GPS check-in", "Auto overtime calculation"],
-  },
-  {
-    icon: DollarSign,
-    title: "Automated Payroll",
-    description:
-      "Process salaries with one click. Auto-compute PF, ESI, TDS and generate payslips. 100% compliant with Indian labour laws.",
+      "Double-entry accounting with journals, ledgers, bank reconciliation, and tax management. Generate financial statements and reports with a single click.",
     color: "bg-indigo-50",
     iconColor: "text-indigo-600",
     border: "border-indigo-100",
-    benefits: ["PF/ESI compliance", "One-click processing", "Instant payslips"],
+    benefits: ["Multi-currency support", "Tax & GST compliance", "Financial reports"],
   },
   {
-    icon: FileText,
-    title: "Professional Invoicing",
+    icon: Package,
+    title: "Smart Inventory",
     description:
-      "Create branded invoices, track payments, and send automated reminders. Full GST compliance with real-time financial reports.",
+      "Track stock across warehouses with batch numbers, serial numbers, and FIFO costing. Automated stock adjustments and real-time availability.",
     color: "bg-violet-50",
     iconColor: "text-violet-600",
     border: "border-violet-100",
-    benefits: ["GST-compliant invoices", "Auto payment reminders", "Financial reports"],
+    benefits: ["Batch & serial tracking", "Multi-warehouse", "FIFO costing"],
+  },
+  {
+    icon: FileText,
+    title: "Sales & Purchases",
+    description:
+      "End-to-end sales and purchase cycle — from quotations to invoices, purchase orders to bills. Track everything with full audit trails.",
+    color: "bg-blue-50",
+    iconColor: "text-blue-600",
+    border: "border-blue-100",
+    benefits: ["Quotation to invoice", "Purchase returns", "Payment tracking"],
   },
 ];
 
@@ -43,11 +43,11 @@ export default function ValueProposition() {
           eyebrow="Why Worklynx"
           heading={
             <>
-              Everything Your HR Team{" "}
-              <span className="text-gradient-brand">Needs to Thrive</span>
+              Everything Your Business{" "}
+              <span className="text-gradient-brand">Needs to Grow</span>
             </>
           }
-          subtext="Manage your entire workforce from a single, intuitive platform built for Indian businesses."
+          subtext="Manage your entire business from a single, intuitive platform — accounting, inventory, sales, and more."
         />
 
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">

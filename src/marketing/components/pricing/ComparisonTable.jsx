@@ -1,3 +1,4 @@
+import React from "react";
 import { Check, Minus } from "lucide-react";
 import {
   Table,
@@ -10,37 +11,33 @@ import {
 import AnimatedSection from "../shared/AnimatedSection";
 
 const rows = [
-  { category: "Core HR", feature: "Max employees", starter: "50", growth: "50", enterprise: "50+" },
-  { category: "Core HR", feature: "Employee management", starter: true, growth: true, enterprise: true },
-  { category: "Core HR", feature: "Employee onboarding", starter: true, growth: true, enterprise: true },
-  { category: "Core HR", feature: "Document management", starter: true, growth: true, enterprise: true },
-  { category: "Core HR", feature: "Leave management", starter: true, growth: true, enterprise: true },
-  { category: "Core HR", feature: "Self-service portal", starter: true, growth: true, enterprise: true },
-  { category: "Core HR", feature: "HR reports", starter: "Basic", growth: "Advanced", enterprise: "Custom" },
-  { category: "Payroll", feature: "Payroll processing", starter: false, growth: true, enterprise: true },
-  { category: "Payroll", feature: "Salary processing & payslips", starter: false, growth: true, enterprise: true },
-  { category: "Payroll", feature: "Statutory compliance (PF/ESI/TDS)", starter: false, growth: true, enterprise: true },
-  { category: "Attendance", feature: "Attendance tracking", starter: false, growth: true, enterprise: true },
-  { category: "Attendance", feature: "Shift management", starter: false, growth: true, enterprise: true },
-  { category: "Attendance", feature: "GPS & geo-fencing", starter: false, growth: true, enterprise: true },
-  { category: "Analytics", feature: "HR analytics dashboard", starter: false, growth: true, enterprise: true },
-  { category: "Analytics", feature: "Role-based access control", starter: false, growth: true, enterprise: true },
-  { category: "Analytics", feature: "HR lifecycle management", starter: false, growth: true, enterprise: true },
-  { category: "Advanced", feature: "Multi-location management", starter: false, growth: false, enterprise: true },
-  { category: "Advanced", feature: "Workflow automation", starter: false, growth: false, enterprise: true },
-  { category: "Advanced", feature: "Custom HR reports", starter: false, growth: false, enterprise: true },
-  { category: "Integration", feature: "API integrations", starter: false, growth: false, enterprise: true },
-  { category: "Security", feature: "Advanced security controls", starter: false, growth: false, enterprise: true },
-  { category: "Support", feature: "Support level", starter: "Email", growth: "Priority", enterprise: "Priority+" },
-  { category: "Support", feature: "Data SLA", starter: "99.5%", growth: "99.5%", enterprise: "99.9%" },
+  { category: "Core (Base Plan)", feature: "Employee management", base: true, payroll: true, attendance: true, leave: true },
+  { category: "Core (Base Plan)", feature: "Contact management", base: true, payroll: true, attendance: true, leave: true },
+  { category: "Core (Base Plan)", feature: "Items & Inventory", base: true, payroll: true, attendance: true, leave: true },
+  { category: "Core (Base Plan)", feature: "Sales & Invoicing", base: true, payroll: true, attendance: true, leave: true },
+  { category: "Core (Base Plan)", feature: "Purchases & Bills", base: true, payroll: true, attendance: true, leave: true },
+  { category: "Core (Base Plan)", feature: "Accounting & Finance", base: true, payroll: true, attendance: true, leave: true },
+  { category: "Core (Base Plan)", feature: "Reports & Settings", base: true, payroll: true, attendance: true, leave: true },
+  { category: "Payroll Add-On", feature: "Salary processing", base: false, payroll: true, attendance: false, leave: false },
+  { category: "Payroll Add-On", feature: "Payslip generation", base: false, payroll: true, attendance: false, leave: false },
+  { category: "Payroll Add-On", feature: "Statutory compliance", base: false, payroll: true, attendance: false, leave: false },
+  { category: "Payroll Add-On", feature: "Multiple salary components", base: false, payroll: true, attendance: false, leave: false },
+  { category: "Attendance Add-On", feature: "Punch records", base: false, payroll: false, attendance: true, leave: false },
+  { category: "Attendance Add-On", feature: "Shift management", base: false, payroll: false, attendance: true, leave: false },
+  { category: "Attendance Add-On", feature: "Daily & monthly tracking", base: false, payroll: false, attendance: true, leave: false },
+  { category: "Attendance Add-On", feature: "Overtime calculation", base: false, payroll: false, attendance: true, leave: false },
+  { category: "Leave Add-On", feature: "Leave categories", base: false, payroll: false, attendance: false, leave: true },
+  { category: "Leave Add-On", feature: "Request & approval workflows", base: false, payroll: false, attendance: false, leave: true },
+  { category: "Leave Add-On", feature: "Balance tracking", base: false, payroll: false, attendance: false, leave: true },
+  { category: "Leave Add-On", feature: "Leave policies", base: false, payroll: false, attendance: false, leave: true },
 ];
 
-function CellValue({ value, isGrowth }) {
+function CellValue({ value }) {
   if (value === true)
     return (
       <div className="flex justify-center">
-        <div className={`w-5 h-5 rounded-full flex items-center justify-center ${isGrowth ? "bg-blue-100" : "bg-emerald-50"}`}>
-          <Check className={`w-3 h-3 ${isGrowth ? "text-blue-600" : "text-emerald-600"}`} />
+        <div className="w-5 h-5 rounded-full flex items-center justify-center bg-emerald-50">
+          <Check className="w-3 h-3 text-emerald-600" />
         </div>
       </div>
     );
@@ -58,18 +55,37 @@ export default function ComparisonTable() {
 
   return (
     <AnimatedSection className="mt-20">
-      <h3 className="text-xl font-bold text-slate-900 text-center mb-8">Full Feature Comparison</h3>
+      <h3 className="text-xl font-bold text-slate-900 text-center mb-8">What's Included in Each Module</h3>
       <div className="rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
         <div className="overflow-x-auto">
           <Table>
             <TableHeader>
               <TableRow className="bg-slate-50 border-b border-slate-200">
-                <TableHead className="w-[40%] text-slate-700 font-semibold py-4 pl-6">Feature</TableHead>
-                <TableHead className="text-center text-slate-700 font-semibold">Starter</TableHead>
-                <TableHead className="text-center font-semibold bg-blue-50/40">
-                  <span className="text-gradient-brand">Growth</span>
+                <TableHead className="w-[35%] text-slate-700 font-semibold py-4 pl-6">Feature</TableHead>
+                <TableHead className="text-center font-semibold">
+                  <div>
+                    <span className="text-gradient-brand">Base Plan</span>
+                    <p className="text-xs text-slate-400 font-normal">₹999/mo</p>
+                  </div>
                 </TableHead>
-                <TableHead className="text-center text-slate-700 font-semibold">Enterprise</TableHead>
+                <TableHead className="text-center text-slate-700 font-semibold">
+                  <div>
+                    Payroll
+                    <p className="text-xs text-slate-400 font-normal">₹35/emp/mo</p>
+                  </div>
+                </TableHead>
+                <TableHead className="text-center text-slate-700 font-semibold">
+                  <div>
+                    Attendance
+                    <p className="text-xs text-slate-400 font-normal">₹18/emp/mo</p>
+                  </div>
+                </TableHead>
+                <TableHead className="text-center text-slate-700 font-semibold">
+                  <div>
+                    Leave
+                    <p className="text-xs text-slate-400 font-normal">₹12/emp/mo</p>
+                  </div>
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -77,29 +93,32 @@ export default function ComparisonTable() {
                 const showCategory = row.category !== lastCategory;
                 lastCategory = row.category;
                 return (
-                  <>
+                  <React.Fragment key={i}>
                     {showCategory && (
-                      <TableRow key={`cat-${row.category}`} className="bg-slate-50/50">
-                        <TableCell colSpan={4} className="pl-6 py-2">
+                      <TableRow className="bg-slate-50/50">
+                        <TableCell colSpan={5} className="pl-6 py-2">
                           <span className="text-xs font-bold uppercase tracking-widest text-slate-400">
                             {row.category}
                           </span>
                         </TableCell>
                       </TableRow>
                     )}
-                    <TableRow key={i} className="hover:bg-slate-50/50 transition-colors">
+                    <TableRow className="hover:bg-slate-50/50 transition-colors">
                       <TableCell className="pl-6 py-3.5 text-sm text-slate-700">{row.feature}</TableCell>
-                      <TableCell className="text-center py-3.5">
-                        <CellValue value={row.starter} />
-                      </TableCell>
                       <TableCell className="text-center py-3.5 bg-blue-50/30">
-                        <CellValue value={row.growth} isGrowth />
+                        <CellValue value={row.base} />
                       </TableCell>
                       <TableCell className="text-center py-3.5">
-                        <CellValue value={row.enterprise} />
+                        <CellValue value={row.payroll} />
+                      </TableCell>
+                      <TableCell className="text-center py-3.5">
+                        <CellValue value={row.attendance} />
+                      </TableCell>
+                      <TableCell className="text-center py-3.5">
+                        <CellValue value={row.leave} />
                       </TableCell>
                     </TableRow>
-                  </>
+                  </React.Fragment>
                 );
               })}
             </TableBody>

@@ -15,20 +15,20 @@ export default function HomeCTA() {
         <AnimatedSection>
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 text-white text-xs font-semibold mb-6 border border-white/20">
             <Sparkles className="w-3.5 h-3.5" />
-            14-day free trial · No credit card required
+            30-day free trial · No credit card required
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-5 leading-tight">
-            Ready to simplify<br className="hidden sm:block" /> your HR operations?
+            Ready to simplify<br className="hidden sm:block" /> your business operations?
           </h2>
 
           <p className="text-blue-100 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
-            Join hundreds of businesses using Worklynx to manage payroll, attendance, and people — all in one place.
+            Join hundreds of businesses using Worklynx to manage accounting, inventory, sales, and more — all in one place.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <CTAButton href="https://app.worklynx.io/signup" external variant="outline" size="lg" className="w-full sm:w-auto">
-              Start Free Trial
+              Start 30-Day Free Trial
               <ArrowRight className="w-4 h-4" />
             </CTAButton>
             <CTAButton href="/contact" variant="outline" size="lg" className="w-full sm:w-auto opacity-80 hover:opacity-100">

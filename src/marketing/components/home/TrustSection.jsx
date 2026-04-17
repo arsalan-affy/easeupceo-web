@@ -2,8 +2,8 @@ import AnimatedSection from "../shared/AnimatedSection";
 
 const stats = [
   { value: "500+", label: "Companies Trust Us" },
-  { value: "50K+", label: "Employees Managed" },
-  { value: "₹200Cr+", label: "Payroll Processed" },
+  { value: "50K+", label: "Users on Platform" },
+  { value: "10M+", label: "Transactions Processed" },
   { value: "99.9%", label: "Uptime SLA" },
 ];
 
@@ -33,7 +33,7 @@ export default function TrustSection() {
         {/* Logos */}
         <AnimatedSection delay={0.15} className="text-center">
           <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-6">
-            Trusted by leading companies across India
+            Trusted by leading companies worldwide
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             {logos.map((logo) => (

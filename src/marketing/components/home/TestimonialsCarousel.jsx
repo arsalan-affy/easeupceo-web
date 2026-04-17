@@ -13,7 +13,7 @@ const testimonials = [
     color: "bg-blue-100 text-blue-700",
   },
   {
-    quote: "The attendance module with GPS tracking solved our remote workforce challenges completely. Real-time visibility into 200+ employees across India.",
+    quote: "The attendance module with GPS tracking solved our remote workforce challenges completely. Real-time visibility into 200+ employees across multiple locations.",
     name: "Priya Sharma",
     role: "Chief People Officer",
     company: "GrowFast Retail",
@@ -54,11 +54,11 @@ export default function TestimonialsCarousel() {
           eyebrow="Customer Stories"
           heading={
             <>
-              Loved by HR Teams{" "}
-              <span className="text-gradient-brand">Across India</span>
+              Loved by Teams{" "}
+              <span className="text-gradient-brand">Everywhere</span>
             </>
           }
-          subtext="Join 500+ companies that have transformed their HR operations with Worklynx."
+          subtext="Join 500+ companies that have streamlined their business operations with Worklynx."
         />
 
         <AnimatedSection delay={0.1}>

@@ -1,56 +1,56 @@
 import { Link } from "react-router-dom";
-import { Clock, DollarSign, Users, BarChart3, FileText, PieChart, ArrowRight } from "lucide-react";
+import { Package, FileText, ShoppingCart, BookOpen, Users, BarChart3, ArrowRight } from "lucide-react";
 import SectionHeader from "../shared/SectionHeader";
 import { StaggerContainer, StaggerItem } from "../shared/AnimatedSection";
 
 const features = [
   {
-    icon: Clock,
-    title: "Attendance Tracking",
-    desc: "Real-time attendance monitoring with biometric, mobile, and web check-in support.",
-    color: "bg-blue-500",
-    lightColor: "bg-blue-50",
-    textColor: "text-blue-600",
-  },
-  {
-    icon: DollarSign,
-    title: "Payroll Processing",
-    desc: "End-to-end payroll automation with statutory compliance and instant payslip generation.",
+    icon: BookOpen,
+    title: "Accounting & Finance",
+    desc: "Complete double-entry accounting with journals, ledgers, bank reconciliation, and financial reports.",
     color: "bg-indigo-500",
     lightColor: "bg-indigo-50",
     textColor: "text-indigo-600",
   },
   {
-    icon: Users,
-    title: "Employee Lifecycle",
-    desc: "From onboarding to offboarding — manage the entire employee journey in one place.",
+    icon: Package,
+    title: "Inventory Management",
+    desc: "Track stock with batch numbers, serial numbers, FIFO costing, warehouses, and item adjustments.",
     color: "bg-violet-500",
     lightColor: "bg-violet-50",
     textColor: "text-violet-600",
   },
   {
-    icon: BarChart3,
-    title: "HR Analytics",
-    desc: "Real-time dashboards and AI-driven insights to make data-informed workforce decisions.",
-    color: "bg-sky-500",
-    lightColor: "bg-sky-50",
-    textColor: "text-sky-600",
-  },
-  {
     icon: FileText,
-    title: "Invoicing & Billing",
-    desc: "Generate GST-compliant invoices, track outstanding payments, and automate follow-ups.",
+    title: "Sales & Invoicing",
+    desc: "Quotations, sales orders, delivery orders, invoices, and sales returns — all connected seamlessly.",
     color: "bg-blue-500",
     lightColor: "bg-blue-50",
     textColor: "text-blue-600",
   },
   {
-    icon: PieChart,
-    title: "Reports & Exports",
-    desc: "Over 50 ready-to-use reports. Export to Excel, PDF, or CSV with a single click.",
-    color: "bg-indigo-500",
-    lightColor: "bg-indigo-50",
-    textColor: "text-indigo-600",
+    icon: ShoppingCart,
+    title: "Purchases & Bills",
+    desc: "Manage purchase orders, bills, purchase returns, and vendor payments with full audit trails.",
+    color: "bg-sky-500",
+    lightColor: "bg-sky-50",
+    textColor: "text-sky-600",
+  },
+  {
+    icon: Users,
+    title: "Employees & Contacts",
+    desc: "Centralized employee and contact management with roles, departments, and organizational structure.",
+    color: "bg-emerald-500",
+    lightColor: "bg-emerald-50",
+    textColor: "text-emerald-600",
+  },
+  {
+    icon: BarChart3,
+    title: "Reports & Analytics",
+    desc: "Ready-to-use reports for sales, purchases, inventory, taxes, and accounting. Export to Excel, PDF, or CSV.",
+    color: "bg-orange-500",
+    lightColor: "bg-orange-50",
+    textColor: "text-orange-600",
   },
 ];
 
@@ -59,14 +59,14 @@ export default function FeaturesOverview() {
     <section className="py-24 gradient-hero">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          eyebrow="Full-Featured HRMS"
+          eyebrow="All-in-One Platform"
           heading={
             <>
               One Platform,{" "}
               <span className="text-gradient-brand">Infinite Possibilities</span>
             </>
           }
-          subtext="Worklynx covers every aspect of HR management, from daily attendance to yearly audits."
+          subtext="Worklynx covers accounting, inventory, sales, purchases, and employee management — everything your business needs."
         />
 
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

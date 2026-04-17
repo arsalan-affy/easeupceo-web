@@ -1,48 +1,48 @@
 import { Link } from "react-router-dom";
-import { Clock, DollarSign, Users, BarChart3, FileText, PieChart } from "lucide-react";
+import { BookOpen, Package, FileText, ShoppingCart, Users, BarChart3 } from "lucide-react";
 
 const features = [
   {
-    icon: Clock,
-    name: "Attendance Management",
-    desc: "Real-time tracking & biometric integration",
-    hash: "#attendance",
-    color: "bg-blue-50 text-blue-600",
-  },
-  {
-    icon: DollarSign,
-    name: "Payroll Automation",
-    desc: "Compliant payroll with auto tax computation",
-    hash: "#payroll",
+    icon: BookOpen,
+    name: "Accounting & Finance",
+    desc: "Journals, ledgers, bank reconciliation & tax management",
+    hash: "#accounting",
     color: "bg-indigo-50 text-indigo-600",
   },
   {
-    icon: Users,
-    name: "Employee Management",
-    desc: "Centralized employee profiles & lifecycle",
-    hash: "#employees",
+    icon: Package,
+    name: "Inventory Management",
+    desc: "Stock tracking with batch, serial & FIFO costing",
+    hash: "#inventory",
     color: "bg-violet-50 text-violet-600",
-  },
-  {
-    icon: BarChart3,
-    name: "HR Analytics",
-    desc: "AI-powered workforce insights & reports",
-    hash: "#analytics",
-    color: "bg-blue-50 text-blue-600",
   },
   {
     icon: FileText,
-    name: "Invoicing & Billing",
-    desc: "Professional invoices & payment tracking",
-    hash: "#invoicing",
-    color: "bg-indigo-50 text-indigo-600",
+    name: "Sales & Invoicing",
+    desc: "Quotations, orders, invoices & payment tracking",
+    hash: "#sales",
+    color: "bg-blue-50 text-blue-600",
   },
   {
-    icon: PieChart,
-    name: "Reports & Insights",
-    desc: "Custom reports with export capabilities",
+    icon: ShoppingCart,
+    name: "Purchases & Bills",
+    desc: "Purchase orders, bills & vendor management",
+    hash: "#purchases",
+    color: "bg-sky-50 text-sky-600",
+  },
+  {
+    icon: Users,
+    name: "Employees & Contacts",
+    desc: "Employee profiles, departments & contact management",
+    hash: "#employees",
+    color: "bg-emerald-50 text-emerald-600",
+  },
+  {
+    icon: BarChart3,
+    name: "Reports & Analytics",
+    desc: "Sales, purchase, inventory & accounting reports",
     hash: "#reports",
-    color: "bg-violet-50 text-violet-600",
+    color: "bg-orange-50 text-orange-600",
   },
 ];
 
