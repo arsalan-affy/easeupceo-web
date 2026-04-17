@@ -102,7 +102,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8, duration: 0.5 }}
-              className="absolute left-2 top-1/4 glass-card rounded-xl px-3 py-2 shadow-lg hidden lg:flex items-center gap-2"
+              className="absolute -left-12 top-1/3 glass-card rounded-xl px-3 py-2 shadow-lg hidden xl:flex items-center gap-2"
             >
               <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center">
                 <TrendingUp className="w-3 h-3 text-emerald-600" />
@@ -117,7 +117,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1, duration: 0.5 }}
-              className="absolute right-2 bottom-1/4 glass-card rounded-xl px-3 py-2 shadow-lg hidden lg:flex items-center gap-2"
+              className="absolute -right-10 bottom-1/4 glass-card rounded-xl px-3 py-2 shadow-lg hidden xl:flex items-center gap-2"
             >
               <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
                 <CheckCircle className="w-3 h-3 text-blue-600" />
