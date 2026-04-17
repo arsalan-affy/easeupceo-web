@@ -18,6 +18,12 @@ const TermsOfServicePage = lazy(() => import("./marketing/pages/TermsOfServicePa
 const CookiePolicyPage = lazy(() => import("./marketing/pages/CookiePolicyPage"));
 const GDPRPage = lazy(() => import("./marketing/pages/GDPRPage"));
 
+const LiveOrderLayout = lazy(() => import("./live-order/LiveOrderLayout"));
+const CategoriesPage = lazy(() => import("./live-order/pages/CategoriesPage"));
+const ProductsPage = lazy(() => import("./live-order/pages/ProductsPage"));
+const SearchPage = lazy(() => import("./live-order/pages/SearchPage"));
+const ThankYouPage = lazy(() => import("./live-order/pages/ThankYouPage"));
+
 const Fallback = () => <div className="h-screen" />;
 
 const App = () => {
@@ -47,6 +53,15 @@ const App = () => {
           <Route path="/terms-of-service" element={<Suspense fallback={<Fallback />}><TermsOfServicePage /></Suspense>} />
           <Route path="/cookie-policy" element={<Suspense fallback={<Fallback />}><CookiePolicyPage /></Suspense>} />
           <Route path="/gdpr" element={<Suspense fallback={<Fallback />}><GDPRPage /></Suspense>} />
+        </Route>
+
+        {/* Live Order Routes (customer-facing, no marketing layout) */}
+        <Route path="/live-order" element={<Suspense fallback={<Fallback />}><LiveOrderLayout /></Suspense>}>
+          <Route index element={<Suspense fallback={<Fallback />}><CategoriesPage /></Suspense>} />
+          <Route path="products" element={<Suspense fallback={<Fallback />}><ProductsPage /></Suspense>} />
+          <Route path="search" element={<Suspense fallback={<Fallback />}><SearchPage /></Suspense>} />
+          <Route path="thank-you" element={<Suspense fallback={<Fallback />}><ThankYouPage /></Suspense>} />
+          <Route path="*" element={<Navigate to="/live-order" replace />} />
         </Route>
       </Routes>
     </Router>
