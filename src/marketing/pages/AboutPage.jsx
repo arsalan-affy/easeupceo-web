@@ -171,21 +171,27 @@ export default function AboutPage() {
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {team.map((member) => (
               <StaggerItem key={member.name}>
-                <div className="p-6 rounded-2xl bg-white border border-slate-100 hover:shadow-lg transition-shadow flex gap-4">
+                <div className="p-6 rounded-2xl bg-white border border-slate-100 hover:shadow-lg transition-shadow flex gap-4 h-full">
                   <img
                     src={member.photo}
                     alt={member.name}
-                    className="w-14 h-14 rounded-xl object-cover shrink-0"
+                    className="w-14 h-14 rounded-xl object-cover object-top shrink-0"
                   />
-                  <div>
+                  <div className="flex flex-col">
                     <h4 className="text-base font-bold text-slate-900">{member.name}</h4>
                     <p className="text-xs font-semibold text-blue-600 mb-2">{member.role}</p>
-                    <p className="text-xs text-slate-500 leading-relaxed">{member.bio}</p>
+                    <p className="text-xs text-slate-500 leading-relaxed flex-1">{member.bio}</p>
                   </div>
                 </div>
               </StaggerItem>
             ))}
           </StaggerContainer>
+
+          <AnimatedSection className="mt-8 text-center">
+            <p className="text-sm text-slate-500">
+              ...and a growing team of <span className="font-semibold text-slate-700">30+ professionals</span> dedicated to building, improving, and supporting the platform every day.
+            </p>
+          </AnimatedSection>
         </div>
       </section>
 
