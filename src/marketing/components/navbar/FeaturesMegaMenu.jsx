@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BookOpen, Package, FileText, ShoppingCart, Users, BarChart3 } from "lucide-react";
 
 const features = [
@@ -47,12 +47,29 @@ const features = [
 ];
 
 export default function FeaturesMegaMenu() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleClick = (e, hash) => {
+    const targetId = hash.slice(1);
+
+    if (location.pathname === "/features") {
+      e.preventDefault();
+      const el = document.getElementById(targetId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      window.history.replaceState(null, "", `/features${hash}`);
+    }
+  };
+
   return (
     <div className="grid grid-cols-2 gap-1 p-3 w-[480px]">
       {features.map((f) => (
         <Link
           key={f.name}
           to={`/features${f.hash}`}
+          onClick={(e) => handleClick(e, f.hash)}
           className="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors group"
         >
           <div className={`w-8 h-8 rounded-lg ${f.color} flex items-center justify-center shrink-0 mt-0.5`}>

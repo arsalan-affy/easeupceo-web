@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { BookOpen, Package, FileText, ShoppingCart, Users, BarChart3 } from "lucide-react";
 import SectionHeader from "../components/shared/SectionHeader";
 import FeatureBlock from "../components/features/FeatureBlock";
@@ -122,9 +123,20 @@ const features = [
 ];
 
 export default function FeaturesPage() {
+  const location = useLocation();
+
   useEffect(() => {
     document.title = "Features — Worklynx";
   }, []);
+
+  useEffect(() => {
+    if (location.hash) {
+      const el = document.getElementById(location.hash.slice(1));
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
+      }
+    }
+  }, [location]);
 
   return (
     <>
@@ -149,7 +161,7 @@ export default function FeaturesPage() {
       <section className="py-8 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {features.map((feature, index) => (
-            <div key={feature.id} id={feature.id} className="border-b border-slate-100 last:border-0">
+            <div key={feature.id} id={feature.id} className="border-b border-slate-100 last:border-0 scroll-mt-20">
               <FeatureBlock feature={feature} reverse={index % 2 !== 0} />
             </div>
           ))}
