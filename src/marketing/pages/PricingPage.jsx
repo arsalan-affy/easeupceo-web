@@ -131,9 +131,9 @@ export default function PricingPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Base Plan Card */}
-          <AnimatedSection>
-            <div className="relative overflow-hidden rounded-2xl gradient-brand text-white shadow-2xl shadow-blue-500/30 p-8 sm:p-10 max-w-3xl mx-auto mb-16">
-              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+          <AnimatedSection className="pt-4">
+            <div className="relative rounded-2xl gradient-brand text-white shadow-2xl shadow-blue-500/30 p-8 sm:p-10 max-w-3xl mx-auto mb-16">
+              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-10">
                 <span className="flex items-center gap-1 px-4 py-1.5 bg-amber-400 text-amber-900 text-xs font-bold rounded-full shadow">
                   Always Included
                 </span>
