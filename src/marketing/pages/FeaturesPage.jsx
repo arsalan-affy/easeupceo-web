@@ -131,10 +131,15 @@ export default function FeaturesPage() {
 
   useEffect(() => {
     if (location.hash) {
-      const el = document.getElementById(location.hash.slice(1));
-      if (el) {
-        setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
-      }
+      const id = location.hash.slice(1);
+      const scroll = () => {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+      };
+      setTimeout(scroll, 200);
     }
   }, [location]);
 

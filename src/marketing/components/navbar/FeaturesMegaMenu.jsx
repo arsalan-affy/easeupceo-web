@@ -57,7 +57,8 @@ export default function FeaturesMegaMenu() {
       e.preventDefault();
       const el = document.getElementById(targetId);
       if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        const top = el.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: "smooth" });
       }
       window.history.replaceState(null, "", `/features${hash}`);
     }
