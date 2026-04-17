@@ -6,6 +6,32 @@ const LiveOrderContext = createContext(null);
 
 const API_BASE = "https://alfabackend.inkapps.io";
 const SESSION_DURATION_MS = 45 * 60 * 1000;
+const ABLY_API_KEY = "x9wJ8g.wQTA_Q:VhLrbtIzPb8K_KMg6jMsFk1B2CUG2566pC8rAxkJVY4";
+
+// Singleton Ably client — one connection shared across all components
+let ablyInstance = null;
+
+function getAblyClient() {
+  if (!ablyInstance) {
+    ablyInstance = new Realtime({ key: ABLY_API_KEY });
+    if (typeof window !== "undefined") {
+      window.addEventListener("beforeunload", () => {
+        if (ablyInstance) {
+          ablyInstance.close();
+          ablyInstance = null;
+        }
+      });
+    }
+  }
+  return ablyInstance;
+}
+
+function closeAblyClient() {
+  if (ablyInstance) {
+    ablyInstance.close();
+    ablyInstance = null;
+  }
+}
 
 function getStored(key) {
   try {
@@ -60,6 +86,7 @@ export function LiveOrderProvider({ children }) {
   }), [orgId]);
 
   const clearSession = useCallback(() => {
+    closeAblyClient();
     setTableId(null);
     setTableName(null);
     setOrgId(null);
@@ -109,12 +136,13 @@ export function LiveOrderProvider({ children }) {
     if (!orgId || !tableId) return;
     fetchTableOrder();
 
-    // Ably real-time subscription for kitchen order updates
+    // Subscribe to table-management-{org_id} — the channel the backend actually publishes to
+    // on invoice save/update/void/transfer/merge. This covers: kitchen updates, payment,
+    // order delivered/cancelled/voided, table transfers and merges.
     let channel;
-    let ably;
     try {
-      ably = new Realtime({ key: "x9wJ8g.bezGYQ:d2wpDTn_w_8xkNUbKz2pQcrB-DHPmaRv4ml5zMuuNzs" });
-      channel = ably.channels.get("table-" + tableId);
+      const ably = getAblyClient();
+      channel = ably.channels.get("table-management-" + orgId);
       channel.subscribe("update", () => {
         fetchTableOrder();
       });
@@ -123,8 +151,10 @@ export function LiveOrderProvider({ children }) {
     }
 
     return () => {
-      if (channel) channel.unsubscribe();
-      if (ably) ably.close();
+      if (channel) {
+        channel.unsubscribe();
+        channel.detach();
+      }
     };
   }, [orgId, tableId]);
 
