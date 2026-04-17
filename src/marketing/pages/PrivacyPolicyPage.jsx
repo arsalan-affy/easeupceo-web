@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { Shield } from "lucide-react";
 
-const COMPANY = "Affy Cloud IT Solutions";
+const COMPANY = "Worklynx";
 const PRODUCT = "Worklynx";
-const EMAIL = "info@affyclouditsolutions.com";
-const ADDRESS = "Block A, E68, Housing Board Colony, Beside Kidz Castel School, Koh-e-fiza, Bhopal, Madhya Pradesh 462030, India";
+const EMAIL = "support@worklynx.io";
+const ADDRESS = "Bhopal, Madhya Pradesh, India";
 const EFFECTIVE = "18 March 2026";
 
 function Section({ title, children }) {

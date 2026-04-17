@@ -33,9 +33,9 @@ const faqs = [
 ];
 
 const contactInfo = [
-  { icon: Mail, label: "Email us", value: "info@affyclouditsolutions.com", href: "mailto:info@affyclouditsolutions.com" },
+  { icon: Mail, label: "Email us", value: "info@worklynx.io", href: "mailto:info@worklynx.io" },
   { icon: Phone, label: "Call us", value: "+91-8962760262", href: "tel:+918962760262" },
-  { icon: MapPin, label: "Visit us", value: "Block A, E68, Housing Board Colony, Beside Kidz Castel School, Koh-e-fiza, Bhopal, Madhya Pradesh 462030", href: null },
+  { icon: MapPin, label: "Visit us", value: "Bhopal, Madhya Pradesh, India", href: null },
   { icon: Clock, label: "Business hours", value: "Mon–Fri, 9 AM to 6 PM IST", href: null },
 ];
 
@@ -196,7 +196,7 @@ export default function ContactPage() {
                   <MapPin className="w-8 h-8 text-blue-400 mx-auto mb-2" />
                   <p className="text-sm font-semibold text-slate-700">Koh-e-fiza, Bhopal</p>
                   <p className="text-xs text-slate-500 mt-1">Madhya Pradesh, India 462030</p>
-                  <p className="text-xs text-slate-400 mt-1">Affy Cloud IT Solutions</p>
+                  <p className="text-xs text-slate-400 mt-1">Worklynx</p>
                 </div>
               </div>
             </AnimatedSection>

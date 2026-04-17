@@ -48,8 +48,8 @@ export default function MarketingFooter() {
             <div className="space-y-2 text-sm">
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                <a href="mailto:info@affyclouditsolutions.com" className="hover:text-white transition-colors">
-                  info@affyclouditsolutions.com
+                <a href="mailto:info@worklynx.io" className="hover:text-white transition-colors">
+                  info@worklynx.io
                 </a>
               </div>
               <div className="flex items-center gap-2">
@@ -58,7 +58,7 @@ export default function MarketingFooter() {
               </div>
               <div className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5" />
-                <span>Koh-e-fiza, Bhopal, Madhya Pradesh 462030</span>
+                <span>Bhopal, Madhya Pradesh, India</span>
               </div>
             </div>
           </div>
@@ -83,8 +83,7 @@ export default function MarketingFooter() {
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs">
-            © {new Date().getFullYear()} Worklynx. All rights reserved. Powered by{" "}
-            <span className="text-blue-400">Affy Cloud IT Solutions</span>
+            © {new Date().getFullYear()} Worklynx. All rights reserved.
           </p>
           <div className="flex items-center gap-1 text-xs">
             <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />

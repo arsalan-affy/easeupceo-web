@@ -92,7 +92,7 @@ export default function Footer() {
           </h4>
           <ul className="space-y-2 text-sm">
             <li className="flex items-center gap-2">
-              <Mail size={16} /> info@affyclouditsolutions.com
+              <Mail size={16} /> info@worklynx.io
             </li>
             {/* <li className="flex items-center gap-2">
               <PhoneCall size={16} /> +91-7772886808
@@ -105,20 +105,7 @@ export default function Footer() {
       </div>
 
       <div className="bg-primary text-background text-center py-3 text-xs font-medium">
-        © {new Date().getFullYear()} All rights reserved. Powered by{" "}
-        <a
-          href="https://affyclouditsolutions.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline hover:text-background/80 inline-flex items-center ml-1"
-        >
-          Affy Cloud IT Solutions
-          <img
-            src="https://affycloudsolution.com/static/media/affy_logo.7354960bda008279c013.png"
-            alt="Affy Cloud Logo"
-            className="w-4 h-4 inline-block align-middle ml-2"
-          />
-        </a>
+        © {new Date().getFullYear()} Worklynx. All rights reserved.
       </div>
     </footer>
   );

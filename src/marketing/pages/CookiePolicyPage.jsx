@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { Cookie } from "lucide-react";
 
-const COMPANY = "Affy Cloud IT Solutions";
+const COMPANY = "Worklynx";
 const PRODUCT = "Worklynx";
-const EMAIL = "info@affyclouditsolutions.com";
+const EMAIL = "support@worklynx.io";
 const EFFECTIVE = "18 March 2026";
 
 function Section({ title, children }) {
