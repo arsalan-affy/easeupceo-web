@@ -122,13 +122,25 @@ function invoiceItemAdjustment(formObject, response) {
 }
 
 export default function CartBar() {
-  const { cart, totalPrice, totalItems, tableId, orgId, orderId, setOrderId, apiHeaders, fetchTableOrder, API_BASE } = useLiveOrder();
+  const { cart, totalPrice, totalItems, tableId, orgId, locationId, orderId, setOrderId, apiHeaders, fetchTableOrder, API_BASE } = useLiveOrder();
+  const isDelivery = !tableId;
+  const channel = tableId ? 'dine_in' : 'delivery';
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [pincode, setPincode] = useState("");
   const [placing, setPlacing] = useState(false);
   const [invoiceResponse, setInvoiceResponse] = useState(null);
   const [invoiceProducts, setInvoiceProducts] = useState([]);
+  const deliverySettings = invoiceResponse?.OrgPrefs?.delivery_settings || {};
+  const deliveryFee = isDelivery && deliverySettings.enable_delivery
+    ? +(deliverySettings.delivery_fee || 0)
+    : 0;
+  const meetsMinOrder = !isDelivery
+    || !deliverySettings.min_order_amount
+    || +totalPrice >= +deliverySettings.min_order_amount;
   const navigate = useNavigate();
   const formObjectRef = useRef({
     date: new Date(), due_date: new Date(), number: "Auto-Generated", status: "Pending",
@@ -175,7 +187,7 @@ export default function CartBar() {
       }
     }
 
-    const formObj = { ...formObjectRef.current, line_items, shipping_charge: 0 };
+    const formObj = { ...formObjectRef.current, line_items, shipping_charge: deliveryFee };
     const adjusted = invoiceItemAdjustment(formObj, invoiceResponse);
     return { ...formObj, ...adjusted };
   }
@@ -184,6 +196,13 @@ export default function CartBar() {
     if (!orderId) {
       if (!name.trim()) { toast.error("Please enter your name"); return; }
       if (!phone.trim()) { toast.error("Please enter your phone number"); return; }
+      if (isDelivery) {
+        if (!deliverySettings.enable_delivery) { toast.error("Delivery is not enabled for this restaurant"); return; }
+        if (!meetsMinOrder) { toast.error(`Minimum order for delivery is ₹${deliverySettings.min_order_amount}`); return; }
+        if (!address.trim()) { toast.error("Please enter your delivery address"); return; }
+        if (!city.trim()) { toast.error("Please enter your city"); return; }
+        if (!pincode.trim()) { toast.error("Please enter your pincode"); return; }
+      }
     }
 
     setPlacing(true);
@@ -193,16 +212,20 @@ export default function CartBar() {
       }
 
       const invoiceDetails = buildInvoiceDetails();
-      invoiceDetails.table_id = tableId;
+      if (tableId) invoiceDetails.table_id = tableId;
+      if (locationId) invoiceDetails.location_id = locationId;
       invoiceDetails.invoice_id = orderId;
       invoiceDetails.status = "Pending";
 
       const body = {
         customer: { name, email: "", phone: "+91" + phone },
-        shipping_address: { address: "", apartment: "", city: "", state: "", pincode: "" },
+        shipping_address: isDelivery
+          ? { address, apartment: "", city, state: "", pincode }
+          : { address: "", apartment: "", city: "", state: "", pincode: "" },
         items: cart.map((p) => ({ product: p._id, quantity: p.quantity })),
         payment_details: {},
         invoice_details: invoiceDetails,
+        channel,
       };
 
       await axios.post(`${API_BASE}/api/shop/placeOrder`, body, { headers: apiHeaders() });
@@ -257,6 +280,51 @@ export default function CartBar() {
                     />
                   </div>
                 </div>
+                {isDelivery && (
+                  <>
+                    <div>
+                      <label className="text-sm font-medium text-foreground mb-1 block">Delivery Address</label>
+                      <input
+                        type="text"
+                        placeholder="House / street / area"
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        className="w-full border border-input rounded-md px-3 py-2 text-sm bg-background focus:outline-none focus:ring-2 focus:ring-ring"
+                      />
+                    </div>
+                    <div className="flex gap-2">
+                      <div className="flex-1">
+                        <label className="text-sm font-medium text-foreground mb-1 block">City</label>
+                        <input
+                          type="text"
+                          placeholder="City"
+                          value={city}
+                          onChange={(e) => setCity(e.target.value)}
+                          className="w-full border border-input rounded-md px-3 py-2 text-sm bg-background focus:outline-none focus:ring-2 focus:ring-ring"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <label className="text-sm font-medium text-foreground mb-1 block">Pincode</label>
+                        <input
+                          type="text"
+                          placeholder="Pincode"
+                          value={pincode}
+                          onChange={(e) => setPincode(e.target.value)}
+                          className="w-full border border-input rounded-md px-3 py-2 text-sm bg-background focus:outline-none focus:ring-2 focus:ring-ring"
+                        />
+                      </div>
+                    </div>
+                    {deliverySettings.enable_delivery && deliveryFee > 0 && (
+                      <div className="flex justify-between text-sm text-muted-foreground">
+                        <span>Delivery Fee</span>
+                        <span>₹{deliveryFee.toFixed(2)}</span>
+                      </div>
+                    )}
+                    {!meetsMinOrder && (
+                      <p className="text-xs text-red-600">Minimum order ₹{deliverySettings.min_order_amount} required for delivery.</p>
+                    )}
+                  </>
+                )}
               </>
             )}
 
@@ -280,8 +348,12 @@ export default function CartBar() {
               <Button variant="outline" className="flex-1" onClick={() => setOpen(false)}>
                 Cancel
               </Button>
-              <Button className="flex-1 gradient-brand text-white" onClick={placeOrder} disabled={placing}>
-                {placing ? "Placing..." : "Place Order"}
+              <Button
+                className="flex-1 gradient-brand text-white"
+                onClick={placeOrder}
+                disabled={placing || (isDelivery && !invoiceResponse)}
+              >
+                {placing ? "Placing..." : (isDelivery && !invoiceResponse ? "Loading…" : "Place Order")}
               </Button>
             </div>
           </div>

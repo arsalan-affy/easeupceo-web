@@ -52,6 +52,7 @@ export function LiveOrderProvider({ children }) {
   const [tableId, setTableIdState] = useState(() => getStored("tableId"));
   const [tableName, setTableNameState] = useState(() => getStored("tableName"));
   const [orgId, setOrgIdState] = useState(() => getStored("orgId"));
+  const [locationId, setLocationIdState] = useState(() => getStored("locationId"));
   const [cart, setCartState] = useState(() => {
     try {
       const stored = localStorage.getItem("lo_cart");
@@ -71,6 +72,7 @@ export function LiveOrderProvider({ children }) {
   const setTableId = (v) => { setTableIdState(v); setStored("tableId", v); };
   const setTableName = (v) => { setTableNameState(v); setStored("tableName", v); };
   const setOrgId = (v) => { setOrgIdState(v); setStored("orgId", v); };
+  const setLocationId = (v) => { setLocationIdState(v); setStored("locationId", v); };
   const setSessionExpiry = (v) => { setSessionExpiryState(v); setStored("sessionExpiry", v); };
 
   const setCart = useCallback((value) => {
@@ -90,6 +92,7 @@ export function LiveOrderProvider({ children }) {
     setTableId(null);
     setTableName(null);
     setOrgId(null);
+    setLocationId(null);
     setSessionExpiry(null);
     setCart([]);
     setOrderId(null);
@@ -105,10 +108,17 @@ export function LiveOrderProvider({ children }) {
     const qTableId = params.get("tableId");
     const qTableName = params.get("tableName");
     const qOrgId = params.get("orgId");
+    const qLocationId = params.get("locationId");
 
-    if (qTableId) setTableId(qTableId);
-    if (qTableName) setTableName(qTableName?.trim());
-    if (qOrgId) setOrgId(qOrgId);
+    // When entry URL specifies any context-bearing param, OVERWRITE stale stored state
+    // (including clearing absent params) so a leftover locationId from a prior delivery
+    // session can't bleed into a new QR-table dine-in session, and vice versa.
+    if (qTableId || qOrgId || qLocationId) {
+        setTableId(qTableId || null);
+        setTableName(qTableName ? qTableName.trim() : null);
+        if (qOrgId) setOrgId(qOrgId);
+        setLocationId(qLocationId || null);
+    }
   }, []);
 
   // Session expiry check
@@ -237,7 +247,7 @@ export function LiveOrderProvider({ children }) {
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   const value = {
-    tableId, tableName, orgId, cart, setCart, orderId, setOrderId,
+    tableId, tableName, orgId, locationId, cart, setCart, orderId, setOrderId,
     supportNumber, categories, products, loading,
     addToCart, updateQuantity, totalPrice, totalItems,
     fetchTableOrder, apiHeaders, clearSession,
