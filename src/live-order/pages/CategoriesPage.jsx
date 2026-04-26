@@ -23,6 +23,10 @@ export default function CategoriesPage() {
       <div className="max-w-2xl mx-auto px-4 py-5">
         <h2 className="text-lg font-bold text-foreground mb-4">What would you like to order?</h2>
 
+        {categories.length == 0 ? (
+          <p className="text-center text-sm text-muted-foreground py-12">No categories yet</p>
+        ) : null}
+
         <div className="grid grid-cols-2 gap-3 pb-24">
           {categories.map((cat) => (
             <Link

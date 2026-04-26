@@ -22,7 +22,7 @@ export default function SearchPage() {
     <div className="min-h-screen bg-background">
       <div className="sticky top-0 z-20 bg-white border-b shadow-sm">
         <div className="max-w-2xl mx-auto px-4 py-3 flex items-center gap-3">
-          <Button variant="ghost" size="icon" onClick={() => navigate(-1)}>
+          <Button variant="ghost" size="icon" onClick={() => navigate('/live-order')}>
             <ArrowLeft className="size-5" />
           </Button>
           <div className="flex-1 relative">
@@ -40,9 +40,9 @@ export default function SearchPage() {
       </div>
 
       <div className="max-w-2xl mx-auto px-4 py-4 pb-28">
-        {query.trim() === "" ? (
+        {query.trim() == "" ? (
           <p className="text-center text-sm text-muted-foreground py-12">Start typing to search the menu</p>
-        ) : results.length === 0 ? (
+        ) : results.length == 0 ? (
           <p className="text-center text-sm text-muted-foreground py-12">No items found for &ldquo;{query}&rdquo;</p>
         ) : (
           results.map((item) => <MenuItemCard key={item._id} product={item} />)

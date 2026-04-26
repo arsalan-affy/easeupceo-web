@@ -4,7 +4,7 @@ import { QrCode } from "lucide-react";
 import { LiveOrderProvider, useLiveOrder } from "./context/LiveOrderContext";
 
 function LiveOrderGate() {
-  const { tableId, loading } = useLiveOrder();
+  const { tableId, loading, error } = useLiveOrder();
 
   if (!tableId && !loading) {
     return (
@@ -27,7 +27,16 @@ function LiveOrderGate() {
     );
   }
 
-  return <Outlet />;
+  return (
+    <>
+      {error && (
+        <div className="bg-red-600 text-white text-sm px-4 py-2 text-center">
+          {error}
+        </div>
+      )}
+      <Outlet />
+    </>
+  );
 }
 
 export default function LiveOrderLayout() {
