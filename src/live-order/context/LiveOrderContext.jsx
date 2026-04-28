@@ -80,6 +80,14 @@ export function LiveOrderProvider({ children }) {
   const [tableName, setTableNameState] = useState(() => initialSessionExpiry ? getStored("tableName") : null);
   const [orgId, setOrgIdState] = useState(() => initialSessionExpiry ? getStored("orgId") : null);
   const [locationId, setLocationIdState] = useState(() => initialSessionExpiry ? getStored("locationId") : null);
+  const [mode, setModeState] = useState(() => {
+    if (!initialSessionExpiry) return null;
+    const stored = getStored("mode");
+    if (stored) return stored;
+    if (getStored("tableId")) return "dine_in";
+    if (getStored("orgId")) return "delivery";
+    return null;
+  });
   const [cart, setCartState] = useState(() => {
     if (!initialSessionExpiry) {
       try { localStorage.removeItem("lo_cart"); } catch {}
@@ -110,6 +118,7 @@ export function LiveOrderProvider({ children }) {
   };
   const setOrgId = (v) => { setOrgIdState(v); setStored("orgId", v); };
   const setLocationId = (v) => { setLocationIdState(v); setStored("locationId", v); };
+  const setMode = (v) => { setModeState(v); setStored("mode", v); };
   const setSessionExpiry = (v) => { setSessionExpiryState(v); setStored("sessionExpiry", v); };
 
   const setCart = useCallback((value) => {
@@ -133,6 +142,7 @@ export function LiveOrderProvider({ children }) {
     setTableName(null);
     setOrgId(null);
     setLocationId(null);
+    setMode(null);
     setSessionExpiry(null);
     setCart([]);
     setOrderId(null);
@@ -153,15 +163,24 @@ export function LiveOrderProvider({ children }) {
     const qTableName = params.get("tableName");
     const qOrgId = params.get("orgId");
     const qLocationId = params.get("locationId");
+    const qModeRaw = (params.get("mode") || "").toLowerCase();
+    const qMode = qModeRaw == "delivery" ? "delivery" : (qTableId ? "dine_in" : null);
 
-    if (!qTableId && !qOrgId && !qLocationId) return;
+    if (!qTableId && !qOrgId && !qLocationId && !qMode) return;
 
     const currentTableId = getStored("tableId");
+    const currentMode = getStored("mode");
+    const currentOrgId = getStored("orgId");
+    const currentLocationId = getStored("locationId");
+
     const sameTable = qTableId && currentTableId && qTableId == currentTableId;
-    if (sameTable) return;
+    const sameDelivery = qMode == "delivery" && currentMode == "delivery"
+      && (!qOrgId || qOrgId == currentOrgId)
+      && ((qLocationId || null) == (currentLocationId || null));
+    if (sameTable || sameDelivery) return;
 
     if (orderId) {
-      toast.error("An order is in progress at this table. Ask staff for help.");
+      toast.error("An order is already in progress. Ask staff for help.");
       return;
     }
 
@@ -171,16 +190,25 @@ export function LiveOrderProvider({ children }) {
       storedCart = raw ? JSON.parse(raw) : [];
     } catch {}
 
+    const hasKotSent = (storedCart || []).some((it) => +it?.kot_sent_quantity > 0);
+    if (hasKotSent) {
+      toast.error("You have items already sent to the kitchen. Please complete or cancel that order first.");
+      return;
+    }
+
     if (storedCart.length > 0) {
-      const ok = window.confirm("You have items in your cart. Switching to a new table will clear it. Continue?");
+      const ok = window.confirm("You have items in your cart. Starting a new session will clear it. Continue?");
       if (!ok) return;
     }
 
     clearCart();
-    setTableId(qTableId || null);
-    setTableName(qTableName ? qTableName.trim() : null);
+    const finalTableId = qMode == "delivery" ? null : (qTableId || null);
+    const finalTableName = qMode == "delivery" ? null : (qTableName ? qTableName.trim() : null);
+    setTableId(finalTableId);
+    setTableName(finalTableName);
     if (qOrgId) setOrgId(qOrgId);
     setLocationId(qLocationId || null);
+    setMode(qMode);
     setSessionExpiry(new Date(Date.now() + SESSION_DURATION_MS).toISOString());
   }, [orderId, clearCart]);
 
@@ -196,16 +224,48 @@ export function LiveOrderProvider({ children }) {
     return () => window.removeEventListener("popstate", onPop);
   }, [applyUrlParams]);
 
+  // Cross-tab guard — if another tab clears or replaces the session in
+  // localStorage, this tab's React state is now stale (cart, mode, etc.).
+  // Reload the page so the user re-enters the active session cleanly.
+  useEffect(() => {
+    function onStorage(e) {
+      if (!e?.key) return;
+      if (e.key.indexOf("lo_") != 0) return;
+      if (e.key == "lo_sessionExpiry" || e.key == "lo_tableId" || e.key == "lo_mode") {
+        const newExpiry = e.key == "lo_sessionExpiry" ? e.newValue : getStored("sessionExpiry");
+        const newTable = e.key == "lo_tableId" ? e.newValue : getStored("tableId");
+        const newMode = e.key == "lo_mode" ? e.newValue : getStored("mode");
+        const sameTable = (newTable || null) == (tableId || null);
+        const sameMode = (newMode || null) == (mode || null);
+        if (!sameTable || !sameMode || !newExpiry) {
+          // Another tab took over — reload to sync.
+          window.location.reload();
+        }
+      }
+    }
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
+  }, [tableId, mode]);
+
   useEffect(() => {
     if (!sessionExpiry) return;
     intervalRef.current = setInterval(() => {
       if (new Date() >= new Date(sessionExpiry)) {
+        const wasDelivery = mode == "delivery";
+        const prevOrgId = orgId;
+        const prevLocationId = locationId;
         clearSession();
-        window.location.href = "/live-order";
+        if (wasDelivery && prevOrgId) {
+          const qs = new URLSearchParams({ orgId: prevOrgId, mode: "delivery" });
+          if (prevLocationId) qs.set("locationId", prevLocationId);
+          window.location.href = `/live-order?${qs.toString()}`;
+        } else {
+          window.location.href = "/live-order";
+        }
       }
     }, 5000);
     return () => clearInterval(intervalRef.current);
-  }, [sessionExpiry, clearSession]);
+  }, [sessionExpiry, clearSession, mode, orgId, locationId]);
 
   useEffect(() => {
     if (!orgId) { setLoading(false); return; }
@@ -215,7 +275,7 @@ export function LiveOrderProvider({ children }) {
       setSessionExpiry(new Date(Date.now() + SESSION_DURATION_MS).toISOString());
     }
     fetchProducts();
-  }, [orgId]);
+  }, [orgId, mode, tableId]);
 
   useEffect(() => {
     if (!orgId || !tableId) return;
@@ -249,11 +309,13 @@ export function LiveOrderProvider({ children }) {
       setError(null);
       const res = await axios.post(`${API_BASE}/api/shop/getProducts`, {
         search: "", minPrice: "", maxPrice: "", page: 1, perPage: 100000, meta: {},
+        channel: mode == "delivery" ? "delivery" : (tableId ? "dine_in" : null),
       }, { headers: apiHeaders() });
 
       const data = res.data?.data;
       setCategories(data?.ItemCategories || []);
       setProducts(data?.data || []);
+      if (data?.support_phone) setSupportNumber(data.support_phone);
     } catch (err) {
       console.error("Failed to fetch products:", err);
       const msg = "Failed to load menu. Please check your connection and try again.";
@@ -280,7 +342,8 @@ export function LiveOrderProvider({ children }) {
 
       setError(null);
       setOrderId(res.data?.order?._id || null);
-      setSupportNumber(res.data?.data?.phone || "");
+      const tablePhone = res.data?.data?.phone;
+      if (tablePhone) setSupportNumber(tablePhone);
 
       if (res.data?.order == null) {
         setCart((prev) => {
@@ -377,7 +440,7 @@ export function LiveOrderProvider({ children }) {
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   const value = {
-    tableId, tableName, orgId, locationId, cart, setCart, orderId, setOrderId,
+    tableId, tableName, orgId, locationId, mode, cart, setCart, orderId, setOrderId,
     supportNumber, categories, products, loading, error,
     addToCart, updateQuantity, removeFromCart, clearCart, totalPrice, totalItems,
     fetchTableOrder, apiHeaders, clearSession,

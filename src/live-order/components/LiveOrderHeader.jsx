@@ -5,8 +5,9 @@ import { Button } from "@/components/ui/button";
 import { useLiveOrder } from "../context/LiveOrderContext";
 
 export default function LiveOrderHeader() {
-  const { tableName, supportNumber } = useLiveOrder();
+  const { tableName, supportNumber, mode } = useLiveOrder();
   const navigate = useNavigate();
+  const isDelivery = mode == "delivery";
 
   return (
     <header className="bg-white border-b sticky top-0 z-20 shadow-sm">
@@ -24,7 +25,7 @@ export default function LiveOrderHeader() {
               </a>
             )}
             <div className="text-sm font-semibold text-foreground bg-secondary px-3 py-1 rounded-full">
-              Table: {tableName}
+              {isDelivery ? "Delivery Order" : `Table: ${tableName}`}
             </div>
           </div>
         </div>

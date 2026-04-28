@@ -4,9 +4,11 @@ import { QrCode } from "lucide-react";
 import { LiveOrderProvider, useLiveOrder } from "./context/LiveOrderContext";
 
 function LiveOrderGate() {
-  const { tableId, loading, error } = useLiveOrder();
+  const { tableId, mode, orgId, loading, error } = useLiveOrder();
 
-  if (!tableId && !loading) {
+  const hasValidEntry = tableId || (mode == "delivery" && orgId);
+
+  if (!hasValidEntry && !loading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center px-4">
         <div className="text-center max-w-sm">
@@ -17,7 +19,7 @@ function LiveOrderGate() {
           </div>
           <h1 className="text-xl font-bold text-foreground mb-2">Scan QR Code</h1>
           <p className="text-muted-foreground">
-            Please scan the QR code available on your table to start ordering.
+            Please scan the QR code available on your table to start ordering, or open the delivery link shared by the restaurant.
           </p>
           <p className="text-sm text-muted-foreground mt-3">
             If you&apos;re unable to scan, please contact the staff for assistance.

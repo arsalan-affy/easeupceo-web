@@ -10,5 +10,11 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+    preserveSymlinks: false,
+  },
+  server: {
+    fs: {
+      allow: [path.resolve(__dirname, ".."), path.resolve(__dirname, "./")],
+    },
   },
 });

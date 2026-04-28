@@ -9,134 +9,18 @@ import {
   Sheet, SheetContent, SheetHeader, SheetTitle,
 } from "@/components/ui/sheet";
 import { useLiveOrder } from "../context/LiveOrderContext";
-
-function RND(value) {
-  const n = +value;
-  if (!isFinite(n)) return 0;
-  return +n.toFixed(2);
-}
-
-function invoiceItemAdjustment(formObject, response) {
-  const INV = { ...formObject };
-  const line_items = [...(formObject.line_items || [])];
-
-  let total_before_tax_and_adjustments = 0;
-  let total_quantity = 0;
-  let total = 0;
-  let tax_map = {};
-  let adjustments = 0;
-
-  if (!response.OrgPrefs?.discount_after_tax) {
-    adjustments = RND(adjustments - +(INV.discount_amount || 0));
-    adjustments = RND(adjustments + +(INV.shipping_charge || 0));
-  }
-
-  for (const item of line_items) {
-    if (!item?.item_id) continue;
-    total_quantity += +(item.quantity || 0);
-  }
-
-  for (let i = 0; i < line_items.length; i++) {
-    const ITEM = { ...line_items[i] };
-    if (!ITEM?.item_id) continue;
-
-    let item_gross_total = +ITEM.quantity * +ITEM.item_price;
-    if (ITEM.discount_value == null) ITEM.discount_value = 0;
-    ITEM.discount_value = RND(+ITEM.discount_value);
-
-    let item_level_adjustment = 0;
-    if (ITEM.discount_type == "percent") {
-      const discount = RND((item_gross_total * ITEM.discount_value) / 100);
-      item_level_adjustment = RND(0 - (discount || 0));
-      item_gross_total = RND(item_gross_total - discount);
-    } else {
-      item_level_adjustment = RND(0 - +(ITEM.discount_value || 0));
-      item_gross_total = RND(item_gross_total - +(ITEM.discount_value || 0));
-    }
-
-    let before_adjustment_amount = item_gross_total;
-    let after_adjustment_amount = +before_adjustment_amount;
-    after_adjustment_amount += (+adjustments * +ITEM.quantity) / +total_quantity;
-
-    let taxable_amount;
-    if (ITEM.is_tax_inclusive) {
-      taxable_amount = RND((after_adjustment_amount * 100) / (100 + +ITEM.item_tax_percentage));
-      before_adjustment_amount = RND(taxable_amount - (+adjustments * +ITEM.quantity) / +total_quantity);
-    } else {
-      taxable_amount = RND(+ITEM.quantity * +ITEM.item_price + (+adjustments * +ITEM.quantity) / +total_quantity + +item_level_adjustment);
-    }
-
-    total_before_tax_and_adjustments = RND(total_before_tax_and_adjustments + before_adjustment_amount);
-
-    const tax_group = ITEM.tax_group || {};
-    let tax_amount = 0;
-    const tax_details = [];
-
-    const placeOfSupply = response.OrgPrefs?.place_of_supply;
-    const shippingState = INV.shipping_state || response.OrgPrefs?.place_of_supply;
-
-    if (placeOfSupply == shippingState) {
-      for (const t of (tax_group.taxes?.filter((tx) => tx.tax_type == "CGST") || [])) {
-        const raw = (taxable_amount * +t.tax_percentage) / 100;
-        const v = RND(raw);
-        tax_amount += v;
-        tax_map[t.name] = (tax_map[t.name] || 0) + raw;
-        tax_details.push({ tax_id: t._id, tax_name: t.name, tax_percentage: t.tax_percentage, tax_type: t.tax_type, tax_amount: v, output_account_id: t.output_account_id, input_account_id: t.input_account_id });
-      }
-      for (const t of (tax_group.taxes?.filter((tx) => tx.tax_type == "SGST") || [])) {
-        const raw = (taxable_amount * +t.tax_percentage) / 100;
-        const v = RND(raw);
-        tax_amount += v;
-        tax_map[t.name] = (tax_map[t.name] || 0) + raw;
-        tax_details.push({ tax_id: t._id, tax_name: t.name, tax_percentage: t.tax_percentage, tax_type: t.tax_type, tax_amount: v, output_account_id: t.output_account_id, input_account_id: t.input_account_id });
-      }
-    } else {
-      for (const t of (tax_group.taxes?.filter((tx) => tx.tax_type == "IGST") || [])) {
-        const raw = (taxable_amount * +t.tax_percentage) / 100;
-        const v = RND(raw);
-        tax_amount += v;
-        tax_map[t.name] = (tax_map[t.name] || 0) + raw;
-        tax_details.push({ tax_id: t._id, tax_name: t.name, tax_percentage: t.tax_percentage, tax_type: t.tax_type, tax_amount: v, output_account_id: t.output_account_id, input_account_id: t.input_account_id });
-      }
-    }
-
-    line_items[i] = { ...ITEM, item_gross_total, item_tax_amount: tax_amount, taxable_amount, tax_details, location_id: INV.location_id };
-    total = total + taxable_amount + tax_amount;
-  }
-
-  let after_tax_adjustments = 0;
-  if (response.OrgPrefs?.discount_after_tax) {
-    after_tax_adjustments = RND(after_tax_adjustments - (INV.discount_amount || 0));
-    after_tax_adjustments = RND(after_tax_adjustments + (INV.shipping_charge || 0));
-  }
-
-  let final_total = total + after_tax_adjustments;
-  const rounded_total = +(final_total.toFixed(0));
-  const round_off = +(rounded_total - final_total).toFixed(2);
-  final_total = RND(final_total + round_off);
-
-  for (const k of Object.keys(tax_map)) tax_map[k] = RND(tax_map[k]);
-
-  return {
-    line_items,
-    sub_total: total_before_tax_and_adjustments,
-    total_before_tcs: total_before_tax_and_adjustments,
-    summary: total_before_tax_and_adjustments,
-    tax_map,
-    total: final_total,
-    adjustment: round_off,
-  };
-}
+import { adjustInvoice } from "@/lib/pricing.js";
 
 export default function CartBar() {
-  const { cart, totalPrice, totalItems, tableId, orgId, locationId, orderId, setOrderId, apiHeaders, fetchTableOrder, removeFromCart, API_BASE } = useLiveOrder();
-  const isDelivery = !tableId;
-  const channel = tableId ? 'dine_in' : 'delivery';
+  const { cart, totalPrice, totalItems, tableId, orgId, locationId, mode, orderId, setOrderId, apiHeaders, fetchTableOrder, removeFromCart, API_BASE } = useLiveOrder();
+  const isDelivery = mode == 'delivery';
+  const channel = isDelivery ? 'delivery' : 'dine_in';
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
+  const [stateName, setStateName] = useState("");
   const [pincode, setPincode] = useState("");
   const [placing, setPlacing] = useState(false);
   const [invoiceResponse, setInvoiceResponse] = useState(null);
@@ -211,7 +95,15 @@ export default function CartBar() {
     }
 
     const formObj = { ...formObjectRef.current, line_items, shipping_charge: deliveryFee };
-    const adjusted = invoiceItemAdjustment(formObj, invoiceResponse);
+    const adjusted = adjustInvoice(formObj, invoiceResponse?.OrgPrefs || {}, {
+      channel: 'delivery',
+      taxGroups: invoiceResponse?.TaxGroups || [],
+      promotions: invoiceResponse?.Promotions || [],
+      items: invoiceResponse?.Items || [],
+      modifierGroups: invoiceResponse?.ModifierGroups || [],
+      pricingGroups: invoiceResponse?.PricingGroups || [],
+      org_id: invoiceResponse?.org_id,
+    });
     return { ...formObj, ...adjusted };
   }
 
@@ -228,6 +120,7 @@ export default function CartBar() {
         if (!meetsMinOrder) { toast.error(`Minimum order for delivery is ₹${deliverySettings.min_order_amount}`); return; }
         if (!address.trim()) { toast.error("Please enter your delivery address"); return; }
         if (!city.trim()) { toast.error("Please enter your city"); return; }
+        if (!stateName.trim()) { toast.error("Please enter your state"); return; }
         if (!pincode.trim()) { toast.error("Please enter your pincode"); return; }
       }
     }
@@ -254,7 +147,7 @@ export default function CartBar() {
         await axios.post(`${API_BASE}/api/shop/creatCustomerIfNotExists`, { phone: "+91" + digits }, { headers: apiHeaders() });
       }
 
-      if (tableId) invoiceDetails.table_id = tableId;
+      if (tableId && !isDelivery) invoiceDetails.table_id = tableId;
       if (locationId) invoiceDetails.location_id = locationId;
       invoiceDetails.invoice_id = orderId;
       invoiceDetails.status = "Pending";
@@ -262,7 +155,7 @@ export default function CartBar() {
       const body = {
         customer: { name, email: "", phone: "+91" + digits },
         shipping_address: isDelivery
-          ? { address, apartment: "", city, state: "", pincode }
+          ? { address, apartment: "", city, state: stateName, pincode }
           : { address: "", apartment: "", city: "", state: "", pincode: "" },
         items: cart.map((p) => ({ product: p._id, quantity: p.quantity })),
         payment_details: {},
@@ -285,8 +178,19 @@ export default function CartBar() {
       navigate("/live-order/thank-you", { state: { invoiceNumber } });
     } catch (err) {
       console.error(err);
-      const backendMsg = err?.response?.data?.message;
-      toast.error(backendMsg || "Failed to place order");
+      const errBody = err?.response?.data || {};
+      const unavailable = Array.isArray(errBody.unavailable_item_ids) ? errBody.unavailable_item_ids : [];
+      if (unavailable.length > 0) {
+        const removedNames = cart
+          .filter((c) => unavailable.some((u) => String(u) == String(c._id)))
+          .map((c) => c.name)
+          .filter(Boolean);
+        removeFromCart(unavailable);
+        const label = removedNames.length > 0 ? removedNames.join(", ") : "Some items";
+        toast.error(`${label} no longer available — removed from your cart. Please review and try again.`);
+      } else {
+        toast.error(errBody.message || "Failed to place order");
+      }
     } finally {
       setPlacing(false);
     }
@@ -352,6 +256,16 @@ export default function CartBar() {
                           placeholder="City"
                           value={city}
                           onChange={(e) => setCity(e.target.value)}
+                          className="w-full border border-input rounded-md px-3 py-2 text-sm bg-background focus:outline-none focus:ring-2 focus:ring-ring"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <label className="text-sm font-medium text-foreground mb-1 block">State</label>
+                        <input
+                          type="text"
+                          placeholder="State"
+                          value={stateName}
+                          onChange={(e) => setStateName(e.target.value)}
                           className="w-full border border-input rounded-md px-3 py-2 text-sm bg-background focus:outline-none focus:ring-2 focus:ring-ring"
                         />
                       </div>
