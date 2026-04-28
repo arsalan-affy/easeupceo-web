@@ -95,7 +95,7 @@ export default function AttendanceMockup() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-[9px] text-slate-400">{e.time}</span>
-                <span className={`text-[9px] font-semibold ${e.status === "Late" ? "text-amber-500" : "text-emerald-500"}`}>
+                <span className={`text-[9px] font-semibold ${e.status == "Late" ? "text-amber-500" : "text-emerald-500"}`}>
                   {e.status}
                 </span>
               </div>

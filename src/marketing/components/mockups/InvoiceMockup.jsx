@@ -8,7 +8,7 @@ import { FileText, CheckCircle, AlertCircle, Clock } from "lucide-react";
 
 const pieData = [
   { name: "Paid", value: 1875000, color: "#3B82F6" },
-  { name: "Outstanding", value: 420000, color: "#6366F1" },
+  { name: "Unpaid", value: 420000, color: "#6366F1" },
   { name: "Overdue", value: 85000, color: "#F59E0B" },
 ];
 
@@ -41,7 +41,7 @@ export default function InvoiceMockup() {
       {/* Stats */}
       <div className="flex gap-2">
         <StatCard icon={CheckCircle} label="Paid" value="₹18.75L" color="bg-blue-500" />
-        <StatCard icon={Clock} label="Outstanding" value="₹4.20L" color="bg-indigo-500" />
+        <StatCard icon={Clock} label="Unpaid" value="₹4.20L" color="bg-indigo-500" />
         <StatCard icon={AlertCircle} label="Overdue" value="₹85K" color="bg-amber-500" textColor="text-amber-600" />
       </div>
 
