@@ -87,10 +87,10 @@ const features = [
     icon: Users,
     title: "Employees & Contacts",
     description:
-      "Centralized management for employees and business contacts. Organize by departments, designations, roles, and teams. Optional payroll, attendance, and leave modules available as add-ons.",
+      "Centralized management for employees and business contacts. Organize by departments, positions, roles, and teams. Optional payroll, attendance, and leave modules available as add-ons.",
     benefits: [
       "Employee profiles and directory",
-      "Department and designation management",
+      "Department and position management",
       "Role-based access control",
       "Contact and vendor management",
       "Optional: Payroll processing (add-on)",
