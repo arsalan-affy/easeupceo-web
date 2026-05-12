@@ -1,0 +1,316 @@
+/* ──────────────────────────────────────────────────────────────────────────
+   Shared component styles for the chat-mode onboarding.
+
+   These rules are scoped to three reused components:
+     - ThemePreview     (.wlx-tp* — mock HRMS dashboard preview)
+     - EmployeeTable    (.wlx-table* — validated row preview)
+     - ValidationReport (.wlx-validation* — error / warning surface)
+
+   They piggyback on the design tokens declared in lynxChat.css. Loading
+   order is enforced by OnboardingShell.jsx.
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* ── Tokens used by the reused components ──────────────────────────────── */
+:where(.lynx-shell, .wlx-onboarding) {
+  --wlx-primary:        #4f46e5;
+  --wlx-secondary:      #1e293b;
+  --wlx-accent:         #3b82f6;
+  --wlx-bg:             #f5f7ff;
+  --wlx-surface:        #ffffff;
+  --wlx-text:           #0f172a;
+  --wlx-muted:          #64748b;
+  --wlx-border:         #e2e8f0;
+  --wlx-border-soft:    #eef2f7;
+  --wlx-success:        #10b981;
+  --wlx-warn:           #d97706;
+  --wlx-danger:         #dc2626;
+  --wlx-radius:         16px;
+  --wlx-radius-sm:      10px;
+  --wlx-shadow:         0 1px 2px rgba(15, 23, 42, 0.04), 0 12px 40px rgba(15, 23, 42, 0.06);
+  --wlx-shadow-sm:      0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.04);
+  --wlx-ease:           cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Theme preview — mock HRMS dashboard ────────────────────────────────── */
+.wlx-tp {
+  --tp-primary:   var(--wlx-primary);
+  --tp-secondary: var(--wlx-secondary);
+  --tp-accent:    var(--wlx-accent);
+  --tp-bg:        #f8fafc;
+
+  border-radius: var(--wlx-radius);
+  overflow: hidden;
+  border: 1px solid var(--wlx-border);
+  background: #fff;
+  box-shadow: var(--wlx-shadow);
+  position: relative;
+}
+.wlx-tp__placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 360px;
+  color: var(--wlx-muted);
+  font-size: 13px;
+}
+.wlx-tp__chrome {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: #f1f5f9;
+  border-bottom: 1px solid var(--wlx-border);
+  border-radius: var(--wlx-radius) var(--wlx-radius) 0 0;
+}
+.wlx-tp__dot {
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.wlx-tp__url {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 11px;
+  color: #64748b;
+  background: #fff;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  font-family: ui-monospace, monospace;
+}
+.wlx-tp__body {
+  background: var(--tp-bg);
+  padding: 18px;
+  position: relative;
+  min-height: 380px;
+}
+.wlx-tp__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.wlx-tp__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+}
+.wlx-tp__sub {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 2px;
+}
+.wlx-tp__live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ecfdf5;
+  color: #047857;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.wlx-tp__live-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px #10b981;
+  animation: wlxPulse 1.6s ease-in-out infinite;
+}
+@keyframes wlxPulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.85); }
+  50%      { opacity: 1;   transform: scale(1.05); }
+}
+
+.wlx-tp__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.wlx-tp__stat {
+  background: #fff;
+  border: 1px solid var(--wlx-border-soft);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: var(--wlx-shadow-sm);
+}
+.wlx-tp__stat-icon {
+  width: 32px; height: 32px;
+  border-radius: 9px;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.wlx-tp__stat-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+.wlx-tp__stat-label {
+  font-size: 10.5px;
+  color: #64748b;
+  font-weight: 500;
+}
+.wlx-tp__stat-value {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.1;
+}
+.wlx-tp__stat-delta {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.wlx-tp__chart-card {
+  background: #fff;
+  border: 1px solid var(--wlx-border-soft);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 14px;
+  box-shadow: var(--wlx-shadow-sm);
+}
+.wlx-tp__chart-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+.wlx-tp__chart {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+
+.wlx-tp__checkins {
+  background: #fff;
+  border: 1px solid var(--wlx-border-soft);
+  border-radius: 12px;
+  padding: 12px 14px;
+  box-shadow: var(--wlx-shadow-sm);
+}
+.wlx-tp__checkins-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+.wlx-tp__checkin-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--wlx-border-soft);
+  font-size: 12px;
+}
+.wlx-tp__checkin-row:last-child { border-bottom: 0; }
+.wlx-tp__avatar {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.wlx-tp__checkin-name {
+  font-weight: 500;
+  color: #0f172a;
+  flex: 1;
+}
+.wlx-tp__checkin-time {
+  color: #64748b;
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+}
+.wlx-tp__chip {
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 600;
+}
+
+@media (max-width: 720px) {
+  .wlx-tp__stats { grid-template-columns: 1fr; }
+}
+
+/* ── Validation report ──────────────────────────────────────────────────── */
+.wlx-validation {
+  background: #fff8f1;
+  border: 1px solid #fde2c4;
+  border-radius: var(--wlx-radius);
+  padding: 16px 18px;
+  margin: 0;
+}
+.wlx-validation--ok {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+}
+.wlx-validation__title {
+  font-weight: 600;
+  margin: 0 0 8px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.wlx-validation__group {
+  margin-top: 10px;
+  font-size: 13px;
+}
+.wlx-validation__group h5 {
+  margin: 0 0 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--wlx-muted);
+}
+.wlx-validation__list {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+}
+
+/* ── Employee table ─────────────────────────────────────────────────────── */
+.wlx-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--wlx-radius);
+  border: 1px solid var(--wlx-border);
+  background: var(--wlx-surface);
+}
+.wlx-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.wlx-table th,
+.wlx-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--wlx-border);
+  white-space: nowrap;
+}
+.wlx-table th {
+  background: #f8fafc;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--wlx-muted);
+  letter-spacing: 0.04em;
+}
+.wlx-table tr:last-child td { border-bottom: 0; }

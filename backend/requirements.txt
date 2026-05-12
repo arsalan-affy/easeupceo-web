@@ -1,0 +1,19 @@
+# Worklynx Onboarding — backend dependencies
+# Pinned to the versions used in development. Bump deliberately, not by reflex.
+
+# Web framework
+fastapi==0.115.0
+uvicorn[standard]==0.30.0
+pydantic==2.9.0
+python-multipart>=0.0.9          # required by FastAPI for multipart /onboarding/chat
+
+# Config
+python-dotenv==1.0.1
+
+# Onboarding services
+openpyxl==3.1.5                   # employee xlsx parsing + template
+colorthief==0.2.1                 # logo palette extraction
+Pillow>=10.0                      # colorthief depends on PIL
+
+# AI (Lynx chat orchestrator)
+google-genai==1.14.0
